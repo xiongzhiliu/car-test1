@@ -31,4 +31,5 @@ car-test1/ioi2c.o: ..\BSP\Bmpu6050\IOI2C.c ..\BSP\Bmpu6050\ioi2c.h \
   ..\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.h ..\USER\inc\myadc.h \
   ..\USER\inc\LED.h ..\USER\inc\moto.h ..\USER\inc\interrupt.h \
   ..\USER\pid.h ..\USER\inc\decoder.h ..\USER\inc\fun.h \
-  ..\USER\inc\delay.h ..\USER\inc\filter.h
+  ..\USER\inc\delay.h ..\USER\inc\filter.h ..\USER\inc\gray.h \
+  ..\USER\inc\proc.h

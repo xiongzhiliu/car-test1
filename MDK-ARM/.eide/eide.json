@@ -162,6 +162,9 @@
           },
           {
             "path": "../USER/filter.c"
+          },
+          {
+            "path": "../USER/gray.c"
           }
         ],
         "folders": []
@@ -194,7 +197,9 @@
   "outDir": "build",
   "deviceName": null,
   "packDir": null,
-  "miscInfo": {},
+  "miscInfo": {
+    "uid": "c23fe284cadd579d46c3707db2147376"
+  },
   "targets": {
     "car-test1": {
       "excludeList": [
@@ -341,11 +346,11 @@
           "../BSP",
           "RTE/_car-test1"
         ],
+        "libList": [],
         "defineList": [
           "USE_HAL_DRIVER",
           "STM32F103xB"
-        ],
-        "libList": []
+        ]
       },
       "builderOptions": {
         "AC6": {

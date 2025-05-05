@@ -1,14 +1,14 @@
 #include "pid.h"
 pids st_pid={0,0,0,0,0,0,0,0},sp_pid={0,0,0,0,0,0,0,0};
 pids bal,velo;
-u8 delay_50,delay_flag,Bi_zhang=0,PID_Send,Flash_Send; 							//ÑÓÊ±ºÍµ÷²ÎµÈ±äÁ¿
-u8 Flag_Qian,Flag_Hou,Flag_Left,Flag_Right,Flag_sudu=2; 						//À¶ÑÀÒ£¿ØÏà¹ØµÄ±äÁ¿
-float Movement=0,Movementset=40;																			//ËÙ¶È¿ØÖÆÓëÉèÖÃ
-float Balance_Kp=300,Balance_Kd=1.0,Velocity_Kp=120,Velocity_Ki=0.4;//PID²ÎÊı
+u8 delay_50,delay_flag,Bi_zhang=0,PID_Send,Flash_Send;                           //è®¡æ—¶å’Œè§¦å‘ç­‰å˜é‡
+u8 Flag_Qian,Flag_Hou,Flag_Left,Flag_Right,Flag_sudu=2;                         //é¥æ§ç›¸å…³çš„å˜é‡
+float Movement=0,Movementset=40;                                                 //é€Ÿåº¦æ§åˆ¶å‚æ•°
+float Balance_Kp=300,Balance_Kd=1.0,Velocity_Kp=120,Velocity_Ki=0.4;            //PIDå‚æ•°
 
 /**
- * @brief   PID³õÊ¼»¯º¯Êı 
- * @param1 	pid½á¹¹Ìå
+ * @brief   PIDåˆå§‹åŒ–å‡½æ•°
+ * @param1  pidç»“æ„ä½“
  * @param2 
  * @retval    
  */ 
@@ -25,7 +25,7 @@ void pid_init(pids *pid, float Kp, float Ki, float Kd)
 }
 
 /**
- * @brief    Çå³ı¶ÔÓÚPID½á¹¹ÌåµÄ»ı·Ö²î·ÖÀÛ¼ÆÖµ
+ * @brief    é‡ç½®ä¼ å…¥PIDç»“æ„ä½“çš„åŸºç¡€éƒ¨åˆ†ç´¯è®¡å€¼
  * @param1 
  * @param2 
  * @retval    
@@ -40,7 +40,7 @@ void clear_pid(pids *pid)
  }
 
 /**
- * @brief  ËÙ¶È»·
+ * @brief  é€Ÿåº¦ç¯
  * @param1 
  * @param2 
  * @retval    
@@ -59,14 +59,14 @@ int cf_Motor_PID(pids *Motor_velocity, int Target, short read)
 	Motor_velocity->prev_error = Motor_velocity->error;
 
 	pwm = Motor_velocity->Kp * Motor_velocity->error +
-		    Motor_velocity->Ki * Motor_velocity->integral +
-		    Motor_velocity->Kd * Motor_velocity->derivative;
+			Motor_velocity->Ki * Motor_velocity->integral +
+			Motor_velocity->Kd * Motor_velocity->derivative;
 	return pwm;
 }
 
 
 /**
- * @brief      ³£¹æ´ø»ı·ÖÉÏÏŞµÄPID
+ * @brief      å¸¦ç§¯åˆ†é™å¹…çš„PID
  * @param1 
  * @param2 
  * @retval    
@@ -92,10 +92,10 @@ int cf_PID(pids *pid, float tar, float read)
 
 
 /**
- * @brief      ´øËÀÇøpid£¬³£ÓÃÓÚ²îËÙµ÷½Ú
+ * @brief      æ ‡å‡†çš„pidå‡½æ•°ï¼Œç”¨äºä¸æƒ³è°ƒç”¨
  * @param1 
  * @param2 
- * @retval    ·µ»ØÒ»¸ö²îÖµ£¬ÓÃÓÚ¶Ô³Æµ÷ËÙ
+ * @retval    è¿”å›ä¸€ä¸ªæ•´å€¼ï¼Œç”¨äºå¯¹ç§°è°ƒç”¨
  */ 
 int cf_pid_ddz(pids *pid, int tar , int read)
 {
@@ -113,101 +113,101 @@ int cf_pid_ddz(pids *pid, int tar , int read)
 
 
 /**
- * @brief      Ö±Á¢»·PD¿ØÖÆ
+ * @brief      ç›´ç«‹ç¯PDæ§åˆ¶
  * @param1 
  * @param2 
  * @retval    
  */ 
 int balance(float Angle,float Gyro){  
 	 int balance;
-	 bal.error=Angle-ZhongZhi;                       //===Çó³öÆ½ºâµÄ½Ç¶ÈÖĞÖµ ºÍ»úĞµÏà¹Ø
-	 balance=bal.Kp*bal.error+Gyro*bal.Kd;   //===¼ÆËãÆ½ºâ¿ØÖÆµÄµç»úPWM  PD¿ØÖÆ   kpÊÇPÏµÊı kdÊÇDÏµÊı   ¼ÓËÙ¶ÈºÍËÙ¶È
+	 bal.error=Angle-ZhongZhi;                       //===æ±‚å¹³è¡¡çš„è§’åº¦å·®å€¼ å’Œæœºæ¢°ä¸­å€¼çš„å·®
+	 balance=bal.Kp*bal.error+Gyro*bal.Kd;   //===è®¡ç®—å¹³è¡¡æ§åˆ¶çš„ç”µæœºPWM  PDæ§åˆ¶   kpæ˜¯Pç³»æ•° kdæ˜¯Dç³»æ•° 
 	 return (int)balance;
 }
 /**************************************************************************
-º¯Êı¹¦ÄÜ£ºËÙ¶ÈPI¿ØÖÆ ĞŞ¸ÄÇ°½øºóÍËËÙ¶È£¬ÇëĞŞTarget_Velocity£¬±ÈÈç£¬¸Ä³É60¾Í±È½ÏÂıÁË
-Èë¿Ú²ÎÊı£º×óÂÖ±àÂëÆ÷¡¢ÓÒÂÖ±àÂëÆ÷
-·µ»Ø  Öµ£ºËÙ¶È¿ØÖÆPWM
-×÷    Õß£ºÆ½ºâĞ¡³µÖ®¼Ò
+å‡½æ•°åŠŸèƒ½ï¼šé€Ÿåº¦PIæ§åˆ¶ ä¿®æ”¹å‰è¿›åé€€é€Ÿåº¦ï¼Œè¯·ä¿®æ”¹Target_Velocityï¼Œæ¯”å¦‚ï¼Œæ”¹æˆ60å°±æ¯”è¾ƒæ…¢äº†
+å…¥å£å‚æ•°ï¼šå·¦è½®ç¼–ç å™¨ã€å³è½®ç¼–ç å™¨
+è¿”å›  å€¼ï¼šé€Ÿåº¦æ§åˆ¶PWM
+ä½œ    è€…ï¼šå¹³è¡¡å°è½¦ä¹‹å®¶
 **************************************************************************/
 int velocity(int encoder_left,int encoder_right){  
-     static float Velocity,Encoder_Least,Encoder;
+	 static float Velocity,Encoder_Least,Encoder;
 	  static float Encoder_Integral,Target_Velocity;
-	  //=============Ò£¿ØÇ°½øºóÍË²¿·Ö=======================// 
-	  if(Bi_zhang==1&&Flag_sudu==1)  Target_Velocity=55;                 //Èç¹û½øÈë±ÜÕÏÄ£Ê½,×Ô¶¯½øÈëµÍËÙÄ£Ê½
-    else 	                         Target_Velocity=110;                 
-		if(1==Flag_Qian)    	Movement=-Target_Velocity/Flag_sudu;	         //===Ç°½ø±êÖ¾Î»ÖÃ1 
-		else if(1==Flag_Hou)	Movement=Target_Velocity/Flag_sudu;         //===ºóÍË±êÖ¾Î»ÖÃ1
+	  //=============é¥æ§å‰è¿›åé€€éƒ¨åˆ†=======================// 
+	  if(Bi_zhang==1&&Flag_sudu==1)  Target_Velocity=55;                 //é¿éšœæ¨¡å¼ä¸­ï¼Œè‡ªåŠ¨è®¾å®šè¡Œèµ°æ¨¡å¼
+	else 	                         Target_Velocity=110;                 
+		if(1==Flag_Qian)    	Movement=-Target_Velocity/Flag_sudu;	         //===å‰è¿›æ ‡å¿—ä½ä¸º1 
+		else if(1==Flag_Hou)	Movement=Target_Velocity/Flag_sudu;         //===åé€€æ ‡å¿—ä½ä¸º1
 	  else  Movement=0;	
-//	  if(Bi_zhang==1&&Distance<500&&Flag_Left!=1&&Flag_Right!=1)        //±ÜÕÏ±êÖ¾Î»ÖÃ1ÇÒ·ÇÒ£¿Ø×ªÍäµÄÊ±ºò£¬½øÈë±ÜÕÏÄ£Ê½
+//	  if(Bi_zhang==1&&Distance<500&&Flag_Left!=1&&Flag_Right!=1)        //é¿éšœæ ‡å¿—ä½ä¸º1ä¸”éé¥æ§è½¬å¼¯çš„æ—¶å€™ï¼Œè¿›å…¥é¿éšœæ¨¡å¼
 //	  Movement=Target_Velocity/Flag_sudu;
-   //=============ËÙ¶ÈPI¿ØÖÆÆ÷=======================//	
-		Encoder_Least =(encoder_left+encoder_right)-Velocity;                    //===»ñÈ¡×îĞÂËÙ¶ÈÆ«²î==²âÁ¿ËÙ¶È£¨×óÓÒ±àÂëÆ÷Ö®ºÍ£©-Ä¿±êËÙ¶È£¨´Ë´¦ÎªÁã£© 
-		Encoder *= 0.8;		                                                //===Ò»½×µÍÍ¨ÂË²¨Æ÷       
-		Encoder += Encoder_Least*0.2;	                                    //===Ò»½×µÍÍ¨ÂË²¨Æ÷    
-		Encoder_Integral +=Encoder;                                       //===»ı·Ö³öÎ»ÒÆ »ı·ÖÊ±¼ä£º10ms
-		Encoder_Integral=Encoder_Integral-Movement;                       //===½ÓÊÕÒ£¿ØÆ÷Êı¾İ£¬¿ØÖÆÇ°½øºóÍË
-		if(Encoder_Integral>10000)  	Encoder_Integral=10000;             //===»ı·ÖÏŞ·ù
-		if(Encoder_Integral<-10000)	Encoder_Integral=-10000;              //===»ı·ÖÏŞ·ù	
-		Velocity=Encoder*Velocity_Kp+Encoder_Integral*Velocity_Ki;        //===ËÙ¶È¿ØÖÆ	
-//		if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===µç»ú¹Ø±ÕºóÇå³ı»ı·Ö
+   //=============é€Ÿåº¦PIæ§åˆ¶å™¨=======================//	
+		Encoder_Least =(encoder_left+encoder_right)-Velocity;                    //===è·å–æœ€æ–°é€Ÿåº¦åå·®==æµ‹é‡é€Ÿåº¦ï¼ˆå·¦å³ç¼–ç å™¨ä¹‹å’Œï¼‰-ç›®æ ‡é€Ÿåº¦ï¼ˆæ­¤å¤„ä¸ºé›¶ï¼‰ 
+		Encoder *= 0.8;		                                                //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨       
+		Encoder += Encoder_Least*0.2;	                                    //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨    
+		Encoder_Integral +=Encoder;                                       //===ç§¯åˆ†å‡ºä½ç§» ç§¯åˆ†æ—¶é—´ï¼š10ms
+		Encoder_Integral=Encoder_Integral-Movement;                       //===æ¥æ”¶é¥æ§å™¨æ•°æ®ï¼Œæ§åˆ¶å‰è¿›åé€€
+		if(Encoder_Integral>10000)  	Encoder_Integral=10000;             //===ç§¯åˆ†é™å¹…
+		if(Encoder_Integral<-10000)	Encoder_Integral=-10000;              //===ç§¯åˆ†é™å¹…	
+		Velocity=Encoder*Velocity_Kp+Encoder_Integral*Velocity_Ki;        //===é€Ÿåº¦æ§åˆ¶	
+//		if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===ç”µæœºå…³é—­åæ¸…é™¤ç§¯åˆ†
 	  return Velocity;
 }
 /**************************************************************************
-º¯Êı¹¦ÄÜ£ºÖ±½ÓËÙ¶ÈPI¿ØÖÆ ĞŞ¸ÄÇ°½øºóÍËËÙ¶È
-Èë¿Ú²ÎÊı£º×óÂÖ±àÂëÆ÷¡¢ÓÒÂÖ±àÂëÆ÷¡¢ËÙ¶È²ÎÊı
-·µ»Ø  Öµ£ºËÙ¶È¿ØÖÆPWM
-×÷    Õß£ºÆ½ºâĞ¡³µÖ®¼Ò
+å‡½æ•°åŠŸèƒ½ï¼šç›´ç«‹é€Ÿåº¦PIæ§åˆ¶ ä¿®æ”¹å‰è¿›åé€€é€Ÿåº¦
+å…¥å£å‚æ•°ï¼šå·¦è½®ç¼–ç å™¨ã€å³è½®ç¼–ç å™¨ã€é€Ÿåº¦è®¾å®šå€¼
+è¿”å›  å€¼ï¼šé€Ÿåº¦æ§åˆ¶PWM
+ä½œ    è€…ï¼šå¹³è¡¡å°è½¦ä¹‹å®¶
 **************************************************************************/
 //int velocitydir(int encoder_left,int encoder_right,int speed){  
 //     static float Velocity,Encoder_Least,Encoder;
 //	  static float Encoder_Integral;
-//		Movement=speed;   																										//ËÙ¶ÈÉè¶¨
+//		Movement=speed;   																										//é€Ÿåº¦è®¾å®š
 //	  
-//   //=============ËÙ¶ÈPI¿ØÖÆÆ÷=======================//	
-//		Encoder_Least =(encoder_left+encoder_right)-0;                    //===»ñÈ¡×îĞÂËÙ¶ÈÆ«²î==²âÁ¿ËÙ¶È£¨×óÓÒ±àÂëÆ÷Ö®ºÍ£©-Ä¿±êËÙ¶È£¨´Ë´¦ÎªÁã£© 
-//		Encoder *= 0.8;		                                                //===Ò»½×µÍÍ¨ÂË²¨Æ÷       
-//		Encoder += Encoder_Least*0.2;	                                    //===Ò»½×µÍÍ¨ÂË²¨Æ÷    
-//		Encoder_Integral +=Encoder;                                       //===»ı·Ö³öÎ»ÒÆ »ı·ÖÊ±¼ä£º10ms
-//		Encoder_Integral=Encoder_Integral-Movement;                       //===½ÓÊÕÒ£¿ØÆ÷Êı¾İ£¬¿ØÖÆÇ°½øºóÍË
-//		if(Encoder_Integral>10000)  	Encoder_Integral=10000;             //===»ı·ÖÏŞ·ù
-//		if(Encoder_Integral<-10000)	Encoder_Integral=-10000;              //===»ı·ÖÏŞ·ù	
-//		Velocity=Encoder*Velocity_Kp+Encoder_Integral*Velocity_Ki;        //===ËÙ¶È¿ØÖÆ	
-////		if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===µç»ú¹Ø±ÕºóÇå³ı»ı·Ö
+//   //=============é€Ÿåº¦PIæ§åˆ¶å™¨=======================//	
+//		Encoder_Least =(encoder_left+encoder_right)-0;                    //===è·å–æœ€æ–°é€Ÿåº¦åå·®==æµ‹é‡é€Ÿåº¦ï¼ˆå·¦å³ç¼–ç å™¨ä¹‹å’Œï¼‰-ç›®æ ‡é€Ÿåº¦ï¼ˆæ­¤å¤„ä¸ºé›¶ï¼‰ 
+//		Encoder *= 0.8;		                                                //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨       
+//		Encoder += Encoder_Least*0.2;	                                    //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨    
+//		Encoder_Integral +=Encoder;                                       //===ç§¯åˆ†å‡ºä½ç§» ç§¯åˆ†æ—¶é—´ï¼š10ms
+//		Encoder_Integral=Encoder_Integral-Movement;                       //===æ¥æ”¶é¥æ§å™¨æ•°æ®ï¼Œæ§åˆ¶å‰è¿›åé€€
+//		if(Encoder_Integral>10000)  	Encoder_Integral=10000;             //===ç§¯åˆ†é™å¹…
+//		if(Encoder_Integral<-10000)	Encoder_Integral=-10000;              //===ç§¯åˆ†é™å¹…	
+//		Velocity=Encoder*Velocity_Kp+Encoder_Integral*Velocity_Ki;        //===é€Ÿåº¦æ§åˆ¶	
+////		if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===ç”µæœºå…³é—­åæ¸…é™¤ç§¯åˆ†
 //	  return Velocity;
 //}
 /**************************************************************************
-º¯Êı¹¦ÄÜ£ºÈ«¾Ö±äÁ¿ËÙ¶ÈPI¿ØÖÆ ĞŞ¸ÄÇ°½øºóÍËËÙ¶È
-Èë¿Ú²ÎÊı£º×óÂÖ±àÂëÆ÷¡¢ÓÒÂÖ±àÂëÆ÷
-·µ»Ø  Öµ£ºËÙ¶È¿ØÖÆPWM
-×÷    Õß£ºÆ½ºâĞ¡³µÖ®¼Ò
+å‡½æ•°åŠŸèƒ½ï¼šå…¨å±€å˜é‡é€Ÿåº¦PIæ§åˆ¶ ä¿®æ”¹å‰è¿›åé€€é€Ÿåº¦
+å…¥å£å‚æ•°ï¼šå·¦è½®ç¼–ç å™¨ã€å³è½®ç¼–ç å™¨
+è¿”å›  å€¼ï¼šé€Ÿåº¦æ§åˆ¶PWM
+ä½œ    è€…ï¼šå¹³è¡¡å°è½¦ä¹‹å®¶
 **************************************************************************/
 //int velocitydir2(int encoder_left,int encoder_right){  
 //     static float Velocity,Encoder_Least,Encoder;
-//   //=============ËÙ¶ÈPI¿ØÖÆÆ÷=======================//	
+//   //=============é€Ÿåº¦PIæ§åˆ¶å™¨=======================//	
 //	#define jifenxianfu 30000
-//		Encoder_Least =(encoder_left+encoder_right)-0;                    //===»ñÈ¡×îĞÂËÙ¶ÈÆ«²î==²âÁ¿ËÙ¶È£¨×óÓÒ±àÂëÆ÷Ö®ºÍ£©-Ä¿±êËÙ¶È£¨´Ë´¦ÎªÁã£© 
-//		Encoder *= 0.8;		                                                //===Ò»½×µÍÍ¨ÂË²¨Æ÷       
-//		Encoder += Encoder_Least*0.2;	                                    //===Ò»½×µÍÍ¨ÂË²¨Æ÷    
-//		Encoder_Integral +=Encoder;                                       //===»ı·Ö³öÎ»ÒÆ »ı·ÖÊ±¼ä£º10ms
+//		Encoder_Least =(encoder_left+encoder_right)-0;                    //===è·å–æœ€æ–°é€Ÿåº¦åå·®==æµ‹é‡é€Ÿåº¦ï¼ˆå·¦å³ç¼–ç å™¨ä¹‹å’Œï¼‰-ç›®æ ‡é€Ÿåº¦ï¼ˆæ­¤å¤„ä¸ºé›¶ï¼‰ 
+//		Encoder *= 0.8;		                                                //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨       
+//		Encoder += Encoder_Least*0.2;	                                    //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨    
+//		Encoder_Integral +=Encoder;                                       //===ç§¯åˆ†å‡ºä½ç§» ç§¯åˆ†æ—¶é—´ï¼š10ms
 //		Encoder_Integral=Encoder_Integral-Movement;                       
-//		if(Encoder_Integral>jifenxianfu)  	Encoder_Integral=jifenxianfu;             //===»ı·ÖÏŞ·ù
-//		if(Encoder_Integral<-jifenxianfu)	Encoder_Integral=-jifenxianfu;              //===»ı·ÖÏŞ·ù	
-//		Velocity=Encoder*Velocity_Kp+Encoder_Integral*Velocity_Ki;        //===ËÙ¶È¿ØÖÆ	
-//		if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===µç»ú¹Ø±ÕºóÇå³ı»ı·Ö
+//		if(Encoder_Integral>jifenxianfu)  	Encoder_Integral=jifenxianfu;             //===ç§¯åˆ†é™å¹…
+//		if(Encoder_Integral<-jifenxianfu)	Encoder_Integral=-jifenxianfu;              //===ç§¯åˆ†é™å¹…	
+//		Velocity=Encoder*Velocity_Kp+Encoder_Integral*Velocity_Ki;        //===é€Ÿåº¦æ§åˆ¶	
+//		if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===ç”µæœºå…³é—­åæ¸…é™¤ç§¯åˆ†
 //	  return Velocity;
 //}
 /**************************************************************************
-º¯Êı¹¦ÄÜ£º×ªÏò¿ØÖÆ  ĞŞ¸Ä×ªÏòËÙ¶È£¬ÇëĞŞ¸ÄTurn_Amplitude¼´¿É
-Èë¿Ú²ÎÊı£º×óÂÖ±àÂëÆ÷¡¢ÓÒÂÖ±àÂëÆ÷¡¢ZÖáÍÓÂİÒÇ
-·µ»Ø  Öµ£º×ªÏò¿ØÖÆPWM
-×÷    Õß£ºÆ½ºâĞ¡³µÖ®¼Ò
+å‡½æ•°åŠŸèƒ½ï¼šè½¬å‘æ§åˆ¶  ä¿®æ”¹è½¬å‘é€Ÿåº¦ï¼Œè¯·ä¿®æ”¹Turn_Amplitudeå³å¯
+å…¥å£å‚æ•°ï¼šå·¦è½®ç¼–ç å™¨ã€å³è½®ç¼–ç å™¨ã€Zè½´é™€èºä»ª
+è¿”å›  å€¼ï¼šè½¬å‘æ§åˆ¶PWM
+ä½œ    è€…ï¼šå¹³è¡¡å°è½¦ä¹‹å®¶
 **************************************************************************/
-int turn(int encoder_left,int encoder_right,float gyro){//×ªÏò¿ØÖÆ
+int turn(int encoder_left,int encoder_right,float gyro){//è½¬å‘æ§åˆ¶
 	 static float Turn_Target,Turn,Encoder_temp,Turn_Convert=0.9,Turn_Count;
 	  float Turn_Amplitude=88/Flag_sudu,Kp=42,Kd=0;     
-	  //=============Ò£¿Ø×óÓÒĞı×ª²¿·Ö=======================//
-  	if(1==Flag_Left||1==Flag_Right)                      //ÕâÒ»²¿·ÖÖ÷ÒªÊÇ¸ù¾İĞı×ªÇ°µÄËÙ¶Èµ÷ÕûËÙ¶ÈµÄÆğÊ¼ËÙ¶È£¬Ôö¼ÓĞ¡³µµÄÊÊÓ¦ĞÔ
+	  //=============é¥æ§å·¦å³æ—‹è½¬éƒ¨åˆ†=======================//
+	if(1==Flag_Left||1==Flag_Right)                      //è¿™ä¸€æ­¥ä¸»è¦æ˜¯å¯¹æ—‹è½¬é€Ÿåº¦èµ·ç¼“å†²ä½œç”¨ï¼Œé€Ÿåº¦ä¸è¯¯å·®æˆæ­£æ¯”
 		{
 			if(++Turn_Count==1)
 			Encoder_temp=ABS_int(encoder_left+encoder_right);
@@ -225,37 +225,48 @@ int turn(int encoder_left,int encoder_right,float gyro){//×ªÏò¿ØÖÆ
 		else if(1==Flag_Right)	     Turn_Target+=Turn_Convert; 
 		else Turn_Target=0;
 	
-    if(Turn_Target>Turn_Amplitude)  Turn_Target=Turn_Amplitude;    //===×ªÏòËÙ¶ÈÏŞ·ù
+	if(Turn_Target>Turn_Amplitude)  Turn_Target=Turn_Amplitude;    //===è½¬å‘é€Ÿåº¦é™å¹…
 	  if(Turn_Target<-Turn_Amplitude) Turn_Target=-Turn_Amplitude;
 		if(Flag_Qian==1||Flag_Hou==1)  Kd=0.5;        
-		else Kd=0;   //×ªÏòµÄÊ±ºòÈ¡ÏûÍÓÂİÒÇµÄ¾ÀÕı ÓĞµãÄ£ºıPIDµÄË¼Ïë
-  	//=============×ªÏòPD¿ØÖÆÆ÷=======================//
-		Turn=-Turn_Target*Kp-gyro*Kd;                 //===½áºÏZÖáÍÓÂİÒÇ½øĞĞPD¿ØÖÆ
+		else Kd=0;   //è½¬å‘çš„æ—¶å€™å–æ¶ˆé™€èºä»ªçš„çº æ­£ æ”¹å˜å‚æ•°ï¼Œä½¿è½¬å‘é€Ÿåº¦é™ä½
+	//=============è½¬å‘PDæ§åˆ¶å™¨=======================//
+		Turn=-Turn_Target*Kp-gyro*Kd;                 //===ç»“åˆZè½´é™€èºä»ªè¿›è¡ŒPDæ§åˆ¶
 	  return Turn;
 }
 
 int encoder_speed;
-
+u8 Qina_flag=0,Hou_flag=0;
 int velocitydir2(int encoder_left,int encoder_right){  
-     static int Velocity,Encoder_Least,Encoder,Integral;
-   //=============ËÙ¶ÈPI¿ØÖÆÆ÷=======================//	
+	 static int Velocity,Encoder_Least,Encoder,Integral;
+   //=============é€Ÿåº¦PIæ§åˆ¶å™¨=======================//	
 		#define jifenxianfu 30000
-		Encoder_Least = (encoder_left+encoder_right)-encoder_speed;                    //===»ñÈ¡×îĞÂËÙ¶ÈÆ«²î==²âÁ¿ËÙ¶È£¨×óÓÒ±àÂëÆ÷Ö®ºÍ£©-Ä¿±êËÙ¶È£¨´Ë´¦ÎªÁã£© 
-		Encoder *= 0.8;		                                                //===Ò»½×µÍÍ¨ÂË²¨Æ÷       
-		Encoder += Encoder_Least*0.2;	                                    //===Ò»½×µÍÍ¨ÂË²¨Æ÷    
-		Integral +=Encoder;                                       //===»ı·Ö³öÎ»ÒÆ »ı·ÖÊ±¼ä£º10ms
+		if(Qina_flag==1&&Hou_flag==0)
+		{
+			Movement = 30;
+		}
+		else if(Qina_flag==0&&Hou_flag==1)
+		{
+			Movement = -30;
+		}
+		else{
+			Movement = 0;
+		}
+		Encoder_Least = (encoder_left+encoder_right)-0;                    //===è·å–æœ€æ–°é€Ÿåº¦åå·®==æµ‹é‡é€Ÿåº¦ï¼ˆå·¦å³ç¼–ç å™¨ä¹‹å’Œï¼‰-ç›®æ ‡é€Ÿåº¦ï¼ˆæ­¤å¤„ä¸ºé›¶ï¼‰ 
+		Encoder *= 0.8;		                                                //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨       
+		Encoder += Encoder_Least*0.2;	                                    //===ä¸€é˜¶ä½é€šæ»¤æ³¢å™¨    
+		Integral +=Encoder;                                       //===ç§¯åˆ†å‡ºä½ç§» ç§¯åˆ†æ—¶é—´ï¼š10ms
 		Integral=Integral-Movement;                       
-		if(Integral>jifenxianfu)  	Integral=jifenxianfu;             //===»ı·ÖÏŞ·ù
-		if(Integral<-jifenxianfu)	Integral=-jifenxianfu;              //===»ı·ÖÏŞ·ù	
-		Velocity=Encoder*velo.Kp+Integral*velo.Ki;        //===ËÙ¶È¿ØÖÆ	
-		//if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===µç»ú¹Ø±ÕºóÇå³ı»ı·Ö
+		if(Integral>jifenxianfu)  	Integral=jifenxianfu;             //===ç§¯åˆ†é™å¹…
+		if(Integral<-jifenxianfu)	Integral=-jifenxianfu;              //===ç§¯åˆ†é™å¹…	
+		Velocity=Encoder*velo.Kp+Integral*velo.Ki;        //===é€Ÿåº¦æ§åˆ¶	
+		//if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===ç”µæœºå…³é—­åæ¸…é™¤ç§¯åˆ†
 	  return (int)Velocity;
 }
 
 
-//#define SPE_DEAD_ZONE 2				// ËÀÇø
-//#define SPE_INTEGRAL_START_ERR 1000 // »ı·Ö·ÖÀë
-//#define SPE_INTEGRAL_MAX_VAL 20000	// »ı·ÖÏŞ·ù
+//#define SPE_DEAD_ZONE 2				// æ­»åŒº
+//#define SPE_INTEGRAL_START_ERR 1000 // ç§¯åˆ†åˆ†ç¦»
+//#define SPE_INTEGRAL_MAX_VAL 20000	// ç§¯åˆ†é™å¹…
 //int Motor_PID(pids *Motor_velocity, int Target, int read)
 //{
 //	int pwm;
@@ -276,3 +287,54 @@ int velocitydir2(int encoder_left,int encoder_right){
 //	return pwm;
 //}
 
+/**
+ * @brief  è½¬å‘PID
+ * @param1  ç°åº¦ä¼ å‚
+ * @param2  é™€èºä»ª
+ * @retval  è½¬å‘PWM
+ **/
+int turn_pwm(int error,float gyro)
+{
+	int Turn;
+	float Bias;
+	Bias= gyro - 0;
+	Turn = error*turn_kp-gyro*turn_kd;
+	return Turn;
+}
+
+
+/**************************************************************************
+å‡½æ•°åŠŸèƒ½ï¼šä»»æ„è§’ä»»æ„é€Ÿåº¦è½¬å‘æ§åˆ¶ 
+å…¥å£å‚æ•°ï¼šæ— 
+è¿”å›  å€¼ï¼šè½¬å‘æ§åˆ¶PWM
+ä½œ    è€…ï¼šcyh
+**************************************************************************/
+int TurnAgle(void){//è½¬å‘æ§åˆ¶ degree>0å³è½¬ <0å·¦è½¬
+	int turn;
+	 int gray_value; //=read_five_gray_sensors();
+    int error = 0;
+
+    // æ ¹æ®ç°åº¦ä¼ æ„Ÿå™¨å€¼è®¡ç®—åå·®
+    switch(gray_value) {
+        case 0b00001: error = -3; break; // æœ€å·¦è¾¹æ£€æµ‹åˆ°çº¿
+        case 0b00011: error = -2; break;
+        case 0b00110: error = 1; break;  // ä¸­é—´æ£€æµ‹åˆ°çº¿
+        case 0b00100: error = 0; break;  // ä¸­é—´æ£€æµ‹åˆ°çº¿
+		case 0b01110: error = 0; break;  // ä¸­é—´æ£€æµ‹åˆ°çº¿
+        case 0b01100: error = 1; break;
+		case 0b11000: error = 2; break;
+		case 0b10000: error = 3; break; // æœ€å³è¾¹æ£€æµ‹åˆ°çº¿
+        // å…¶ä»–æƒ…å†µå¯ä»¥æ ¹æ®å®é™…éœ€æ±‚æ·»åŠ 
+        default: error = 0; break;
+    }
+
+    // è°ƒç”¨æ–°çš„è½¬å‘æ§åˆ¶å‡½æ•°
+    turn = turn_pwm(error, Gyro_Turn);
+
+    // if(!Flag_Stop&&turni!=Tmax) turni++;
+    // if(!Flag_Stop&&turnj!=Tmax) turnj++;
+    // if(!Flag_Stop&&turnislow!=Tmaxslow) turnislow++;
+    // if(!Flag_Stop&&turnjslow!=Tmaxslow) turnjslow++;
+
+    return turn;
+}

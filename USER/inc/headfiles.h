@@ -42,8 +42,13 @@
 #include "delay.h"
 #include "filter.h"
 #include "pid.h"
+#include "gray.h"
+#include "proc.h"
 
-
+extern float turn_kp, turn_ki, turn_kd;   // Turn PID parameters
+extern float velo_kp, velo_ki, velo_kd;   // Velocity PID parameters
+extern float bal_kp, bal_ki, bal_kd;     // Balance PID parameters
+extern pids velo, bal;                    // Velocity and balance PID structures
 extern float pitch, roll, yaw;           // Pitch, roll, and yaw angles
 extern short aacx, aacy, aacz;           // Accelerometer data
 extern short gyrox, gyroy, gyroz;        // Gyroscope data
@@ -51,7 +56,6 @@ extern float Angle_Balance, Gyro_Balance, Gyro_Turn; // Balance angle, balance g
 //extern u8 Way_Angle; 
 extern int moto_pwm_l, moto_pwm_r;       // Left and right motor PWM
 extern float Acceleration_Z, Acceleration_X; 
-extern pids bal;
 extern int Balance_Pwm, Velocity_Pwm, Turn_Pwm;
 extern float ZhongZhi;
 extern float Gyro_Pitch;                 // Gyro pitch calculated value
@@ -60,5 +64,6 @@ extern int vl, vr;
 extern int encoder_speed;
 extern float Accel_Y, Accel_Angle, Accel_Z, Gyro_Y, Gyro_Z, Accel_X;
 extern int moto_dead_zone; // Dead zone for motor control
+extern u8 Qina_flag, Hou_flag; // Flags for forward and backward movement
 #endif 
 

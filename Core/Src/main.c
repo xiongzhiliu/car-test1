@@ -37,8 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-void rx2_proc(void);
-void rx1_proc(void);
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -59,7 +58,8 @@ float Acceleration_Z,Acceleration_X;
 int moto_pwm_l,moto_pwm_r;
 extern pids velo;
 float bal_kp=420,bal_ki=0,bal_kd=1.5;
-float velo_kp=100,velo_ki=0.5,velo_kd=0;
+float velo_kp=80,velo_ki=0.4,velo_kd=0;
+float turn_kp=40,turn_ki=0,turn_kd=0.1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -152,6 +152,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    show_gray_value();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -165,8 +166,7 @@ int main(void)
       }	
 		}
 
-    if(rx1_pointer!=0) 
-    {
+    if(rx1_pointer!=0){
       uchar temp = rx1_pointer;
       delay_ms(1);
       if(temp == rx1_pointer)
@@ -174,6 +174,8 @@ int main(void)
         rx1_proc();
       }
     }
+  
+    key_proc();
   }
   /* USER CODE END 3 */
 }
@@ -225,68 +227,6 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void rx2_proc(void) 
-{
-	if(rx2_pointer>0)
-	{
-		//printf("%s",temp_rx);
-		HAL_UART_Transmit(&huart1,(u8 *)temp_rx,strlen(temp_rx),20);
-		//printf("%d\r\n",strlen(temp_rx));
-		rx2_pointer = 0;
-		memset(temp_rx,0,30);
-	}
-}
-
-void rx1_proc(void)
-{
-  if(rx1_pointer>0)
-  {
-    float kp,kd_ki;
-    u8 rx_type=0;
-    sscanf(temp_rx_1,"%hhu,%f,%f,%f",&rx_type,&kp,&kd_ki,&ZhongZhi);
-    rx1_pointer=0;
-    Moto_SetPwm(0,0);
-    k1.is_pull = 0; 
-    if(rx_type==0) //balance PID
-    {
-      pid_init(&bal,kp,0,kd_ki);
-      pid_init(&velo,velo_kp,velo_ki,velo_kd);
-      printf("bal initialized with kp: %.4f, ki: %.4f, zz: %.2f\r\n", kp, kd_ki, ZhongZhi);
-    }
-    else if(rx_type==1) //velocity PID
-    {
-      pid_init(&bal,bal_kp,bal_ki,bal_kd);
-      pid_init(&velo,kp,kp/200,0);
-      printf("velo initialized with kp: %.4f, ki: %.4f, zz: %.2f\r\n", kp, kd_ki, ZhongZhi);
-    }
-    else if(rx_type==2) //pwm测试
-    {
-      Moto_SetPwm((int)kp,(int)kd_ki);
-      printf("motor set to %d,%d\r\n", (int)kp,(int)kd_ki);
-    }
-    else if(rx_type==3) //encoder speed
-    {
-      encoder_speed = (int)kp;
-      printf("encoder_speed set to %d\r\n", encoder_speed);
-    }
-    else if(rx_type==4) //dead_zone
-    {
-      moto_dead_zone = (int)kp;
-      printf("dead_zone set to %d\r\n", moto_dead_zone);
-    }
-    else if(rx_type==5) //motor设置
-    {
-      moto_pwm_l = (int)kp;
-      moto_pwm_r = (int)kd_ki;
-      Moto_SetPwm(moto_pwm_l,moto_pwm_r);
-      printf("motor set to %d,%d\r\n", moto_pwm_l,moto_pwm_r);
-    }
-    else{
-      printf("Invalid rx_type: %d\r\n", rx_type);
-    }
-    memset(temp_rx_1,0,30);
-  }
-}
 
 /* USER CODE END 4 */
 

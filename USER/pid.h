@@ -12,14 +12,14 @@ typedef struct
 	float integral;
 	float derivative;
 	int dead_zone;
-	float intergral_start_error;//»ı·Ö·ÖÀëÖµ
-	float intergral_max_val;		//»ı·ÖÉÏÏŞ
+	float intergral_start_error;//ç§¯åˆ†èµ·å§‹å€¼
+	float intergral_max_val;    //ç§¯åˆ†ä¸Šé™
 } pids;
 #include "headfiles.h"
 
 /** 
- * @brief     PID½á¹¹Ìå¶¨Òå
- * @param1 		¹²11¸ö²ÎÊı
+ * @brief     PIDç»“æ„ä½“å®šä¹‰
+ * @param1    å…±11ä¸ªå‚æ•°
  * @param2 
  * @retval    
  */ 
@@ -34,4 +34,7 @@ int balance(float Angle,float Gyro);
 int velocity(int encoder_left,int encoder_right);
 int turn(int encoder_left,int encoder_right,float gyro);
 int velocitydir2(int encoder_left,int encoder_right);
+int turn_pwm(int error,float gyro);
+int TurnAgle(void);
+
 #endif 

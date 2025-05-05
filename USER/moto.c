@@ -1,5 +1,5 @@
 #include "moto.h"
-int moto_dead_zone=250;
+int moto_dead_zone=300;
 void MOTO_init()
 {
 	HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_ALL);

@@ -17,6 +17,7 @@ struct key
 	u8 state;
 	u8 level;
 	u8 is_pull;
+	u8 is_pull_again;
 };
 
 extern struct key k1;

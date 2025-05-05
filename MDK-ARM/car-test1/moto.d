@@ -31,4 +31,5 @@ car-test1/moto.o: ..\USER\moto.c ..\USER\inc\moto.h \
   ..\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.h ..\BSP\Bmpu6050\IOI2C.h \
   ..\USER\inc\myadc.h ..\USER\inc\LED.h ..\USER\inc\interrupt.h \
   ..\USER\pid.h ..\USER\inc\decoder.h ..\USER\inc\fun.h \
-  ..\USER\inc\delay.h ..\USER\inc\filter.h
+  ..\USER\inc\delay.h ..\USER\inc\filter.h ..\USER\inc\gray.h \
+  ..\USER\inc\proc.h

@@ -1,22 +1,22 @@
 #include "decoder.h"
 
-struct key k1={0,0,0};
+struct key k1={0,0,0,0};
 struct moto_decoer left={0,0,0}, right={0,0,0};
-
-//¶¨Ê±Æ÷±àÂëÆ÷Ä£Ê½Òç³öÖĞ¶Ï
+u8 counter_pull=0;
+//å®šæ—¶å™¨æº¢å‡ºæ¨¡å¼ä¸‹ä¸­æ–­
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if(htim->Instance == TIM2)  //ÖĞ¶ÏÒç³ö
+	if(htim->Instance == TIM2)  //åˆ¤æ–­æº¢å‡º
 	{
 			int num = __HAL_TIM_GetAutoreload(&htim2);
-			if(num >=65535 ) //ÉÏÒç
+			if(num >=65535 ) //æ­£è½¬
 					left.full_t++;
 			else
 					left.full_t--;
 			__HAL_TIM_SetAutoreload(&htim2,65535);
 	}
 	
-	if(htim->Instance == TIM3)  //ÖĞ¶ÏÒç³ö
+	if(htim->Instance == TIM3)  //åˆ¤æ–­æº¢å‡º
 	{
 			int num = __HAL_TIM_GetAutoreload(&htim3);
 			if(num >= 65535)
@@ -43,9 +43,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				{
 					k1.state = 0;
 					k1.is_pull = 1;
+					if(counter_pull > 10)
+					{
+						k1.is_pull_again = 1;
+						counter_pull = 0;
+					}
 				}else
 				{
 					k1.state = 0;
+				}
+				if(k1.is_pull)
+				{
+					counter_pull++;
 				}
 				break;
 				
@@ -59,20 +68,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 int Read_Velocity_L()
 {
-	left.en_pul = -(short)__HAL_TIM_GetCounter(&htim3);  //¶ÁÈ¡±àÂëÆ÷Âö³åÊı
-	//left.spd_pul = left.en_pul - left.en_pul_last;  //¼ÆËãËÙ¶ÈÂö³åÊı
-	left.en_pul_last = left.en_pul;  //ÉÏ´Î¶ÁÈ¡µÄÂö³åÊı
-	left.sum_pul += left.en_pul + 20000*left.full_t;  //ÀÛ¼ÓÂö³åÊı
-	__HAL_TIM_SetCounter(&htim3,0);  //ÇåÁã¼ÆÊıÆ÷
-	return left.en_pul;  //·µ»ØËÙ¶ÈÂö³åÊı
+	left.en_pul = -(short)__HAL_TIM_GetCounter(&htim3);  //è·å–ç¼–ç å™¨è®¡æ•°å€¼
+	//left.spd_pul = left.en_pul - left.en_pul_last;  //è®¡ç®—é€Ÿåº¦å¢é‡
+	left.en_pul_last = left.en_pul;  //ä¸Šæ¬¡è¯»å–çš„è®¡æ•°å€¼
+	left.sum_pul += left.en_pul + 20000*left.full_t;  //ç´¯è®¡è®¡æ•°å€¼
+	__HAL_TIM_SetCounter(&htim3,0);  //è®¡æ•°å™¨æ¸…é›¶
+	return left.en_pul;  //è¿”å›é€Ÿåº¦å¢é‡
 }
 
 int Read_Velocity_R()
 {
-	right.en_pul = (short)__HAL_TIM_GetCounter(&htim2);  //¶ÁÈ¡±àÂëÆ÷Âö³åÊı
-	right.spd_pul = right.en_pul - right.en_pul_last;  //¼ÆËãËÙ¶ÈÂö³åÊı
-	right.en_pul_last = right.en_pul;  //ÉÏ´Î¶ÁÈ¡µÄÂö³åÊı
-	right.sum_pul += right.en_pul + 20000*right.full_t;  //ÀÛ¼ÓÂö³åÊı
-	__HAL_TIM_SetCounter(&htim2,0);  //ÇåÁã¼ÆÊıÆ÷
-	return right.en_pul;  //·µ»ØËÙ¶ÈÂö³åÊı
+	right.en_pul = (short)__HAL_TIM_GetCounter(&htim2);  //è·å–ç¼–ç å™¨è®¡æ•°å€¼
+	right.spd_pul = right.en_pul - right.en_pul_last;  //è®¡ç®—é€Ÿåº¦å¢é‡
+	right.en_pul_last = right.en_pul;  //ä¸Šæ¬¡è¯»å–çš„è®¡æ•°å€¼
+	right.sum_pul += right.en_pul + 20000*right.full_t;  //ç´¯è®¡è®¡æ•°å€¼
+	__HAL_TIM_SetCounter(&htim2,0);  //è®¡æ•°å™¨æ¸…é›¶
+	return right.en_pul;  //è¿”å›é€Ÿåº¦å¢é‡
 }

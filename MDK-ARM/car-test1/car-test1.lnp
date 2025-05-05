@@ -35,6 +35,8 @@
 "car-test1\interrupt.o"
 "car-test1\fun.o"
 "car-test1\filter.o"
+"car-test1\gray.o"
+"car-test1\proc.o"
 "car-test1\inv_mpu.o"
 "car-test1\inv_mpu_dmp_motion_driver.o"
 "car-test1\ioi2c.o"
