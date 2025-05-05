@@ -37,17 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-void rx_proc(void)
-{
-	if(rx2_pointer>0)
-	{
-		//printf("%s",temp_rx);
-		HAL_UART_Transmit(&huart1,(u8 *)temp_rx,strlen(temp_rx),20);
-		//printf("%d\r\n",strlen(temp_rx));
-		rx2_pointer = 0;
-		memset(temp_rx,0,30);
-	}
-}
+void rx_proc(void);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -58,7 +48,6 @@ void rx_proc(void)
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-int test;
 float pitch,roll,yaw; 		    
 short aacx,aacy,aacz;				
 short gyrox,gyroy,gyroz;		
@@ -147,7 +136,7 @@ int main(void)
 	printf("start\r\n");
 	memset(temp_rx,0,30);
 
-//		HAL_GPIO_WritePin(buzzer_GPIO_Port,buzzer_Pin,GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(buzzer_GPIO_Port,buzzer_Pin,GPIO_PIN_SET); //
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -157,23 +146,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		if(rx2_pointer!=0)
+		if(rx2_pointer!=0) //处理摄像头串口接受数据
 		{
-			
 			uchar temp = rx2_pointer;
 			delay_ms(1);
 			if(temp == rx2_pointer)
 			{
 				rx_proc();
-			}
-				
+      }	
 		}
-
-	
   }
   /* USER CODE END 3 */
 }
-
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -221,7 +205,17 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void rx_proc(void)
+{
+	if(rx2_pointer>0)
+	{
+		//printf("%s",temp_rx);
+		HAL_UART_Transmit(&huart1,(u8 *)temp_rx,strlen(temp_rx),20);
+		//printf("%d\r\n",strlen(temp_rx));
+		rx2_pointer = 0;
+		memset(temp_rx,0,30);
+	}
+}
 
 /* USER CODE END 4 */
 
