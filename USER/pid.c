@@ -120,7 +120,7 @@ int cf_pid_ddz(pids *pid, int tar , int read)
  */ 
 int balance(float Angle,float Gyro){  
 	 int balance;
-	 bal.error=Angle-ZHONGZHI;                       //===求出平衡的角度中值 和机械相关
+	 bal.error=Angle-ZhongZhi;                       //===求出平衡的角度中值 和机械相关
 	 balance=bal.Kp*bal.error+Gyro*bal.Kd;   //===计算平衡控制的电机PWM  PD控制   kp是P系数 kd是D系数   加速度和速度
 	 return (int)balance;
 }

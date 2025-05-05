@@ -9,22 +9,30 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     if(GPIO_Pin == GPIO_PIN_0) // Assuming GPIO_PIN_0 is mpu6050 Exit pin ,evety 5 msecs
     {
         INT_FLAG = !INT_FLAG;
-				if(!k1.is_pull)
+        Get_Angle(2);//卡尔曼滤波
+				if(!k1.is_pull)  //判断按键是否按下启动
 							return;
         //printf("X:%.1f  Y:%.1f  Z:%.1f  %d C\r\n",roll,pitch,yaw,temp/100)
-        if(INT_FLAG) //10ms执行控制一次
+
+        if(1) //10ms执行控制一次
         {
             vl = Read_Velocity_L();
             vr = Read_Velocity_R();
-					  Get_Angle(2);//互补滤波
-						//printf("vl:%d,vr:%d\r\n",vl,vr);
-            Balance_Pwm =balance(Angle_Balance,Gyro_Balance);  
-            Velocity_Pwm = velocitydir2(vl,vr);		//===平衡PID控制	
-            //printf("%d\r\n",Velocity_Pwm);
-            moto_pwm_l = Balance_Pwm + Velocity_Pwm;
-            moto_pwm_r = Balance_Pwm + Velocity_Pwm;
-						//printf("V:%d\r\n",Velocity_Pwm);
-            //printf("1:%d,%d\r\n",moto_pwm_l,moto_pwm_r);
+					
+            int velocity_out = velocitydir2(vl, vr);
+            Balance_Pwm = balance(Angle_Balance + velocity_out, Gyro_Balance);
+
+            moto_pwm_l = Balance_Pwm;
+            moto_pwm_r = Balance_Pwm; 
+
+						// //printf("vl:%d,vr:%d\r\n",vl,vr);
+            // Balance_Pwm =balance(Angle_Balance,Gyro_Balance);  
+            // Velocity_Pwm = velocitydir2(vl,vr);		//===平衡PID控制	
+            // //printf("%d\r\n",Velocity_Pwm);
+            // moto_pwm_l = Balance_Pwm + Velocity_Pwm;
+            // moto_pwm_r = Balance_Pwm + Velocity_Pwm;
+						// //printf("V:%d\r\n",Velocity_Pwm);
+            // //printf("1:%d,%d\r\n",moto_pwm_l,moto_pwm_r);
             moto_pwm_l=Xianfu_pwm(moto_pwm_l,6900);
             moto_pwm_r=Xianfu_pwm(moto_pwm_r,6900);
 						//printf("%d,%d\r\n",moto_pwm_l,moto_pwm_r);
@@ -35,11 +43,25 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     }
 }
 
+//uart1的数据缓冲区
+char temp_rx_1[30]={0};
+u8 rxdat_1;
+volatile u8 rx1_pointer=0;
+
 char temp_rx[30]={0};
 u8 rxdat;
 volatile u8 rx2_pointer=0;
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	HAL_UART_Receive_IT(&huart2,&rxdat,1);
-	temp_rx[rx2_pointer++]=rxdat;
+  if(huart->Instance == USART2)
+  {
+    HAL_UART_Receive_IT(&huart2,&rxdat,1);
+  	temp_rx[rx2_pointer++]=rxdat;
+  }
+	
+  if(huart->Instance == USART1)
+  {
+    HAL_UART_Receive_IT(&huart1,&rxdat_1,1);
+    temp_rx_1[rx1_pointer++] = rxdat_1;
+  }
 }

@@ -3,7 +3,7 @@
 
 #include "headfiles.h"
 
-extern char temp_rx[30];
-extern volatile u8 rx2_pointer;
-extern u8 rxdat;
-#endif 
+extern char temp_rx[30],temp_rx_1[30];
+extern volatile u8 rx2_pointer, rx1_pointer;
+extern u8 rxdat, rxdat_1;
+#endif

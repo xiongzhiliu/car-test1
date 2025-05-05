@@ -87,12 +87,12 @@ void Get_Angle(u8 way){
       {
 			Gyro_Y=(I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_YOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_YOUT_L);    //读取Y轴陀螺仪
 			Gyro_Z=(I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_ZOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_ZOUT_L);    //读取Z轴陀螺仪
-		  Accel_X=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_L); //读取X轴加速度计
-	  	Accel_Z=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_L); //读取Z轴加速度计
+		 	Accel_X=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_L); //读取X轴加速度计
+	  		Accel_Z=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_L); //读取Z轴加速度计
 			if(Gyro_Y>32768)  Gyro_Y-=65536;                       //数据类型转换  也可通过short强制类型转换
 			if(Gyro_Z>32768)  Gyro_Z-=65536;                       //数据类型转换
-	  	if(Accel_X>32768) Accel_X-=65536;                      //数据类型转换
-		  if(Accel_Z>32768) Accel_Z-=65536;                      //数据类型转换
+	  		if(Accel_X>32768) Accel_X-=65536;                      //数据类型转换
+		  	if(Accel_Z>32768) Accel_Z-=65536;                      //数据类型转换
 			Accel_X = -Accel_X;
 			Accel_Angle=atan2(Accel_X,Accel_Z)*180/PI;              //计算倾角	
 				
@@ -116,7 +116,6 @@ void Get_Angle(u8 way){
 				//printf("angle:%f\r\n",angle);
 			}	
 			Angle_Balance = angle;
-			printf("%f\r\n",angle);
 			Gyro_Turn=Gyro_Z;                         //更新转向角速度
 			Acceleration_Z=Accel_Z;                   //===更新Z轴加速度计	
 	//				Angle_Balance = pitch;																//平衡角度

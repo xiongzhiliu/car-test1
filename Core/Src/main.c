@@ -37,7 +37,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-void rx_proc(void);
+void rx2_proc(void);
+void rx1_proc(void);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -48,6 +49,7 @@ void rx_proc(void);
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+float ZhongZhi = -4;
 float pitch,roll,yaw; 		    
 short aacx,aacy,aacz;				
 short gyrox,gyroy,gyroz;		
@@ -121,9 +123,12 @@ int main(void)
 	HAL_TIM_Encoder_Start(&htim3,TIM_CHANNEL_4);
   HAL_TIM_Base_Start_IT(&htim1);
 	encoder_speed=0;  //
-	pid_init(&bal,390,0,2.5);  //390锟斤拷2.5
-	velo.integral = 0;
-	pid_init(&velo,200,0.66,0);
+	// pid_init(&bal,390,0,2.5);  
+	// pid_init(&velo,200,0.66,0);
+
+  pid_init(&bal,500,0,2.5); 
+  //pid_init(&velo,0.5,0.01,0); 
+
 	Moto_SetPwm(0,0);
 
 	MPU6050_initialize();           //=====MPU6050
@@ -133,8 +138,10 @@ int main(void)
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
 	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 	HAL_UART_Receive_IT(&huart2,&rxdat,1);
+  HAL_UART_Receive_IT(&huart1,&rxdat_1,1);
 	printf("start\r\n");
 	memset(temp_rx,0,30);
+  memset(temp_rx_1,0,30);
 
 //		HAL_GPIO_WritePin(buzzer_GPIO_Port,buzzer_Pin,GPIO_PIN_SET); //
   /* USER CODE END 2 */
@@ -146,18 +153,29 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		if(rx2_pointer!=0) //处理摄像头串口接受数据
+		if(rx2_pointer!=0) 
 		{
 			uchar temp = rx2_pointer;
 			delay_ms(1);
 			if(temp == rx2_pointer)
 			{
-				rx_proc();
+				rx2_proc();
       }	
 		}
+
+    if(rx1_pointer!=0) 
+    {
+      uchar temp = rx1_pointer;
+      delay_ms(1);
+      if(temp == rx1_pointer)
+      {
+        rx1_proc();
+      }
+    }
   }
   /* USER CODE END 3 */
 }
+
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -205,7 +223,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void rx_proc(void)
+void rx2_proc(void) 
 {
 	if(rx2_pointer>0)
 	{
@@ -215,6 +233,21 @@ void rx_proc(void)
 		rx2_pointer = 0;
 		memset(temp_rx,0,30);
 	}
+}
+
+void rx1_proc(void)
+{
+  if(rx1_pointer>0)
+  {
+    float kp,kd;
+    sscanf(temp_rx_1,"%f,%f,%f",&kp,&kd,&ZhongZhi);
+    rx1_pointer=0;
+    Moto_SetPwm(0,0);
+    k1.is_pull = 0; 
+    pid_init(&bal,kp,0,kd);
+    memset(temp_rx_1,0,30);
+    printf("PID initialized with kp: %f, ki: %f\r\n", kp, kd);
+  }
 }
 
 /* USER CODE END 4 */
