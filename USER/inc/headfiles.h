@@ -59,5 +59,6 @@ extern float angle, angle_dot;           // Output of complementary filter: angl
 extern int vl, vr;
 extern int encoder_speed;
 extern float Accel_Y, Accel_Angle, Accel_Z, Gyro_Y, Gyro_Z, Accel_X;
+extern int moto_dead_zone; // Dead zone for motor control
 #endif 
 

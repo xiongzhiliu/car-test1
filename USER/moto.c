@@ -1,5 +1,5 @@
 #include "moto.h"
-
+int moto_dead_zone=250;
 void MOTO_init()
 {
 	HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_ALL);
@@ -17,20 +17,22 @@ void MOTO_init()
  */
 void Moto_SetPwm(int lf,int rg)
 {
-	lf = Threshold_int(lf,6999);
-	rg = Threshold_int(rg,6999);
+	lf = Threshold_int(lf,7199);
+	rg = Threshold_int(rg,7199);
 //	printf("%d,%d\r\n",lf,rg);
 //	lf = lf*100 /9999 ;
 //	rg = rg*100 /9999 ;
     if(rg>0)
     {
+        rg+= moto_dead_zone;
         HAL_GPIO_WritePin(moto1_1_GPIO_Port,moto1_1_Pin,GPIO_PIN_RESET);
         HAL_GPIO_WritePin(moto1_2_GPIO_Port,moto1_2_Pin,GPIO_PIN_SET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_3,rg);
 				
     }else if (rg<0)
     {
-				rg = (- rg);
+        rg = (- rg);
+        rg+= moto_dead_zone;
         HAL_GPIO_WritePin(moto1_1_GPIO_Port,moto1_1_Pin,GPIO_PIN_SET);
         HAL_GPIO_WritePin(moto1_2_GPIO_Port,moto1_2_Pin,GPIO_PIN_RESET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_3,rg);
@@ -40,17 +42,18 @@ void Moto_SetPwm(int lf,int rg)
         HAL_GPIO_WritePin(moto1_1_GPIO_Port,moto1_1_Pin,GPIO_PIN_SET);
         HAL_GPIO_WritePin(moto1_2_GPIO_Port,moto1_2_Pin,GPIO_PIN_SET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_3,0);
-
     }
 
     if(lf>0)
     {
+        lf+= moto_dead_zone;
         HAL_GPIO_WritePin(moto2_1_GPIO_Port,moto2_1_Pin,GPIO_PIN_SET);
         HAL_GPIO_WritePin(moto2_2_GPIO_Port,moto2_2_Pin,GPIO_PIN_RESET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_4,lf);
     }else if (lf<0)
     {
-				lf = (- lf);
+        lf = (- lf);
+        lf+= moto_dead_zone;
         HAL_GPIO_WritePin(moto2_1_GPIO_Port,moto2_1_Pin,GPIO_PIN_RESET);
         HAL_GPIO_WritePin(moto2_2_GPIO_Port,moto2_2_Pin,GPIO_PIN_SET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_4,lf);
@@ -60,7 +63,6 @@ void Moto_SetPwm(int lf,int rg)
         HAL_GPIO_WritePin(moto2_1_GPIO_Port,moto2_1_Pin,GPIO_PIN_SET);
         HAL_GPIO_WritePin(moto2_2_GPIO_Port,moto2_2_Pin,GPIO_PIN_SET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_4,0);
-
     }	
 }
 
