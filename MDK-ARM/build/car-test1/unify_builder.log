@@ -1,0 +1,88 @@
+[2025-04-28 18:54:12]	[info] incremental build: 42 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\adc.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\i2c.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\main.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\system_stm32f1xx.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\tim.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Core\Src\usart.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc_ex.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_exti.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pwr.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\Interrupt.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\LED.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\decoder.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\delay.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\filter.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\fun.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\moto.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\myadc.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\pid.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\printf.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\MDK-ARM\startup_stm32f103xb.s': object (.o) file not exist
+
+[2025-04-28 18:54:15]	[done]
+	build successfully !
+
+[2025-04-28 19:01:25]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
+
+[2025-04-28 19:01:26]	[done]
+	build successfully !
+
+[2025-04-28 19:12:48]	[info] incremental build: 14 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+
+[2025-04-28 19:12:50]	[done]
+	build successfully !
+
+[2025-04-28 19:27:46]	[info] incremental build: 3 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\tim.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
+'e:\Keil\Project\car-test1\MDK-ARM\startup_stm32f103xb.s': source file has been changed.
+
+[2025-04-28 19:27:47]	[done]
+	build successfully !
+
