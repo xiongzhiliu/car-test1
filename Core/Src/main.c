@@ -48,7 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-float ZhongZhi = -5;
+float ZhongZhi = -5.5;
 float pitch,roll,yaw; 		    
 short aacx,aacy,aacz;				
 short gyrox,gyroy,gyroz;		
@@ -57,9 +57,9 @@ float Angle_Balance,Gyro_Balance,Gyro_Turn;
 float Acceleration_Z,Acceleration_X;                       
 int moto_pwm_l,moto_pwm_r;
 extern pids velo;
-float bal_kp=420,bal_ki=0,bal_kd=1.5;
-float velo_kp=80,velo_ki=0.4,velo_kd=0;
-float turn_kp=40,turn_ki=0,turn_kd=0.1;
+float bal_kp=900,bal_ki=0,bal_kd=1.5;
+float velo_kp=120,velo_ki=0.4,velo_kd=0;
+float turn_kp=80,turn_ki=0,turn_kd=0.1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -152,7 +152,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    show_gray_value();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

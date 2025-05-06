@@ -43,7 +43,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				{
 					k1.state = 0;
 					k1.is_pull = 1;
-					if(counter_pull > 10)
+					if(counter_pull >50)
 					{
 						k1.is_pull_again = 1;
 						counter_pull = 0;
@@ -55,7 +55,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				if(k1.is_pull)
 				{
 					counter_pull++;
-				}
+				}else
+				{
+					counter_pull = 0;
+				}	
 				break;
 				
 			default:

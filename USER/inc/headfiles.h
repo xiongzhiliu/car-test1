@@ -64,6 +64,9 @@ extern int vl, vr;
 extern int encoder_speed;
 extern float Accel_Y, Accel_Angle, Accel_Z, Gyro_Y, Gyro_Z, Accel_X;
 extern int moto_dead_zone; // Dead zone for motor control
-extern u8 Qina_flag, Hou_flag; // Flags for forward and backward movement
+extern u8 moto_lock_flag;
+/*外部标志位*/
+extern u8 Qina_flag, Hou_flag,Flag_sudu; // Flags for forward and backward movement, and speed control(1 is high speed,2 is low speed)
+extern u8 turn_mode; // Flag for turn control
 #endif 
 

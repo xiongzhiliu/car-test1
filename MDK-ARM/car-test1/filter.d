@@ -30,6 +30,6 @@ car-test1/filter.o: ..\USER\filter.c ..\USER\inc\filter.h \
   ..\BSP\Bmpu6050\inv_mpu.h ..\BSP\Bmpu6050\dmpmap.h \
   ..\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.h ..\BSP\Bmpu6050\IOI2C.h \
   ..\USER\inc\myadc.h ..\USER\inc\LED.h ..\USER\inc\moto.h \
-  ..\USER\inc\interrupt.h ..\USER\pid.h ..\USER\inc\decoder.h \
+  ..\USER\inc\interrupt.h ..\USER\inc\pid.h ..\USER\inc\decoder.h \
   ..\USER\inc\fun.h ..\USER\inc\delay.h ..\USER\inc\gray.h \
   ..\USER\inc\proc.h

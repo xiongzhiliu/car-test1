@@ -1,5 +1,6 @@
 #include "moto.h"
-int moto_dead_zone=300;
+int moto_dead_zone=0;//200
+u8 moto_lock_flag=0;
 void MOTO_init()
 {
 	HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_ALL);
@@ -16,9 +17,18 @@ void MOTO_init()
  * @return 
  */
 void Moto_SetPwm(int lf,int rg)
-{
-	lf = Threshold_int(lf,7199);
-	rg = Threshold_int(rg,7199);
+{   
+    if (moto_lock_flag==1)
+    {
+        rg=0;
+        lf=0;
+    }
+      
+    if(ABS_int(lf)>=7000||ABS_int(rg)>=7000){
+        moto_lock_flag = 1;
+        rg = 0;
+        lf = 0;
+    }   //电机保护
 //	printf("%d,%d\r\n",lf,rg);
 //	lf = lf*100 /9999 ;
 //	rg = rg*100 /9999 ;

@@ -23,6 +23,7 @@ void rx1_proc(void)
     rx1_pointer=0;
     Moto_SetPwm(0,0);
     k1.is_pull = 0; 
+    k1.is_pull_again = 0;
     if(rx_type==0) //balance PID
     {
       pid_init(&bal,kp,0,kd_ki);
@@ -32,7 +33,7 @@ void rx1_proc(void)
     else if(rx_type==1) //velocity PID
     {
       pid_init(&bal,bal_kp,bal_ki,bal_kd);
-      pid_init(&velo,kp,kp/200,0);
+      pid_init(&velo,kp,kd_ki,0);
       printf("velo initialized with kp: %.4f, ki: %.4f, zz: %.2f\r\n", kp, kd_ki, ZhongZhi);
     }
     else if(rx_type==2) //pwm测试
@@ -57,6 +58,12 @@ void rx1_proc(void)
       Moto_SetPwm(moto_pwm_l,moto_pwm_r);
       printf("motor set to %d,%d\r\n", moto_pwm_l,moto_pwm_r);
     }
+    else if(rx_type==6) //turn PID,PD控制，没有积分无需清除
+    {
+      turn_kp = kp;
+      turn_kd = kd_ki;
+      printf("turn initialized with kp: %.4f, kd: %.4f, zz: %.2f\r\n", turn_kp, turn_kd, ZhongZhi);
+    }
     else{
       printf("Invalid rx_type: %d\r\n", rx_type);
     }
@@ -72,11 +79,13 @@ void key_proc(void)
     if(Qina_flag)
     {
       Qina_flag = 0;
+      turn_mode = 0;  //需要单独设置一个可以允许转向的情况
       printf("Qina_flag cleared\r\n");
     }
     else
     {
       Qina_flag = 1;
+      turn_mode = 1;
       printf("Qina_flag set\r\n");
     }
   }

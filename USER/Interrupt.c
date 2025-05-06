@@ -2,6 +2,8 @@
 #include "headfiles.h"
 #include "string.h"
 u8 INT_FLAG=0;
+u8 turn_allow_flag=0;
+u8 turn_mode = 1;  //0:不启动，1：直接叠加，2：编码器模式
 int Balance_Pwm,Velocity_Pwm,Turn_Pwm;
 int vl,vr;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
@@ -14,6 +16,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
         if(INT_FLAG) //10ms执行控制一次
         {
             Get_Angle(2);//卡尔曼滤波
+            if(ABS_float(angle)>20) //判断是否需要转向
+            {
+                moto_lock_flag = 1;
+            }
             if(!k1.is_pull)  //判断按键是否按下启动
 							return;
             vl = Read_Velocity_L();
@@ -31,6 +37,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
            
             moto_pwm_l = Balance_Pwm + Velocity_Pwm;
             moto_pwm_r = Balance_Pwm + Velocity_Pwm;
+
+            if(turn_mode) //转向PID控制
+           {
+                Turn_Pwm = TurnAgle();		//===转向PID控制
+                moto_pwm_l -= Turn_Pwm;
+                moto_pwm_r += Turn_Pwm;
+           }
             // //printf("%d\r\n",Velocity_Pwm);
             
 						// //printf("V:%d\r\n",Velocity_Pwm);
@@ -38,7 +51,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             moto_pwm_l=Xianfu_pwm(moto_pwm_l,6900);
             moto_pwm_r=Xianfu_pwm(moto_pwm_r,6900);
 						//printf("%d,%d\r\n",moto_pwm_l,moto_pwm_r);
-        	//printf("2:%d,%d\r\n",moto_pwm_l,moto_pwm_r);
+        	  //printf("2:%d,%d\r\n",moto_pwm_l,moto_pwm_r);
             Moto_SetPwm(moto_pwm_l,moto_pwm_r);
         }
         __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);

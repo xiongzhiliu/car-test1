@@ -197,42 +197,6 @@ int velocity(int encoder_left,int encoder_right){
 //		if(Turn_Off(Angle_Balance,Voltage)==1||Flag_Stop==1)   Encoder_Integral=0;      //===电机关闭后清除积分
 //	  return Velocity;
 //}
-/**************************************************************************
-函数功能：转向控制  修改转向速度，请修改Turn_Amplitude即可
-入口参数：左轮编码器、右轮编码器、Z轴陀螺仪
-返回  值：转向控制PWM
-作    者：平衡小车之家
-**************************************************************************/
-int turn(int encoder_left,int encoder_right,float gyro){//转向控制
-	 static float Turn_Target,Turn,Encoder_temp,Turn_Convert=0.9,Turn_Count;
-	  float Turn_Amplitude=88/Flag_sudu,Kp=42,Kd=0;     
-	  //=============遥控左右旋转部分=======================//
-	if(1==Flag_Left||1==Flag_Right)                      //这一步主要是对旋转速度起缓冲作用，速度与误差成正比
-		{
-			if(++Turn_Count==1)
-			Encoder_temp=ABS_int(encoder_left+encoder_right);
-			Turn_Convert=50/Encoder_temp;
-			if(Turn_Convert<0.6)Turn_Convert=0.6;
-			if(Turn_Convert>3)Turn_Convert=3;
-		}	
-	  else
-		{
-			Turn_Convert=0.9;
-			Turn_Count=0;
-			Encoder_temp=0;
-		}			
-		if(1==Flag_Left)	           Turn_Target-=Turn_Convert;
-		else if(1==Flag_Right)	     Turn_Target+=Turn_Convert; 
-		else Turn_Target=0;
-	
-	if(Turn_Target>Turn_Amplitude)  Turn_Target=Turn_Amplitude;    //===转向速度限幅
-	  if(Turn_Target<-Turn_Amplitude) Turn_Target=-Turn_Amplitude;
-		if(Flag_Qian==1||Flag_Hou==1)  Kd=0.5;        
-		else Kd=0;   //转向的时候取消陀螺仪的纠正 改变参数，使转向速度降低
-	//=============转向PD控制器=======================//
-		Turn=-Turn_Target*Kp-gyro*Kd;                 //===结合Z轴陀螺仪进行PD控制
-	  return Turn;
-}
 
 int encoder_speed;
 u8 Qina_flag=0,Hou_flag=0;
@@ -240,17 +204,9 @@ int velocitydir2(int encoder_left,int encoder_right){
 	 static int Velocity,Encoder_Least,Encoder,Integral;
    //=============速度PI控制器=======================//	
 		#define jifenxianfu 30000
-		if(Qina_flag==1&&Hou_flag==0)
-		{
-			Movement = 30;
-		}
-		else if(Qina_flag==0&&Hou_flag==1)
-		{
-			Movement = -30;
-		}
-		else{
-			Movement = 0;
-		}
+		if(Qina_flag==1) Movement = 30;
+		else if(Hou_flag==1) Movement = -30;
+		else Movement = 0;
 		Encoder_Least = (encoder_left+encoder_right)-0;                    //===获取最新速度偏差==测量速度（左右编码器之和）-目标速度（此处为零） 
 		Encoder *= 0.8;		                                                //===一阶低通滤波器       
 		Encoder += Encoder_Least*0.2;	                                    //===一阶低通滤波器    
@@ -299,10 +255,40 @@ int turn_pwm(int error,float gyro)
 	float Bias;
 	Bias= gyro - 0;
 	Turn = error*turn_kp-gyro*turn_kd;
-	return Turn;
+	return (int)Turn;
 }
 
+int turn_encode(int encoder_left,int encoder_right,float gyro)//转向控制
+{
+	static float Turn_Target,Turn,Encoder_temp,Turn_Convert=0.9,Turn_Count;	//
+	float Turn_Amplitude=88/Flag_sudu,Kp=42,Kd=0;     
 
+  	if(1==Flag_Left||1==Flag_Right)                     
+	{
+		if(++Turn_Count==1)
+		Encoder_temp=ABS_int(encoder_left+encoder_right);
+		Turn_Convert=50/Encoder_temp;
+		if(Turn_Convert<0.6)Turn_Convert=0.6;
+		if(Turn_Convert>3)Turn_Convert=3;
+	}	
+	else
+	{
+		Turn_Convert=0.9;
+		Turn_Count=0;
+		Encoder_temp=0;
+	}			
+	if(1==Flag_Left)	 Turn_Target-=Turn_Convert;
+	else if(1==Flag_Right)	    Turn_Target+=Turn_Convert; 
+	else Turn_Target=0;
+	
+    if(Turn_Target>Turn_Amplitude)  Turn_Target=Turn_Amplitude;    //===转向速度限幅
+	if(Turn_Target<-Turn_Amplitude) Turn_Target=-Turn_Amplitude;
+	if(Flag_Qian==1||Flag_Hou==1)  Kd=0.5;        
+		else Kd=0;  
+
+		Turn=-Turn_Target*Kp-gyro*Kd;                 
+	  return Turn;
+}
 /**************************************************************************
 函数功能：任意角任意速度转向控制 
 入口参数：无
@@ -311,7 +297,7 @@ int turn_pwm(int error,float gyro)
 **************************************************************************/
 int TurnAgle(void){//转向控制 degree>0右转 <0左转
 	int turn;
-	 int gray_value; //=read_five_gray_sensors();
+	int gray_value = read_infrared_sensor();
     int error = 0;
 
     // 根据灰度传感器值计算偏差
@@ -329,12 +315,39 @@ int TurnAgle(void){//转向控制 degree>0右转 <0左转
     }
 
     // 调用新的转向控制函数
-    turn = turn_pwm(error, Gyro_Turn);
-
+    turn = turn_pwm(error, Gyro_Z);
     // if(!Flag_Stop&&turni!=Tmax) turni++;
     // if(!Flag_Stop&&turnj!=Tmax) turnj++;
     // if(!Flag_Stop&&turnislow!=Tmaxslow) turnislow++;
     // if(!Flag_Stop&&turnjslow!=Tmaxslow) turnjslow++;
-
     return turn;
 }
+
+
+// int turni=0,turnj=0,turnislow,turnjslow;							//快慢转累计控制变量
+// int Tmax,rmis,lmis;																		//快转上限与偏移
+// int Tmaxslow,rmisslow,lmisslow;												//慢转上限与偏移
+// int TurnAgle(void){//转向控制 degree>0右转 <0左转
+// 	int turn;
+//   //***具体判别***//	
+// 	if(turni<Tmax&&turnj==Tmax/*&&turnislow==Tmaxslow&&turnjslow==Tmaxslow*/)               //0  180 ,55 90
+// 				turn=turnccd(rmis,Gyro_Turn);                                //===ccd转向环PID控制 
+// 	else if(turni==Tmax&&turnj<Tmax/*&&turnislow==Tmaxslow&&turnjslow==Tmaxslow*/)	
+// 				turn=turnccd(lmis,Gyro_Turn);
+// 		else if(turni==Tmax&&turnj==Tmax&&turnislow<Tmaxslow&&turnjslow==Tmaxslow)
+// 				turn=turnccd(rmisslow,Gyro_Turn);  
+// 		else if(turni==Tmax&&turnj==Tmax&&turnislow==Tmaxslow&&turnjslow<Tmaxslow)
+// 				turn=turnccd(lmisslow,Gyro_Turn);                            //===ccd转向环PID控制 
+// 		else if(turni==Tmax&&turnj==Tmax/*&&turnislow==Tmaxslow&&turnjslow==Tmaxslow*/)
+// 				turn=turnccd(CCD_Zhongzhi,Gyro_Turn);                                  //===不用ccd时调试用 			
+// 		else //可能
+// 		{
+// 				Movement=0;
+// 				turn=turnccd(64,Gyro_Turn);
+// 		}
+// 		if(!Flag_Stop&&turni!=Tmax) turni++;
+// 		if(!Flag_Stop&&turnj!=Tmax) turnj++;
+// 		if(!Flag_Stop&&turnislow!=Tmaxslow) turnislow++;
+// 		if(!Flag_Stop&&turnjslow!=Tmaxslow) turnjslow++;
+// 		return turn;
+// }
