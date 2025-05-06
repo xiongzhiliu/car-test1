@@ -24,12 +24,12 @@ car-test1/decoder.o: ..\USER\decoder.c ..\USER\inc\decoder.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Core\Inc\main.h ..\USER\inc\oled.h ..\Core\Inc\gpio.h \
-  ..\Core\Inc\adc.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
-  ..\BSP\Bmpu6050\mpu6050.h ..\BSP\Bmpu6050\dmpKey.h \
-  ..\BSP\Bmpu6050\inv_mpu.h ..\BSP\Bmpu6050\dmpmap.h \
-  ..\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.h ..\BSP\Bmpu6050\IOI2C.h \
-  ..\USER\inc\myadc.h ..\USER\inc\LED.h ..\USER\inc\moto.h \
-  ..\USER\inc\interrupt.h ..\USER\inc\pid.h ..\USER\inc\fun.h \
-  ..\USER\inc\delay.h ..\USER\inc\filter.h ..\USER\inc\gray.h \
+  ..\Core\Inc\main.h ..\USER\inc\oled.h ..\USER\inc\oledfont.h \
+  ..\USER\inc\delay.h ..\Core\Inc\gpio.h ..\Core\Inc\adc.h \
+  ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\BSP\Bmpu6050\mpu6050.h \
+  ..\BSP\Bmpu6050\dmpKey.h ..\BSP\Bmpu6050\inv_mpu.h \
+  ..\BSP\Bmpu6050\dmpmap.h ..\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.h \
+  ..\BSP\Bmpu6050\IOI2C.h ..\USER\inc\myadc.h ..\USER\inc\LED.h \
+  ..\USER\inc\moto.h ..\USER\inc\interrupt.h ..\USER\inc\pid.h \
+  ..\USER\inc\fun.h ..\USER\inc\filter.h ..\USER\inc\gray.h \
   ..\USER\inc\proc.h

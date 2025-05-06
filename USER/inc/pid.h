@@ -35,6 +35,6 @@ int velocity(int encoder_left,int encoder_right);
 int turn(int encoder_left,int encoder_right,float gyro);
 int velocitydir2(int encoder_left,int encoder_right);
 int turn_pwm(int error,float gyro);
-int TurnAgle(void);
-
+int TurnAgle(int error,float Gyro_z);
+void stop_move(int itgr);
 #endif 

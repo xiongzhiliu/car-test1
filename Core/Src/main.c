@@ -48,7 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-float ZhongZhi = -5.5;
+float ZhongZhi = -4.5;
 float pitch,roll,yaw; 		    
 short aacx,aacy,aacz;				
 short gyrox,gyroy,gyroz;		
@@ -57,9 +57,9 @@ float Angle_Balance,Gyro_Balance,Gyro_Turn;
 float Acceleration_Z,Acceleration_X;                       
 int moto_pwm_l,moto_pwm_r;
 extern pids velo;
-float bal_kp=900,bal_ki=0,bal_kd=1.5;
-float velo_kp=120,velo_ki=0.4,velo_kd=0;
-float turn_kp=80,turn_ki=0,turn_kd=0.1;
+float bal_kp=1000,bal_ki=0,bal_kd=1.6;
+float velo_kp=100,velo_ki=0.4,velo_kd=0;
+float turn_kp=150,turn_ki=0,turn_kd=0.4;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -79,7 +79,7 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
-
+  OLED_ShowString(1,1,(u8 *)"Hello World",12,0);
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -112,11 +112,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	delay_init(72);
 	HAL_NVIC_DisableIRQ(EXTI0_IRQn);
-
+  OLED_Init(); 
   HAL_TIM_PWM_Init(&htim4);
 	HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_4);
-	OLED_Init(); 
+	
 	MOTO_init();
 	
 	HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_3);
@@ -125,6 +125,7 @@ int main(void)
 	HAL_TIM_Encoder_Start(&htim3,TIM_CHANNEL_4);
   HAL_TIM_Base_Start_IT(&htim1);
 	encoder_speed=0;  //
+
 	// pid_init(&bal,390,0,2.5);  
 	// pid_init(&velo,200,0.66,0);
 
@@ -152,9 +153,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
     /* USER CODE END WHILE */
-
+    HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_4);
     /* USER CODE BEGIN 3 */
 		if(rx2_pointer!=0) 
 		{

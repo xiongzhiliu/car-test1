@@ -2,11 +2,11 @@
 #include "math.h"
 #include "headfiles.h"
 #define INT_TIME  0.005
-float K1 =0.02; //»¥²¹ÂË²¨ÏµÊý, dËÄÔª×éÊý¾ÝÎªÖ÷£¬½ÇËÙ¶È»ý·ÖÎª¸¨
+float K1 =0.02; // æ»¤æ³¢ç³»æ•°, då•å…ƒå˜é‡ä¸ºåŠ é€Ÿåº¦è®¡æˆ–åŽŸå§‹é€Ÿåº¦è®¡
 float angle, angle_dot; 	
-float Q_angle=0.001;// ¹ý³ÌÔëÉùµÄÐ­·½²î
-float Q_gyro=0.003;//0.003 ¹ý³ÌÔëÉùµÄÐ­·½²î ¹ý³ÌÔëÉùµÄÐ­·½²îÎªÒ»¸öÒ»ÐÐÁ½ÁÐ¾ØÕó
-float R_angle=0.5;// ²âÁ¿ÔëÉùµÄÐ­·½²î ¼È²âÁ¿Æ«²î
+float Q_angle=0.001;// è¿‡ç¨‹å™ªå£°åæ–¹å·®
+float Q_gyro=0.003;//0.003 è¿‡ç¨‹å™ªå£°åæ–¹å·® è§’é€Ÿåº¦è®¡è¿‡ç¨‹å™ªå£°æ–¹å·®ä¸ºä¸€ä¸ªä¸€é˜¶é«˜æ–¯é©¬å°”å¯å¤«å™ªå£°
+float R_angle=0.5;// æµ‹é‡å™ªå£°åæ–¹å·® è§’åº¦æµ‹é‡å™ªå£°æ–¹å·®
 float dt=0.005;//                 
 char  C_0 = 1;
 float Q_bias, Angle_err;
@@ -17,24 +17,24 @@ float PP[2][2] = { { 1, 0 },{ 0, 1 } };
 float Gyro_Pitch = 0;
 
 /**************************************************************************
-º¯Êý¹¦ÄÜ£º¼òÒ×¿¨¶ûÂüÂË²¨
-Èë¿Ú²ÎÊý£º¼ÓËÙ¶È¡¢½ÇËÙ¶È
-·µ»Ø  Öµ£ºÎÞ
+å‡½æ•°åŠŸèƒ½ï¼šå¡å°”æ›¼æ»¤æ³¢
+å…¥å£å‚æ•°ï¼šåŠ é€Ÿåº¦ã€è§’é€Ÿåº¦
+è¿”å›ž  å€¼ï¼šæ— 
 **************************************************************************/
 void Kalman_Filter(float Accel,float Gyro)		
 {
-	angle+=(Gyro - Q_bias) * dt; //ÏÈÑé¹À¼Æ
-	Pdot[0]=Q_angle - PP[0][1] - PP[1][0]; // Pk-ÏÈÑé¹À¼ÆÎó²îÐ­·½²îµÄÎ¢·Ö
+	angle+=(Gyro - Q_bias) * dt; //å…ˆéªŒä¼°è®¡
+	Pdot[0]=Q_angle - PP[0][1] - PP[1][0]; // Pk-å…ˆéªŒä¼°è®¡è¯¯å·®åæ–¹å·®çš„å¾®åˆ†
 
 	Pdot[1]=-PP[1][1];
 	Pdot[2]=-PP[1][1];
 	Pdot[3]=Q_gyro;
-	PP[0][0] += Pdot[0] * dt;   // Pk-ÏÈÑé¹À¼ÆÎó²îÐ­·½²îÎ¢·ÖµÄ»ý·Ö
-	PP[0][1] += Pdot[1] * dt;   // =ÏÈÑé¹À¼ÆÎó²îÐ­·½²î
+	PP[0][0] += Pdot[0] * dt;   // Pk-å…ˆéªŒä¼°è®¡è¯¯å·®åæ–¹å·®å¾®åˆ†çš„ç§¯åˆ†
+	PP[0][1] += Pdot[1] * dt;   // =å…ˆéªŒä¼°è®¡è¯¯å·®åæ–¹å·®
 	PP[1][0] += Pdot[2] * dt;
 	PP[1][1] += Pdot[3] * dt;
 		
-	Angle_err = Accel - angle;	//zk-ÏÈÑé¹À¼Æ
+	Angle_err = Accel - angle;	//zk-å…ˆéªŒä¼°è®¡
 	
 	PCt_0 = C_0 * PP[0][0];
 	PCt_1 = C_0 * PP[1][0];
@@ -47,79 +47,79 @@ void Kalman_Filter(float Accel,float Gyro)
 	t_0 = PCt_0;
 	t_1 = C_0 * PP[0][1];
 
-	PP[0][0] -= K_0 * t_0;		 //ºóÑé¹À¼ÆÎó²îÐ­·½²î
+	PP[0][0] -= K_0 * t_0;		 //åŽéªŒä¼°è®¡è¯¯å·®åæ–¹å·®
 	PP[0][1] -= K_0 * t_1;
 	PP[1][0] -= K_1 * t_0;
 	PP[1][1] -= K_1 * t_1;
 		
-	angle	+= K_0 * Angle_err;	 //ºóÑé¹À¼Æ
-	Q_bias	+= K_1 * Angle_err;	 //ºóÑé¹À¼Æ
-	angle_dot   = Gyro - Q_bias;	 //Êä³öÖµ(ºóÑé¹À¼Æ)µÄÎ¢·Ö=½ÇËÙ¶È
+	angle	+= K_0 * Angle_err;	 //åŽéªŒä¼°è®¡
+	Q_bias	+= K_1 * Angle_err;	 //åŽéªŒä¼°è®¡
+	angle_dot   = Gyro - Q_bias;	 //è¾“å‡ºå€¼(åŽéªŒä¼°è®¡)çš„å¾®åˆ†=è§’é€Ÿåº¦
 }
 
 /**************************************************************************
-º¯Êý¹¦ÄÜ£ºÒ»½×»¥²¹ÂË²¨
-Èë¿Ú²ÎÊý£º¼ÓËÙ¶È¡¢½ÇËÙ¶È
-·µ»Ø  Öµ£ºÎÞ
+å‡½æ•°åŠŸèƒ½ï¼šä¸€é˜¶äº’è¡¥æ»¤æ³¢
+å…¥å£å‚æ•°ï¼šåŠ é€Ÿåº¦ã€è§’é€Ÿåº¦
+è¿”å›ž  å€¼ï¼šæ— 
 **************************************************************************/
 void Yijielvbo(float angle_m, float gyro_m)
 {
-    angle  = K1 * angle_m+ (1-K1) * (angle + gyro_m * 0.005);
+	angle  = K1 * angle_m+ (1-K1) * (angle + gyro_m * 0.005);
 }
 
 /**************************************************************************
-º¯Êý¹¦ÄÜ£º»ñÈ¡½Ç¶È ÈýÖÖËã·¨¾­¹ýÎÒÃÇµÄµ÷Ð££¬¶¼·Ç³£ÀíÏë 
-Èë¿Ú²ÎÊý£º»ñÈ¡½Ç¶ÈµÄËã·¨ 1£ºDMP(Ö±½Ó¶ÁÈ¡)  2£º¿¨¶ûÂü  3£º»¥²¹ÂË²¨
-·µ»Ø  Öµ£ºÎÞ
+å‡½æ•°åŠŸèƒ½ï¼šèŽ·å–è§’åº¦ ä¸‰ç§ç®—æ³•å¯ä»¥é€‰æ‹© DMPå’Œå¡å°”æ›¼ åœ¨ä¸¥æ ¼æ—¶é—´è¦æ±‚è´ªå©ª 
+å…¥å£å‚æ•°ï¼šèŽ·å–è§’åº¦çš„ç®—æ³• 1ï¼šDMP(ç›´æŽ¥è¯»å–)  2ï¼šå¡å°”æ›¼  3ï¼šäº’è¡¥æ»¤æ³¢
+è¿”å›ž  å€¼ï¼šæ— 
 **************************************************************************/
 float Accel_Y,Accel_Angle,Accel_Z,Gyro_Y,Gyro_Z,Accel_X;
 void Get_Angle(u8 way){ 
-	   	temp=Read_Temperature();      //===¶ÁÈ¡MPU6050ÄÚÖÃÎÂ¶È´«¸ÐÆ÷Êý¾Ý£¬½üËÆ±íÊ¾Ö÷°åÎÂ¶È¡£
-	    if(way==1)                           //===DMPµÄ¶ÁÈ¡ÔÚÊý¾Ý²É¼¯ÖÐ¶Ï¶ÁÈ¡£¬ÑÏ¸ñ×ñÑ­Ê±ÐòÒªÇó
+		temp=Read_Temperature();      //===è¯»å–MPU6050å†…ç½®æ¸©åº¦ä¼ æ„Ÿå™¨æ•°æ®ï¼Œå¹¶è®¡ç®—æ˜¾ç¤ºæ¸©åº¦ã€‚
+		if(way==1)                           //===DMPçš„è¯»å–åœ¨æ•°æ®é‡‡é›†ä¸­æ–­è¯»å–ï¼Œä¸¥æ ¼éµå¾ªæ—¶åºè¦æ±‚
 		{	
-			Read_DMP();                      //===¶ÁÈ¡¼ÓËÙ¶È¡¢½ÇËÙ¶È¡¢Çã½Ç
-			Angle_Balance=-Pitch;             //===¸üÐÂÆ½ºâÇã½Ç
-			Gyro_Balance=-gyro[1];            //===¸üÐÂÆ½ºâ½ÇËÙ¶È
-			Gyro_Turn=gyro[2];               //===¸üÐÂ×ªÏò½ÇËÙ¶È
-			Acceleration_Z=accel[2];         //===¸üÐÂZÖá¼ÓËÙ¶È¼Æ
+			Read_DMP();                      //===è¯»å–åŠ é€Ÿåº¦ã€è§’é€Ÿåº¦ã€å€¾è§’
+			Angle_Balance=-Pitch;             //===æ›´æ–°å¹³è¡¡å€¾è§’
+			Gyro_Balance=-gyro[1];            //===æ›´æ–°å¹³è¡¡è§’é€Ÿåº¦
+			Gyro_Turn=gyro[2];               //===æ›´æ–°è½¬å‘è§’é€Ÿåº¦
+			Acceleration_Z=accel[2];         //===æ›´æ–°Zè½´åŠ é€Ÿåº¦è®¡
 		}			
-      else
-      {
-			Gyro_Y=(I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_YOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_YOUT_L);    //¶ÁÈ¡YÖáÍÓÂÝÒÇ
-			Gyro_Z=(I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_ZOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_ZOUT_L);    //¶ÁÈ¡ZÖáÍÓÂÝÒÇ
-		 	Accel_X=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_L); //¶ÁÈ¡XÖá¼ÓËÙ¶È¼Æ
-	  		Accel_Z=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_L); //¶ÁÈ¡ZÖá¼ÓËÙ¶È¼Æ
-			if(Gyro_Y>32768)  Gyro_Y-=65536;                       //Êý¾ÝÀàÐÍ×ª»»  Ò²¿ÉÍ¨¹ýshortÇ¿ÖÆÀàÐÍ×ª»»
-			if(Gyro_Z>32768)  Gyro_Z-=65536;                       //Êý¾ÝÀàÐÍ×ª»»
-	  		if(Accel_X>32768) Accel_X-=65536;                      //Êý¾ÝÀàÐÍ×ª»»
-		  	if(Accel_Z>32768) Accel_Z-=65536;                      //Êý¾ÝÀàÐÍ×ª»»
+	  else
+	  {
+			Gyro_Y=(I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_YOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_YOUT_L);    //è¯»å–Yè½´é™€èžºä»ª
+			Gyro_Z=(I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_ZOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_GYRO_ZOUT_L);    //è¯»å–Zè½´é™€èžºä»ª
+			Accel_X=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_XOUT_L); //è¯»å–Xè½´åŠ é€Ÿåº¦è®¡
+			Accel_Z=(I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_H)<<8)|I2C_ReadOneByte(devAddr,MPU6050_RA_ACCEL_ZOUT_L); //è¯»å–Zè½´åŠ é€Ÿåº¦è®¡
+			if(Gyro_Y>32768)  Gyro_Y-=65536;                       //æ•°æ®ç±»åž‹è½¬æ¢  ä¹Ÿå¯é€šè¿‡shortå¼ºåˆ¶ç±»åž‹è½¬æ¢
+			if(Gyro_Z>32768)  Gyro_Z-=65536;                       //æ•°æ®ç±»åž‹è½¬æ¢
+			if(Accel_X>32768) Accel_X-=65536;                      //æ•°æ®ç±»åž‹è½¬æ¢
+			if(Accel_Z>32768) Accel_Z-=65536;                      //æ•°æ®ç±»åž‹è½¬æ¢
+		    Gyro_Z -= 24; //ç¨³æ€è¯¯å·®
+			// printf("Gyro_Z:%f\r\n",Gyro_Z);
 			Accel_X = -Accel_X;
-			Accel_Angle=atan2(Accel_X,Accel_Z)*180/PI;              //¼ÆËãÇã½Ç	
+			Accel_Angle=atan2(Accel_X,Accel_Z)*180/PI;              //è®¡ç®—å€¾è§’	
 				
 			Gyro_Y = (Gyro_Y+15);
 			//printf("Gyro_Y:%f\r\n",Gyro_Y);
 			Gyro_Balance=Gyro_Y;
-			Gyro_Y=Gyro_Y/16.4;                                    //ÍÓÂÝÒÇÁ¿³Ì×ª»»	
+			Gyro_Y=Gyro_Y/16.4;                                    //é™€èžºä»ªé‡ç¨‹è½¬æ¢	
 			//printf("Gyro_Y:%d\r\n",Gyro_Y);
 			//printf("%f\r\n",Gyro_Balance);
-			//Gyro_Pitch+=-(gyrox/16.4)*0.005;  //mpu6050ÉèÖÃµÄf=100hz£¬¼´0.01Ãë»ý·ÖÒ»´Î
+			//Gyro_Pitch+=-(gyrox/16.4)*0.005;  //mpu6050è®¾ç½®çš„f=100hzåˆ™0.01ç§’é‡‡æ ·ä¸€æ¬¡
 			if(way==2)
 			{
-				Kalman_Filter(Accel_Angle,Gyro_Y);//¿¨¶ûÂüÂË²¨	
-				//Angle_Balance=angle_dot;    			   //¸üÐÂÆ½ºâÇã½Ç
+				Kalman_Filter(Accel_Angle,Gyro_Y);//å¡å°”æ›¼æ»¤æ³¢	
+				//Angle_Balance=angle_dot;    			   //æ›´æ–°å¹³è¡¡å€¾è§’
 				//printf("%.2f\r\n",angle);
 			}
 			else if(way==3) 
 			{
-														//»¥²¹ÂË²¨£¬Ê¹ÓÃarctan¼ÆËãµÄ½Ç¶È£¨»ùÓÚ¼ÓËÙ¶È£©£¬ÒÔ¼°ÍÓÂÝÒÇ½Ç¶È¼ÆËã³öµÄ½Ç¶È
-				Yijielvbo(Accel_Angle,Gyro_Y);;    			   //¸üÐÂÆ½ºâÇã½Ç
+														//äº’è¡¥æ»¤æ³¢ä¸æ˜¯ä½¿ç”¨arctanå¾—åˆ°çš„è§’åº¦ï¼Œè€Œæ˜¯åŠ é€Ÿåº¦ï¼Œæ‰€ä»¥è®¡ç®—å¾—åˆ°è§’åº¦åŽï¼ŒåŠ è¦è®¡ç®—
+				Yijielvbo(Accel_Angle,Gyro_Y);;    			   //æ›´æ–°å¹³è¡¡å€¾è§’
 				//printf("angle:%f\r\n",angle);
 			}	
 			Angle_Balance = angle;
-			Gyro_Turn=Gyro_Z;                         //¸üÐÂ×ªÏò½ÇËÙ¶È
-			Acceleration_Z=Accel_Z;                   //===¸üÐÂZÖá¼ÓËÙ¶È¼Æ	
-	//				Angle_Balance = pitch;																//Æ½ºâ½Ç¶È
+			Gyro_Turn=Gyro_Z;                         //æ›´æ–°è½¬å‘è§’é€Ÿåº¦
+			Acceleration_Z=Accel_Z;                   //===æ›´æ–°Zè½´åŠ é€Ÿåº¦è®¡	
+	//				Angle_Balance = pitch;																//å¹³è¡¡è§’åº¦
 		}
 }
-
-

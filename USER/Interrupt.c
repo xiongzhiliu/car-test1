@@ -10,6 +10,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     if(GPIO_Pin == GPIO_PIN_0) // Assuming GPIO_PIN_0 is mpu6050 Exit pin ,evety 5 msecs
     {
+        int error;
         INT_FLAG = !INT_FLAG;
         //printf("X:%.1f  Y:%.1f  Z:%.1f  %d C\r\n",roll,pitch,yaw,temp/100)
 
@@ -40,16 +41,22 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
             if(turn_mode) //转向PID控制
            {
-                Turn_Pwm = TurnAgle();		//===转向PID控制
+                error = gray_calc_error(); //计算灰度误差
+                Turn_Pwm = turn_pwm(error,Gyro_Z);		//===转向PID控制
+                //printf("Turn_Pwm:%d\r\n",Turn_Pwm);
+                moto_pwm_l -= Turn_Pwm;
+                moto_pwm_r += Turn_Pwm;
+           }else{  //保持平衡时不读灰度误差只看角速度
+                Turn_Pwm = turn_pwm(0,Gyro_Z);		//===转向PID控制
                 moto_pwm_l -= Turn_Pwm;
                 moto_pwm_r += Turn_Pwm;
            }
             // //printf("%d\r\n",Velocity_Pwm);
-            
+
 						// //printf("V:%d\r\n",Velocity_Pwm);
             // //printf("1:%d,%d\r\n",moto_pwm_l,moto_pwm_r);
-            moto_pwm_l=Xianfu_pwm(moto_pwm_l,6900);
-            moto_pwm_r=Xianfu_pwm(moto_pwm_r,6900);
+            moto_pwm_l=Xianfu_pwm(moto_pwm_l,7199);
+            moto_pwm_r=Xianfu_pwm(moto_pwm_r,7199);
 						//printf("%d,%d\r\n",moto_pwm_l,moto_pwm_r);
         	  //printf("2:%d,%d\r\n",moto_pwm_l,moto_pwm_r);
             Moto_SetPwm(moto_pwm_l,moto_pwm_r);

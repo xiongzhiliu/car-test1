@@ -67,6 +67,8 @@ extern int moto_dead_zone; // Dead zone for motor control
 extern u8 moto_lock_flag;
 /*外部标志位*/
 extern u8 Qina_flag, Hou_flag,Flag_sudu; // Flags for forward and backward movement, and speed control(1 is high speed,2 is low speed)
-extern u8 turn_mode; // Flag for turn control
+extern u8 turn_mode;   // Flag for turn control
+extern int I0ntegral;  // Integral value for speed control,use to clear the integral value void overflow and restart the speed control
+extern float Movement; // Movement speed value for speed control
 #endif 
 

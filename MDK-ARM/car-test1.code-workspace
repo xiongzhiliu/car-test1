@@ -2,11 +2,16 @@
     "folders": [
         {
             "path": "."
+        },
+        {
+            "path": ".."
         }
     ],
     "settings": {
         "files.associations": {
-            "headfiles.h": "c"
+            "oled.h": "c",
+            "oledfont.h": "c",
+            "stm32f1xx_hal.h": "c"
         }
     },
     "extensions": {}

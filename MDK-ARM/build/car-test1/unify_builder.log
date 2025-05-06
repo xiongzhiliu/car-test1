@@ -1,527 +1,1674 @@
-[2025-05-06 02:05:25]	[info] incremental build: 42 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\adc.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\gpio.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\main.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\system_stm32f1xx.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\tim.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Core\Src\usart.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_adc_ex.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_exti.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pwr.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\Interrupt.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\LED.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\decoder.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\delay.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\filter.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\fun.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\gray.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\moto.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\myadc.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\pid.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\printf.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\proc.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\MDK-ARM\startup_stm32f103xb.s': object (.o) file not exist
-
-[2025-05-06 02:05:28]	[done]
-	build successfully !
-
-[2025-05-06 02:05:58]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\pid.c': source file has been changed.
-
-[2025-05-06 02:05:59]	[done]
-	build successfully !
-
-[2025-05-06 02:38:02]	[info] incremental build: 17 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\Interrupt.c': source file has been changed.
-'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\fun.c': source file has been changed.
-'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\pid.c': source file has been changed.
-'e:\Keil\Project\car-test1\USER\proc.c': source file has been changed.
-
-[2025-05-06 02:38:04]	[done]
-	build successfully !
-
-[2025-05-06 02:41:58]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
-
-[2025-05-06 02:41:59]	[done]
-	build successfully !
-
-[2025-05-06 02:43:39]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\proc.c': source file has been changed.
-
-[2025-05-06 02:43:40]	[done]
-	build successfully !
-
-[2025-05-06 02:50:39]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
-
-[2025-05-06 02:50:40]	[done]
-	build successfully !
-
-[2025-05-06 02:51:40]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
-
-[2025-05-06 02:51:41]	[done]
-	build successfully !
-
-[2025-05-06 02:53:59]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\proc.c': source file has been changed.
-
-[2025-05-06 02:54:00]	[done]
-	build successfully !
-
-[2025-05-06 02:58:22]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
-
-[2025-05-06 02:58:23]	[done]
-	build successfully !
-
-[2025-05-06 03:02:23]	[info] incremental build: 2 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-'e:\Keil\Project\car-test1\USER\proc.c': source file has been changed.
-
-[2025-05-06 03:02:25]	[done]
-	build successfully !
-
-[2025-05-06 03:02:29]	[done]
-	build successfully !
-
-[2025-05-06 03:06:18]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\Interrupt.c': source file has been changed.
-
-[2025-05-06 03:06:19]	[done]
-	build successfully !
-
-[2025-05-06 03:12:13]	[info] incremental build: 2 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-'e:\Keil\Project\car-test1\USER\pid.c': source file has been changed.
-
-[2025-05-06 03:12:15]	[done]
-	build successfully !
-
-[2025-05-06 03:14:12]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:14:13]	[done]
-	build successfully !
-
-[2025-05-06 03:15:25]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\Interrupt.c': source file has been changed.
-
-[2025-05-06 03:15:26]	[done]
-	build successfully !
-
-[2025-05-06 03:20:04]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:20:05]	[done]
-	build successfully !
-
-[2025-05-06 03:20:43]	[done]
-	build successfully !
-
-[2025-05-06 03:20:50]	[done]
-	build successfully !
-
-[2025-05-06 03:22:33]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:22:34]	[done]
-	build successfully !
-
-[2025-05-06 03:22:39]	[done]
-	build successfully !
-
-[2025-05-06 03:24:36]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:24:37]	[done]
-	build successfully !
-
-[2025-05-06 03:25:27]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:25:28]	[done]
-	build successfully !
-
-[2025-05-06 03:26:29]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:26:30]	[done]
-	build successfully !
-
-[2025-05-06 03:27:53]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:27:53]	[done]
-	build successfully !
-
-[2025-05-06 03:30:24]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:30:25]	[done]
-	build successfully !
-
-[2025-05-06 03:30:47]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:30:48]	[done]
-	build successfully !
-
-[2025-05-06 03:32:04]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:32:05]	[done]
-	build successfully !
-
-[2025-05-06 03:32:57]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:32:58]	[done]
-	build successfully !
-
-[2025-05-06 03:33:39]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:33:40]	[done]
-	build successfully !
-
-[2025-05-06 03:34:48]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 03:34:49]	[done]
-	build successfully !
-
-[2025-05-06 03:38:48]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\Interrupt.c': source file has been changed.
-
-[2025-05-06 03:38:49]	compilation failed at : "e:\Keil\Project\car-test1\USER\Interrupt.c", exit code: 1
-command: 
-  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/Interrupt.o -MMD ./../USER/Interrupt.c
+[2025-05-06 21:36:10]	link failed !, exit code: 1
    at unify_builder.Program.Main(String[] args_)
 ---
-./../USER/Interrupt.c:21:17: error: use of undeclared identifier 'moto_lock_flag'
-   21 |                 moto_lock_flag = 1;
+Error: L6200E: Symbol Hzk3 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by proc.o and IOI2C.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 168 error messages.
+
+
+[2025-05-06 21:37:00]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol Hzk3 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by proc.o and IOI2C.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 168 error messages.
+
+
+[2025-05-06 21:38:50]	[info] incremental build: 22 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+
+[2025-05-06 21:38:52]	compilation failed at : "e:\Keil\Project\car-test1\USER\oled.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/oled.o -MMD ./../USER/oled.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/oled.c:43:2: error: use of undeclared identifier 'GPIO_PORTB'
+   43 |         OLED_SDA_Set();
+      |         ^
+../USER/inc\oled.h:20:43: note: expanded from macro 'OLED_SDA_Set'
+   20 | #define OLED_SDA_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_4, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:44:2: error: use of undeclared identifier 'GPIO_PORTB'
+   44 |         OLED_SCL_Set();
+      |         ^
+../USER/inc\oled.h:18:43: note: expanded from macro 'OLED_SCL_Set'
+   18 | #define OLED_SCL_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_5, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:46:2: error: use of undeclared identifier 'GPIO_PORTB'
+   46 |         OLED_SDA_Clr();
+      |         ^
+../USER/inc\oled.h:19:43: note: expanded from macro 'OLED_SDA_Clr'
+   19 | #define OLED_SDA_Clr()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_4, GPIO_PIN_RESET)
+      |                                           ^
+./../USER/oled.c:48:2: error: use of undeclared identifier 'GPIO_PORTB'
+   48 |         OLED_SCL_Clr();
+      |         ^
+../USER/inc\oled.h:17:43: note: expanded from macro 'OLED_SCL_Clr'
+   17 | #define OLED_SCL_Clr()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_5, GPIO_PIN_RESET)
+      |                                           ^
+./../USER/oled.c:55:2: error: use of undeclared identifier 'GPIO_PORTB'
+   55 |         OLED_SDA_Clr();
+      |         ^
+../USER/inc\oled.h:19:43: note: expanded from macro 'OLED_SDA_Clr'
+   19 | #define OLED_SDA_Clr()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_4, GPIO_PIN_RESET)
+      |                                           ^
+./../USER/oled.c:56:2: error: use of undeclared identifier 'GPIO_PORTB'
+   56 |         OLED_SCL_Set();
+      |         ^
+../USER/inc\oled.h:18:43: note: expanded from macro 'OLED_SCL_Set'
+   18 | #define OLED_SCL_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_5, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:58:2: error: use of undeclared identifier 'GPIO_PORTB'
+   58 |         OLED_SDA_Set();
+      |         ^
+../USER/inc\oled.h:20:43: note: expanded from macro 'OLED_SDA_Set'
+   20 | #define OLED_SDA_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_4, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:64:2: error: use of undeclared identifier 'GPIO_PORTB'
+   64 |         OLED_SDA_Set();
+      |         ^
+../USER/inc\oled.h:20:43: note: expanded from macro 'OLED_SDA_Set'
+   20 | #define OLED_SDA_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_4, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:66:2: error: use of undeclared identifier 'GPIO_PORTB'
+   66 |         OLED_SCL_Set();
+      |         ^
+../USER/inc\oled.h:18:43: note: expanded from macro 'OLED_SCL_Set'
+   18 | #define OLED_SCL_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_5, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:68:2: error: use of undeclared identifier 'GPIO_PORTB'
+   68 |         OLED_SCL_Clr();
+      |         ^
+../USER/inc\oled.h:17:43: note: expanded from macro 'OLED_SCL_Clr'
+   17 | #define OLED_SCL_Clr()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_5, GPIO_PIN_RESET)
+      |                                           ^
+./../USER/oled.c:80:4: error: use of undeclared identifier 'GPIO_PORTB'
+   80 |                         OLED_SDA_Set();
+      |                         ^
+../USER/inc\oled.h:20:43: note: expanded from macro 'OLED_SDA_Set'
+   20 | #define OLED_SDA_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_4, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:84:4: error: use of undeclared identifier 'GPIO_PORTB'
+   84 |                         OLED_SDA_Clr();
+      |                         ^
+../USER/inc\oled.h:19:43: note: expanded from macro 'OLED_SDA_Clr'
+   19 | #define OLED_SDA_Clr()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_4, GPIO_PIN_RESET)
+      |                                           ^
+./../USER/oled.c:87:3: error: use of undeclared identifier 'GPIO_PORTB'
+   87 |                 OLED_SCL_Set();
       |                 ^
-1 error generated.
+../USER/inc\oled.h:18:43: note: expanded from macro 'OLED_SCL_Set'
+   18 | #define OLED_SCL_Set()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_5, GPIO_PIN_SET)
+      |                                           ^
+./../USER/oled.c:89:3: error: use of undeclared identifier 'GPIO_PORTB'
+   89 |                 OLED_SCL_Clr();//将时钟信号设置为低电平
+      |                 ^
+../USER/inc\oled.h:17:43: note: expanded from macro 'OLED_SCL_Clr'
+   17 | #define OLED_SCL_Clr()  HAL_GPIO_WritePin(GPIO_PORTB, GPIO_PIN_5, GPIO_PIN_RESET)
+      |                                           ^
+14 errors generated.
 
-[2025-05-06 03:39:25]	[info] incremental build: 17 source files changed
+[2025-05-06 21:41:25]	[info] incremental build: 22 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\Interrupt.c': object (.o) file not exist
-'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
-'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\headfiles.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 
-[2025-05-06 03:39:26]	[done]
-	build successfully !
-
-[2025-05-06 03:42:39]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
-
-[2025-05-06 03:42:40]	[done]
-	build successfully !
-
-[2025-05-06 03:44:21]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
-
-[2025-05-06 03:44:22]	[done]
-	build successfully !
-
-[2025-05-06 03:45:21]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
-
-[2025-05-06 03:45:21]	compilation failed at : "e:\Keil\Project\car-test1\USER\moto.c", exit code: 1
-command: 
-  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/moto.o -MMD ./../USER/moto.c
+[2025-05-06 21:41:27]	link failed !, exit code: 1
    at unify_builder.Program.Main(String[] args_)
 ---
-./../USER/moto.c:31:27: error: call to undeclared function 'ABS'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-   31 |     if(ABS_int(lf)>=7199||ABS(rg)>=7199){
-      |                           ^
+Error: L6200E: Symbol Hzk3 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by proc.o and IOI2C.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 168 error messages.
+
+
+[2025-05-06 21:44:15]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\delay.c': source file has been changed.
+
+[2025-05-06 21:44:15]	compilation failed at : "e:\Keil\Project\car-test1\USER\delay.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/delay.o -MMD ./../USER/delay.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/delay.c:7:6: error: conflicting types for 'delay_init'
+    7 | void delay_init(u8 SYSCLK, u8 sysclk_div_8)
+      |      ^
+../USER/inc\delay.h:7:6: note: previous declaration is here
+    7 | void delay_init(u8 SYSCLK);
+      |      ^
 1 error generated.
 
-[2025-05-06 03:45:54]	[info] incremental build: 1 source files changed
+[2025-05-06 21:58:55]	[info] incremental build: 22 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\USER\moto.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\delay.h' has been changed.
 
-[2025-05-06 03:45:55]	[done]
+[2025-05-06 21:58:57]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol Hzk3 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by proc.o and IOI2C.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 168 error messages.
+
+
+[2025-05-06 22:09:36]	[info] incremental build: 22 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+
+[2025-05-06 22:09:37]	compilation failed at : "e:\Keil\Project\car-test1\USER\oled.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/oled.o -MMD ./../USER/oled.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+In file included from ./../USER/oled.c:1:
+../USER/inc\oled.h:21:22: error: unknown type name 'uint8_t'
+   21 | void OLED_ClearPoint(u8 x,u8 y);
+      |                      ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:21:27: error: unknown type name 'uint8_t'
+   21 | void OLED_ClearPoint(u8 x,u8 y);
+      |                           ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:22:21: error: unknown type name 'uint8_t'
+   22 | void OLED_ColorTurn(u8 i);
+      |                     ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:23:23: error: unknown type name 'uint8_t'
+   23 | void OLED_DisplayTurn(u8 i);
+      |                       ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:27:16: error: unknown type name 'uint8_t'
+   27 | void Send_Byte(u8 dat);
+      |                ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:28:19: error: unknown type name 'uint8_t'
+   28 | void OLED_WR_Byte(u8 dat,u8 mode);
+      |                   ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:28:26: error: unknown type name 'uint8_t'
+   28 | void OLED_WR_Byte(u8 dat,u8 mode);
+      |                          ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:33:21: error: unknown type name 'uint8_t'
+   33 | void OLED_DrawPoint(u8 x,u8 y,u8 t);
+      |                     ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:33:26: error: unknown type name 'uint8_t'
+   33 | void OLED_DrawPoint(u8 x,u8 y,u8 t);
+      |                          ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:33:31: error: unknown type name 'uint8_t'
+   33 | void OLED_DrawPoint(u8 x,u8 y,u8 t);
+      |                               ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:34:20: error: unknown type name 'uint8_t'
+   34 | void OLED_DrawLine(u8 x1,u8 y1,u8 x2,u8 y2,u8 mode);
+      |                    ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:34:26: error: unknown type name 'uint8_t'
+   34 | void OLED_DrawLine(u8 x1,u8 y1,u8 x2,u8 y2,u8 mode);
+      |                          ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:34:32: error: unknown type name 'uint8_t'
+   34 | void OLED_DrawLine(u8 x1,u8 y1,u8 x2,u8 y2,u8 mode);
+      |                                ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:34:38: error: unknown type name 'uint8_t'
+   34 | void OLED_DrawLine(u8 x1,u8 y1,u8 x2,u8 y2,u8 mode);
+      |                                      ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:34:44: error: unknown type name 'uint8_t'
+   34 | void OLED_DrawLine(u8 x1,u8 y1,u8 x2,u8 y2,u8 mode);
+      |                                            ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:35:22: error: unknown type name 'uint8_t'
+   35 | void OLED_DrawCircle(u8 x,u8 y,u8 r);
+      |                      ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:35:27: error: unknown type name 'uint8_t'
+   35 | void OLED_DrawCircle(u8 x,u8 y,u8 r);
+      |                           ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:35:32: error: unknown type name 'uint8_t'
+   35 | void OLED_DrawCircle(u8 x,u8 y,u8 r);
+      |                                ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+../USER/inc\oled.h:36:20: error: unknown type name 'uint8_t'
+   36 | void OLED_ShowChar(u8 x,u8 y,u8 chr,u8 size1,u8 mode);
+      |                    ^
+../USER/inc\oled.h:4:12: note: expanded from macro 'u8'
+    4 | #define u8 uint8_t
+      |            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+
+[2025-05-06 22:10:36]	[info] incremental build: 22 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+
+[2025-05-06 22:10:38]	[done]
 	build successfully !
 
-[2025-05-06 03:47:28]	[info] incremental build: 1 source files changed
+[2025-05-06 22:12:12]	[info] incremental build: 22 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
-
-[2025-05-06 03:47:29]	[done]
-	build successfully !
-
-[2025-05-06 03:50:47]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\proc.c': source file has been changed.
-
-[2025-05-06 03:50:48]	[done]
-	build successfully !
-
-[2025-05-06 03:58:16]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
-
-[2025-05-06 03:58:16]	[done]
-	build successfully !
-
-[2025-05-06 03:59:03]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 
-[2025-05-06 03:59:04]	[done]
-	build successfully !
+[2025-05-06 22:12:13]	compilation failed at : "e:\Keil\Project\car-test1\Core\Src\main.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:158:12: warning: multi-character character constant [-Wmultichar]
+  158 |     printf('5\r\n');
+      |            ^
+./../Core/Src/main.c:158:12: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+  158 |     printf('5\r\n');
+      |            ^~~~~~~
+D:\Keil_v5\ARM\ARMCLANG\bin\..\include\stdio.h:402:61: note: passing argument to parameter here
+  402 | extern _ARMABI int printf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
+      |                                                             ^
+./../Core/Src/main.c:158:12: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  158 |     printf('5\r\n');
+      |            ^~~~~~~
+./../Core/Src/main.c:158:12: note: treat the string as an argument to avoid this
+  158 |     printf('5\r\n');
+      |            ^
+      |            "%s", 
+2 warnings and 1 error generated.
 
-[2025-05-06 03:59:38]	[info] incremental build: 1 source files changed
+[2025-05-06 22:12:17]	[info] incremental build: 4 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\USER\Interrupt.c': source file has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 
-[2025-05-06 03:59:39]	[done]
-	build successfully !
-
-[2025-05-06 04:00:33]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 04:00:34]	[done]
-	build successfully !
-
-[2025-05-06 04:01:09]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 04:01:09]	compilation failed at : "e:\Keil\Project\car-test1\Core\Src\main.c", exit code: 1
+[2025-05-06 22:12:17]	compilation failed at : "e:\Keil\Project\car-test1\Core\Src\main.c", exit code: 1
 command: 
   "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
    at unify_builder.Program.Main(String[] args_)
 ---
-./../Core/Src/main.c:60:35: error: expected ';' after top level declarator
-   60 | float bal_kp=420,bal_ki=0,bal_kd=2
-      |                                   ^
-      |                                   ;
-1 error generated.
+./../Core/Src/main.c:158:12: warning: multi-character character constant [-Wmultichar]
+  158 |     printf('5\r\n');
+      |            ^
+./../Core/Src/main.c:158:12: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+  158 |     printf('5\r\n');
+      |            ^~~~~~~
+D:\Keil_v5\ARM\ARMCLANG\bin\..\include\stdio.h:402:61: note: passing argument to parameter here
+  402 | extern _ARMABI int printf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
+      |                                                             ^
+./../Core/Src/main.c:158:12: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  158 |     printf('5\r\n');
+      |            ^~~~~~~
+./../Core/Src/main.c:158:12: note: treat the string as an argument to avoid this
+  158 |     printf('5\r\n');
+      |            ^
+      |            "%s", 
+2 warnings and 1 error generated.
 
-[2025-05-06 04:01:18]	[info] incremental build: 1 source files changed
+[2025-05-06 22:12:28]	[info] incremental build: 4 source files changed
 These source files will be recompiled
 ---
 'e:\Keil\Project\car-test1\Core\Src\main.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 
-[2025-05-06 04:01:19]	[done]
+[2025-05-06 22:12:29]	compilation failed at : "e:\Keil\Project\car-test1\Core\Src\main.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:158:12: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+  158 |     printf('l5\r\n');
+      |            ^~~~~~~~
+D:\Keil_v5\ARM\ARMCLANG\bin\..\include\stdio.h:402:61: note: passing argument to parameter here
+  402 | extern _ARMABI int printf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
+      |                                                             ^
+./../Core/Src/main.c:158:12: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+  158 |     printf('l5\r\n');
+      |            ^~~~~~~~
+./../Core/Src/main.c:158:12: note: treat the string as an argument to avoid this
+  158 |     printf('l5\r\n');
+      |            ^
+      |            "%s", 
+1 warning and 1 error generated.
+
+[2025-05-06 22:12:47]	[info] incremental build: 4 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+
+[2025-05-06 22:12:49]	[done]
 	build successfully !
 
-[2025-05-06 04:01:41]	[info] incremental build: 1 source files changed
+[2025-05-06 22:13:59]	[info] incremental build: 1 source files changed
 These source files will be recompiled
 ---
 'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
 
-[2025-05-06 04:01:42]	[done]
+[2025-05-06 22:14:00]	[done]
 	build successfully !
 
-[2025-05-06 04:02:05]	[info] incremental build: 1 source files changed
+[2025-05-06 22:18:00]	[info] incremental build: 1 source files changed
 These source files will be recompiled
 ---
 'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
 
-[2025-05-06 04:02:06]	[done]
+[2025-05-06 22:18:01]	[done]
 	build successfully !
 
-[2025-05-06 04:02:58]	[info] incremental build: 1 source files changed
+[2025-05-06 22:22:26]	[info] incremental build: 1 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': source file has been changed.
 
-[2025-05-06 04:02:59]	[done]
-	build successfully !
+[2025-05-06 22:22:26]	compilation failed at : "e:\Keil\Project\car-test1\USER\oled.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/oled.o -MMD ./../USER/oled.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/oled.c:23:4: error: call to undeclared function 'OLED_RS_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   23 |           OLED_RS_Set();
+      |           ^
+./../USER/oled.c:25:4: error: call to undeclared function 'OLED_RS_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   25 |           OLED_RS_Clr();                  
+      |           ^
+./../USER/oled.c:28:3: error: call to undeclared function 'OLED_SCLK_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   28 |                 OLED_SCLK_Clr();
+      |                 ^
+./../USER/oled.c:30:6: error: call to undeclared function 'OLED_SDIN_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   30 |                    OLED_SDIN_Set();
+      |                    ^
+./../USER/oled.c:32:6: error: call to undeclared function 'OLED_SDIN_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   32 |                    OLED_SDIN_Clr();
+      |                    ^
+./../USER/oled.c:33:3: error: call to undeclared function 'OLED_SCLK_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   33 |                 OLED_SCLK_Set();
+      |                 ^
+./../USER/oled.c:88:20: error: use of undeclared identifier 'oled_asc2_1206'
+   88 |                 if(size==12)temp=oled_asc2_1206[chr][t];  //调用1206字体
+      |                                  ^
+./../USER/oled.c:89:13: error: use of undeclared identifier 'oled_asc2_1608'
+   89 |                 else temp=oled_asc2_1608[chr][t];                //调用1608字体                               
+      |                           ^
+./../USER/oled.c:141:6: error: conflicting types for 'OLED_ShowString'
+  141 | void OLED_ShowString(u8 x,u8 y,const u8 *p)
+      |      ^
+../USER/inc\oled.h:37:6: note: previous declaration is here
+   37 | void OLED_ShowString(u8 x,u8 y,u8 *chr,u8 size1,u8 mode);
+      |      ^
+./../USER/oled.c:166:2: error: call to undeclared function 'OLED_RST_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  166 |         OLED_RST_Clr();
+      |         ^
+./../USER/oled.c:168:2: error: call to undeclared function 'OLED_RST_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  168 |         OLED_RST_Set(); 
+      |         ^
+11 errors generated.
 
-[2025-05-06 04:03:39]	[info] incremental build: 1 source files changed
+[2025-05-06 22:23:32]	[info] incremental build: 22 source files changed
 These source files will be recompiled
 ---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+
+[2025-05-06 22:23:33]	compilation failed at : "e:\Keil\Project\car-test1\Core\Src\main.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/Core/Src/main.o -MMD ./../Core/Src/main.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../Core/Src/main.c:82:43: error: too many arguments to function call, expected 3, have 5
+   82 |   OLED_ShowString(1,1,(u8 *)"Hello World",12,0);
+      |   ~~~~~~~~~~~~~~~                         ^~~~
+../USER/inc\oled.h:29:6: note: 'OLED_ShowString' declared here
+   29 | void OLED_ShowString(u8 x,u8 y,const u8 *p);    
+      |      ^               ~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[2025-05-06 22:24:19]	[info] incremental build: 11 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+
+[2025-05-06 22:24:20]	compilation failed at : "e:\Keil\Project\car-test1\USER\oled.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/oled.o -MMD ./../USER/oled.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/oled.c:23:4: error: call to undeclared function 'OLED_RS_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   23 |           OLED_RS_Set();
+      |           ^
+./../USER/oled.c:25:4: error: call to undeclared function 'OLED_RS_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   25 |           OLED_RS_Clr();                  
+      |           ^
+./../USER/oled.c:28:3: error: call to undeclared function 'OLED_SCLK_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   28 |                 OLED_SCLK_Clr();
+      |                 ^
+./../USER/oled.c:30:6: error: call to undeclared function 'OLED_SDIN_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   30 |                    OLED_SDIN_Set();
+      |                    ^
+./../USER/oled.c:32:6: error: call to undeclared function 'OLED_SDIN_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   32 |                    OLED_SDIN_Clr();
+      |                    ^
+./../USER/oled.c:33:3: error: call to undeclared function 'OLED_SCLK_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   33 |                 OLED_SCLK_Set();
+      |                 ^
+./../USER/oled.c:88:20: error: use of undeclared identifier 'oled_asc2_1206'
+   88 |                 if(size==12)temp=oled_asc2_1206[chr][t];  //调用1206字体
+      |                                  ^
+./../USER/oled.c:89:13: error: use of undeclared identifier 'oled_asc2_1608'
+   89 |                 else temp=oled_asc2_1608[chr][t];                //调用1608字体                               
+      |                           ^
+./../USER/oled.c:166:2: error: call to undeclared function 'OLED_RST_Clr'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  166 |         OLED_RST_Clr();
+      |         ^
+./../USER/oled.c:168:2: error: call to undeclared function 'OLED_RST_Set'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  168 |         OLED_RST_Set(); 
+      |         ^
+10 errors generated.
+
+[2025-05-06 22:31:06]	[info] incremental build: 22 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 
-[2025-05-06 04:03:40]	[done]
-	build successfully !
+[2025-05-06 22:31:07]	compilation failed at : "e:\Keil\Project\car-test1\USER\oled.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/oled.o -MMD ./../USER/oled.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/oled.c:263:12: error: use of undeclared identifier 'asc2_0806'
+  263 |                           {temp=asc2_0806[chr1][i];} //调用0806字体
+      |                                 ^
+./../USER/oled.c:265:9: error: use of undeclared identifier 'asc2_1206'
+  265 |                 {temp=asc2_1206[chr1][i];} //调用1206字体
+      |                       ^
+./../USER/oled.c:267:9: error: use of undeclared identifier 'asc2_1608'
+  267 |                 {temp=asc2_1608[chr1][i];} //调用1608字体
+      |                       ^
+./../USER/oled.c:269:9: error: use of undeclared identifier 'asc2_2412'
+  269 |                 {temp=asc2_2412[chr1][i];} //调用2412字体
+      |                       ^
+./../USER/oled.c:349:11: error: use of undeclared identifier 'Hzk1'
+  349 |                                 {temp=Hzk1[num][i];}//调用16*16字体
+      |                                       ^
+./../USER/oled.c:351:11: error: use of undeclared identifier 'Hzk2'
+  351 |                                 {temp=Hzk2[num][i];}//调用24*24字体
+      |                                       ^
+./../USER/oled.c:353:11: error: use of undeclared identifier 'Hzk3'
+  353 |                                 {temp=Hzk3[num][i];}//调用32*32字体
+      |                                       ^
+./../USER/oled.c:355:11: error: use of undeclared identifier 'Hzk4'
+  355 |                                 {temp=Hzk4[num][i];}//调用64*64字体
+      |                                       ^
+8 errors generated.
 
-[2025-05-06 04:04:05]	[info] incremental build: 1 source files changed
+[2025-05-06 22:31:35]	[info] incremental build: 22 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 
-[2025-05-06 04:04:06]	[done]
-	build successfully !
+[2025-05-06 22:31:37]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+Error: L6200E: Symbol Hzk3 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk3 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk4 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_0806 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1206 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_1608 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol asc2_2412 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk1 multiply defined (by proc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by MPU6050.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by inv_mpu_dmp_motion_driver.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by adc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gpio.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by main.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_hal_msp.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by stm32f1xx_it.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by tim.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by usart.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by Interrupt.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by decoder.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by delay.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by filter.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by fun.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by gray.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by moto.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by myadc.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by oled.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by pid.o and IOI2C.o).
+Error: L6200E: Symbol Hzk2 multiply defined (by proc.o and IOI2C.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 168 error messages.
 
-[2025-05-06 04:05:29]	[info] incremental build: 1 source files changed
+
+[2025-05-06 22:32:21]	[info] incremental build: 22 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\adc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\gpio.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_hal_msp.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\tim.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\usart.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\pid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\oled.h' has been changed.
 
-[2025-05-06 04:05:30]	[done]
-	build successfully !
+[2025-05-06 22:32:22]	compilation failed at : "e:\Keil\Project\car-test1\USER\oled.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/oled.o -MMD ./../USER/oled.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/oled.c:263:12: error: use of undeclared identifier 'asc2_0806'
+  263 |                           {temp=asc2_0806[chr1][i];} //调用0806字体
+      |                                 ^
+./../USER/oled.c:265:9: error: use of undeclared identifier 'asc2_1206'
+  265 |                 {temp=asc2_1206[chr1][i];} //调用1206字体
+      |                       ^
+./../USER/oled.c:267:9: error: use of undeclared identifier 'asc2_1608'
+  267 |                 {temp=asc2_1608[chr1][i];} //调用1608字体
+      |                       ^
+./../USER/oled.c:269:9: error: use of undeclared identifier 'asc2_2412'
+  269 |                 {temp=asc2_2412[chr1][i];} //调用2412字体
+      |                       ^
+./../USER/oled.c:349:11: error: use of undeclared identifier 'Hzk1'
+  349 |                                 {temp=Hzk1[num][i];}//调用16*16字体
+      |                                       ^
+./../USER/oled.c:351:11: error: use of undeclared identifier 'Hzk2'
+  351 |                                 {temp=Hzk2[num][i];}//调用24*24字体
+      |                                       ^
+./../USER/oled.c:353:11: error: use of undeclared identifier 'Hzk3'
+  353 |                                 {temp=Hzk3[num][i];}//调用32*32字体
+      |                                       ^
+./../USER/oled.c:355:11: error: use of undeclared identifier 'Hzk4'
+  355 |                                 {temp=Hzk4[num][i];}//调用64*64字体
+      |                                       ^
+8 errors generated.
 
-[2025-05-06 04:06:07]	[info] incremental build: 1 source files changed
+[2025-05-06 22:33:14]	[info] incremental build: 1 source files changed
 These source files will be recompiled
 ---
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\oled.c': object (.o) file not exist
 
-[2025-05-06 04:06:07]	[done]
-	build successfully !
-
-[2025-05-06 04:19:54]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\Interrupt.c': source file has been changed.
-
-[2025-05-06 04:19:55]	[done]
-	build successfully !
-
-[2025-05-06 04:26:10]	[info] incremental build: 2 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-'e:\Keil\Project\car-test1\USER\proc.c': source file has been changed.
-
-[2025-05-06 04:26:11]	[done]
-	build successfully !
-
-[2025-05-06 04:32:25]	[info] incremental build: 2 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-'e:\Keil\Project\car-test1\USER\proc.c': source file has been changed.
-
-[2025-05-06 04:32:26]	[done]
-	build successfully !
-
-[2025-05-06 04:39:09]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
-
-[2025-05-06 04:39:10]	[done]
-	build successfully !
-
-[2025-05-06 04:43:16]	[info] incremental build: 1 source files changed
-These source files will be recompiled
----
-'e:\Keil\Project\car-test1\USER\moto.c': source file has been changed.
-
-[2025-05-06 04:43:17]	[done]
+[2025-05-06 22:33:16]	[done]
 	build successfully !
 

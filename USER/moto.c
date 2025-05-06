@@ -1,6 +1,8 @@
 #include "moto.h"
 int moto_dead_zone=0;//200
 u8 moto_lock_flag=0;
+u8 moto_flow_times=0; 
+
 void MOTO_init()
 {
 	HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_ALL);
@@ -24,11 +26,18 @@ void Moto_SetPwm(int lf,int rg)
         lf=0;
     }
       
-    if(ABS_int(lf)>=7000||ABS_int(rg)>=7000){
-        moto_lock_flag = 1;
-        rg = 0;
-        lf = 0;
-    }   //电机保护
+    if(ABS_int(lf)>=7000||ABS_int(rg)>=7000){ //电机保护
+        moto_flow_times++;
+        if (moto_flow_times >=20)
+        {
+            moto_lock_flag = 1;
+            rg = 0;
+            lf = 0;
+        }
+    }else
+    {
+        moto_flow_times = 0;
+    }
 //	printf("%d,%d\r\n",lf,rg);
 //	lf = lf*100 /9999 ;
 //	rg = rg*100 /9999 ;

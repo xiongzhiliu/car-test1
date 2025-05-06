@@ -1,23 +1,22 @@
 #ifndef __OLED_H
 #define __OLED_H			  	 
-#include "stm32f1xx_hal.h"
-#include "stm32f1xx_hal_gpio.h"
+#include "headfiles.h"
 #define u8 uint8_t
 #define u32 uint32_t
 #define u16 uint16_t
-//-----------------OLED端口定义---------------- 
+//-----------------OLED绔彛瀹氫箟---------------- 
 
-#define OLED_RST_Clr()  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET)
-#define OLED_RST_Set()  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_SET)
-//#define OLED_RS_Clr()   HAL_GPIO_WritePin(OLED_RS_GPIO, OLED_RS_PIN, GPIO_PIN_RESET)
-//#define OLED_RS_Set()   HAL_GPIO_WritePin(OLED_RS_GPIO, OLED_RS_PIN, GPIO_PIN_SET)
+
+
+// #define OLED_RST_Clr()  HAL_GPIO_WritePin(OLED_PORT, GPIO_PIN_3, GPIO_PIN_RESET)
+// #define OLED_RST_Set()  HAL_GPIO_WritePin(OLED_PORT, GPIO_PIN_3, GPIO_PIN_SET)
 #define OLED_SCL_Clr()  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET)
 #define OLED_SCL_Set()  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET)
 #define OLED_SDA_Clr()  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET)
 #define OLED_SDA_Set()  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET)
 
-#define OLED_CMD  0	//???
-#define OLED_DATA 1	//???
+#define OLED_CMD  0	//鍛戒护
+#define OLED_DATA 1	//鏁版嵁
 
 void OLED_ClearPoint(u8 x,u8 y);
 void OLED_ColorTurn(u8 i);
@@ -43,5 +42,4 @@ void OLED_ScrollDisplay(u8 num,u8 space,u8 mode);
 void OLED_ShowPicture(u8 x,u8 y,u8 sizex,u8 sizey,u8 BMP[],u8 mode);
 void OLED_Init(void); 
 void OLED_Pin_Init(void);
-#endif  
-	 
+#endif

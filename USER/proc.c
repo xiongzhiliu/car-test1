@@ -79,14 +79,69 @@ void key_proc(void)
     if(Qina_flag)
     {
       Qina_flag = 0;
+      Movement = 0;   //速度清零
       turn_mode = 0;  //需要单独设置一个可以允许转向的情况
       printf("Qina_flag cleared\r\n");
     }
     else
     {
-      Qina_flag = 1;
+      Qina_flag = 1;  
+      Movement = 30;  //速度设置
       turn_mode = 1;
       printf("Qina_flag set\r\n");
     }
   }
+}
+
+
+
+/**
+ * @brief  检测平衡小车是否被拿起
+ * @param  Acceleration_Z 当前 Z 轴加速度
+ * @param  Angle 当前小车的倾角
+ * @param  encoder_left 左轮编码器值
+ * @param  encoder_right 右轮编码器值
+ * @retval 1 表示小车被拿起，0 表示未被拿起
+ */
+int Detect_Pick_Up(float Acceleration_Z, float Angle, int encoder_left, int encoder_right) {
+  static u16 flag = 0, count_static = 0, count_angle = 0, count_speed = 0;
+
+  // 第一步：检测小车是否接近静止
+  if (flag == 0) {
+      if (ABS_int(encoder_left) + ABS_int(encoder_right) < 30) { // 静止条件
+          count_static++;
+      } else {
+          count_static = 0;
+      }
+      if (count_static > 10) { // 静止超过 100ms
+          flag = 1;
+          count_static = 0;
+      }
+  }
+
+  // 第二步：检测小车是否在接近水平的位置
+  if (flag == 1) {
+      if (++count_angle > 200) { // 超时 2000ms，重置状态
+          count_angle = 0;
+          flag = 0;
+      }
+      if (Acceleration_Z > 26000 && Angle > (-20 + ZhongZhi) && Angle < (20 + ZhongZhi)) { // 水平条件
+          flag = 2;
+          count_angle = 0;
+      }
+  }
+
+  // 第三步：检测小车轮胎是否达到最大转速
+  if (flag == 2) {
+      if (++count_speed > 100) { // 超时 1000ms，重置状态
+          count_speed = 0;
+          flag = 0;
+      }
+      if (ABS_int(encoder_left + encoder_right) > 135) { // 转速条件
+          flag = 0;
+          return 1; // 检测到小车被拿起
+      }
+  }
+
+  return 0; // 未检测到小车被拿起
 }
