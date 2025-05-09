@@ -149,9 +149,6 @@
             "path": "../USER/oled.c"
           },
           {
-            "path": "../USER/pid.c"
-          },
-          {
             "path": "../USER/printf.c"
           },
           {
@@ -168,6 +165,15 @@
           },
           {
             "path": "../USER/proc.c"
+          },
+          {
+            "path": "../USER/task.c"
+          },
+          {
+            "path": "../USER/controlApid.c"
+          },
+          {
+            "path": "../USER/buzzer.c"
           }
         ],
         "folders": []

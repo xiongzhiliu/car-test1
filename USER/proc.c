@@ -1,5 +1,29 @@
 #include "proc.h"
 
+u8 interrupt_allow_flag = 0;
+u8 start_flag = 0;
+
+void rx_proc(void)
+{
+ if(rx2_pointer!=0) 
+  {
+    uchar temp = rx2_pointer;
+    delay_ms(1);
+    if(temp == rx2_pointer)
+    {
+      rx2_proc();
+    }	
+  }
+
+  if(rx1_pointer!=0){
+    uchar temp = rx1_pointer;
+    delay_ms(1);
+    if(temp == rx1_pointer)
+    {
+      rx1_proc();
+    }
+  }
+}
 
 void rx2_proc(void) 
 {
@@ -73,6 +97,16 @@ void rx1_proc(void)
 
 void key_proc(void)
 {
+  if(k1.is_pull && !interrupt_allow_flag && !start_flag)
+  {
+    k1.is_pull =0;
+    interrupt_allow_flag = 1;
+  }else if(k1.is_pull && interrupt_allow_flag && !start_flag)
+  {
+    k1.is_pull=0;
+    start_flag = 1;
+  }
+
   if(k1.is_pull_again)
   {
     k1.is_pull_again = 0;
@@ -80,15 +114,18 @@ void key_proc(void)
     {
       Qina_flag = 0;
       Movement = 0;   //速度清零
+      setAngleForward = 0;
       turn_mode = 0;  //需要单独设置一个可以允许转向的情况
       printf("Qina_flag cleared\r\n");
     }
     else
     {
       Qina_flag = 1;  
-      Movement = 30;  //速度设置
-      turn_mode = 1;
+     // Movement = 30;  //速度设置
+     // setAngleForward = 5; 
+      //turn_mode = 1;
       printf("Qina_flag set\r\n");
+      changeTurnAgle(180);
     }
   }
 }

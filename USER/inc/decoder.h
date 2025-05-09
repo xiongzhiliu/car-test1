@@ -21,7 +21,8 @@ struct key
 };
 
 extern struct key k1;
-
+extern struct moto_decoer left,right;//里程计
 int Read_Velocity_L();
 int Read_Velocity_R();
+void lock_Loc(void);
 #endif 

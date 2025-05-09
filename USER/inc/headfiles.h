@@ -14,6 +14,7 @@
 #include "stdio.h"
 #include "stdint.h"
 #include "string.h"
+#include "stdbool.h"
 
 
 #include "main.h"
@@ -36,15 +37,17 @@
 #include "LED.h"
 #include "moto.h"
 #include "interrupt.h"
-#include "pid.h"
 #include "decoder.h"
 #include "fun.h"
 #include "delay.h"
 #include "filter.h"
-#include "pid.h"
+#include "controlApid.h"
 #include "gray.h"
 #include "proc.h"
+#include "buzzer.h"
+#include "task.h"
 
+extern u8 interrupt_allow_flag,start_flag;  //按键触发标志位
 extern float turn_kp, turn_ki, turn_kd;   // Turn PID parameters
 extern float velo_kp, velo_ki, velo_kd;   // Velocity PID parameters
 extern float bal_kp, bal_ki, bal_kd;     // Balance PID parameters
@@ -69,6 +72,9 @@ extern u8 moto_lock_flag;
 extern u8 Qina_flag, Hou_flag,Flag_sudu; // Flags for forward and backward movement, and speed control(1 is high speed,2 is low speed)
 extern u8 turn_mode;   // Flag for turn control
 extern int I0ntegral;  // Integral value for speed control,use to clear the integral value void overflow and restart the speed control
-extern float Movement; // Movement speed value for speed control
+extern float Movement,setAngleForward; // Movement speed value for speed control ，angle when car turn forward used in balance
+
+extern int ab_direction;
+
 #endif 
 

@@ -24,9 +24,9 @@ car-test1/delay.o: ..\USER\delay.c ..\USER\inc\delay.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\Core\Inc\main.h ..\USER\inc\oled.h ..\USER\inc\oledfont.h \
-  ..\Core\Inc\gpio.h ..\Core\Inc\adc.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h ..\BSP\Bmpu6050\mpu6050.h ..\BSP\Bmpu6050\dmpKey.h \
+  ..\Core\Inc\main.h ..\USER\inc\oled.h ..\Core\Inc\gpio.h \
+  ..\Core\Inc\adc.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
+  ..\BSP\Bmpu6050\mpu6050.h ..\BSP\Bmpu6050\dmpKey.h \
   ..\BSP\Bmpu6050\inv_mpu.h ..\BSP\Bmpu6050\dmpmap.h \
   ..\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.h ..\BSP\Bmpu6050\IOI2C.h \
   ..\USER\inc\myadc.h ..\USER\inc\LED.h ..\USER\inc\moto.h \

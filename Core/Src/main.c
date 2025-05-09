@@ -57,9 +57,10 @@ float Angle_Balance,Gyro_Balance,Gyro_Turn;
 float Acceleration_Z,Acceleration_X;                       
 int moto_pwm_l,moto_pwm_r;
 extern pids velo;
+float setAngleForward = 0; //全局设置前进时的目标角度 
 float bal_kp=1000,bal_ki=0,bal_kd=1.6;
 float velo_kp=100,velo_ki=0.4,velo_kd=0;
-float turn_kp=150,turn_ki=0,turn_kd=0.4;
+float turn_kp=160,turn_ki=0,turn_kd=0.4;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -146,6 +147,9 @@ int main(void)
 	memset(temp_rx,0,30);
   memset(temp_rx_1,0,30);
 
+  //自定义初始化
+  turnInit(10); //设置转弯速度对应的误差为10
+
 //		HAL_GPIO_WritePin(buzzer_GPIO_Port,buzzer_Pin,GPIO_PIN_SET); //
   /* USER CODE END 2 */
 
@@ -154,27 +158,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_4);
     /* USER CODE BEGIN 3 */
-		if(rx2_pointer!=0) 
-		{
-			uchar temp = rx2_pointer;
-			delay_ms(1);
-			if(temp == rx2_pointer)
-			{
-				rx2_proc();
-      }	
-		}
-
-    if(rx1_pointer!=0){
-      uchar temp = rx1_pointer;
-      delay_ms(1);
-      if(temp == rx1_pointer)
-      {
-        rx1_proc();
-      }
-    }
-  
+		task1();
+    rx_proc();
     key_proc();
   }
   /* USER CODE END 3 */

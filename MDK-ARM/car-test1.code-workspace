@@ -9,9 +9,10 @@
     ],
     "settings": {
         "files.associations": {
-            "oled.h": "c",
-            "oledfont.h": "c",
-            "stm32f1xx_hal.h": "c"
+            "headfiles.h": "c",
+            "proc.h": "c",
+            "buzzer.h": "c",
+            "interrupt.h": "c"
         }
     },
     "extensions": {}

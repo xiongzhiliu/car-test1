@@ -2,6 +2,7 @@
 #define __PROC_H
 #include "headfiles.h"
 
+void rx_proc(void);
 void rx2_proc(void);
 void rx1_proc(void);
 void key_proc(void);

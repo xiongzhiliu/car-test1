@@ -3,6 +3,7 @@
 struct key k1={0,0,0,0};
 struct moto_decoer left={0,0,0}, right={0,0,0};
 u8 counter_pull=0;
+int CALC_LEFT = 0, CALC_RIGHT = 0; //里程计
 //定时器溢出模式下中断
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -87,4 +88,18 @@ int Read_Velocity_R()
 	right.sum_pul += right.en_pul + 20000*right.full_t;  //累计计数值
 	__HAL_TIM_SetCounter(&htim2,0);  //计数器清零
 	return right.en_pul;  //返回速度增量
+}
+uint8_t lock_flag=0;
+void lock_Loc(void)
+{
+	static int calc_l,calc_r;
+	if(!lock_flag){
+			calc_l = left.sum_pul;
+			calc_r = right.sum_pul;
+		lock_flag=1;
+	}else if(lock_flag){
+			left.sum_pul = calc_l;
+			right.sum_pul = calc_r;
+		lock_flag=0;
+	}
 }
