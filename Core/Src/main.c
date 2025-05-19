@@ -181,7 +181,7 @@ int main(void)
       OLED_ShowString(1, 17, "JCT:", OLED_8X16);
       OLED_ShowString(33, 17, (uint8_t*)junctionNames[lastJunctionType], OLED_8X16);
       OLED_ShowString(1, 33, "DIR:", OLED_8X16);
-      const char* dir_names[] = {"F", "L", "B", "R"};
+      const char* dir_names[] = {"F", "L", "R", "B"};
       if(last_turn_dir >= 0 && last_turn_dir <= 3)
           OLED_ShowString(33, 33, (uint8_t*)dir_names[last_turn_dir], OLED_8X16);
       
@@ -194,7 +194,6 @@ int main(void)
               x += 10;
           }
       }
-    
       OLED_Update();
     }
     

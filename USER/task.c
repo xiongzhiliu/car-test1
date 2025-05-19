@@ -112,35 +112,32 @@ void task1(void)
             gray_allow = 0;     // 不允许灰度
             buzzerTurnOnDelay(10);
             error = 0;
-            if (STOP_FLAG)
-            {
-                Locationhold(); // 更新方向与节点参数
-                STATE++;
-                break;
-            }
-            if (!TURN_BACK_FLAG)
-            {
-                delay_ms(200);                       // 往前走 //可能增加一个延时计数，定时器使用
-                Locationhold();                      // 更新方向与节点参数
-                int levels = read_infrared_sensor(); // 以下判断该路口前进方向是否可行
-                if (levels & 0b01110)
-                {                     // 此时levels不为零，说明前方有路
-                    TURN_UP_FLAG = 1; // 允许前进
-                    buzzerTurnOnDelay(10);
-                    STATE++;
-                }
-                else
-                {
-                    TURN_UP_FLAG = 0;
-                    STATE++;
-                }
-            }
-            else
-            {
-                delay_ms(200);
-                Locationhold(); // 更新方向与节点参数
-                STATE++;
-            }
+            Locationhold(); // 修正坐标值（灰度位置和电机位置的差距）
+            STATE++;
+            // if (!TURN_BACK_FLAG)
+            // {
+            //     // delay_ms(200);                       // 往前走 //可能增加一个延时计数，定时器使用
+            //     Locationhold();                      // 更新方向与节点参数
+            //     STATE++;
+            //     // int levels = read_infrared_sensor(); // 以下判断该路口前进方向是否可行
+            //     // if (levels & 0b01110)
+            //     // {                     // 此时levels不为零，说明前方有路
+            //     //     TURN_UP_FLAG = 1; // 允许前进
+            //     //     buzzerTurnOnDelay(10);
+            //     //     STATE++;
+            //     // }
+            //     // else
+            //     // {
+            //     //     TURN_UP_FLAG = 0;
+            //     //     STATE++;
+            //     // }
+            // }
+            // else
+            // {
+            //     delay_ms(200);
+            //     Locationhold(); // 更新方向与节点参数
+            //     STATE++;
+            // }
             // delay_count = 0; // 重置计数器
         }
         break;
@@ -198,9 +195,9 @@ void task1(void)
         Clear_NODEflag();
         last_junction_dirs = 0;
         if(ab_x) last_junction_dirs |= (1<<0);  // 前方可行
-        if(ab_y) last_junction_dirs |= (1<<1);  // 左方可行
-        if(ab_fx) last_junction_dirs |= (1<<2); // 右方可行
-        if(ab_fy) last_junction_dirs |= (1<<3); // 后方可行
+        if(ab_fy) last_junction_dirs |= (1<<1);  // 左方可行
+        if(ab_y) last_junction_dirs |= (1<<2); // 右方可行
+        if(ab_fx) last_junction_dirs |= (1<<3); // 后方可行
         if (END_FLAG == 0)
         {                                                                         // 如果没有到终点
             ab_direction = add_point(RE_LocY, RE_LocX, ab_fy, ab_x, ab_y, ab_fx); // 记录节点，并返回行驶方向（返回的是绝对方向
@@ -210,83 +207,64 @@ void task1(void)
             ab_direction = gogogo(RE_LocY, RE_LocX, ab_fy, ab_x, ab_y, ab_fx); // 回溯路径
             // printf("g_t:%d", g_t);
         }
+        clear_corner_dir();
         // 绝对方向转换为当前转向（绝对方向
-        if (END_FLAG == 0)
-        { // 找到终点前的转弯
-            switch (ab_direction)
-            { // get_dir(ab_direction)
-            case turnLeft:
-            { // 向左 1
-                // printf("turn_left\r\n");
-                lastJunctionType = JUNCTION_LEFT;
-                stop_move(0);
-                cflag_left = 1;
-                break;
+        if (END_FLAG == 0){ // 找到终点前的转弯
+            switch (ab_direction){ 
+                case turnLeft:{ // 向左 1
+                    lastJunctionType = JUNCTION_LEFT;
+                    stop_move(0);
+                    cflag_left = 1;
+                    break;
+                }
+                case turnRight:{ // 向右  3
+                    // printf("turn_right\r\n");
+                    lastJunctionType = JUNCTION_RIGHT;
+                    stop_move(0);
+                    cflag_right = 1;
+                    break;
+                }
+                case turnBack:{ // 后退
+                    lastJunctionType = JUNCTION_BACK;
+                    cflag_tn180 = 1;
+                    stop_move(3000);
+                    break;
+                }
+                case turnUp:{
+                    lastJunctionType = JUNCTION_FRONT;
+                    cflag_up = 1;
+                    break;
+                }
+                default:break;
             }
-            case turnRight:
-            { // 向右  3
-                // printf("turn_right\r\n");
-                lastJunctionType = JUNCTION_RIGHT;
-                stop_move(0);
-                cflag_right = 1;
-                break;
-            }
-            case turnBack:
-            { // 后退
-                // printf("turn_back\r\n");
-                lastJunctionType = JUNCTION_BACK;
-                cflag_tn180 = 1;
-                stop_move(3000);
-                //delay_ms(500);
-                break;
-            }
-            case turnUp:
-            {
-                // printf("turn_up\r\n");
-                lastJunctionType = JUNCTION_FRONT;
-                cflag_up = 1;
-                break;
-            }
-            default:
-                // printf("other\r\n");
-                break;
-            }
+        }
+        else{
+            switch (get_dir(ab_direction)){
+                case turnLeft:{ // 向左 1
+                    // printf("l\r\n");
+                    cflag_left = 1;
+                    break;
+                }
+                case turnRight:{ // 向右  3
+                    // printf("r\r\n");
+                    cflag_right = 1;
+                    break;
+                }
+                case turnBack:{ // 后退
+                    cflag_tn180 = 1;
+                    // printf("b\r\n");
+                    break;
+                }
+                case turnUp:{
+                    // printf("u\r\n");
+                    cflag_up = 1;
+                    break;
+                }
+                default:
+                    break;
+                }
             clear_corner_dir();
         }
-        else
-        {
-            switch (get_dir(ab_direction))
-            {
-            case turnLeft:
-            { // 向左 1
-                printf("l\r\n");
-                cflag_left = 1;
-                break;
-            }
-            case turnRight:
-            { // 向右  3
-                printf("r\r\n");
-                cflag_right = 1;
-                break;
-            }
-            case turnBack:
-            { // 后退
-                cflag_tn180 = 1;
-                printf("b\r\n");
-                break;
-            }
-            case turnUp:
-            {
-                printf("u\r\n");
-                cflag_up = 1;
-                break;
-            }
-            default:
-                break;
-            }
-            clear_corner_dir();
-        }
-
         /****************第二阶段：根据记录的路口，计算一个行驶方向并执行转弯***************/
         // 执行转动作
         // printf("go:%d\r\n", go->no);
@@ -310,15 +288,14 @@ void task1(void)
                 Turn_up();
             }
             Clear_FLAG();
-            Locationhold();
             if (turn_in_progress == 0)
             {
                 STATE = 3; // 回到循环状态
                 buzzerTurnOnDelay(10);
                 start_move(40);
             }
-            gray_dir_allow = 1; // 允许灰度
             gray_allow = 1;
+            gray_dir_allow = 1; // 允许灰度
         }
         else
         { // 到终点时，不需要置cflag，暂停turn，只用黑边
@@ -366,8 +343,7 @@ void task1(void)
         break;
     }
 
-    case 7:
-    { // 从终点脱离
+    case 7:{ // 从终点脱离
       // printf("state7\r\n");
         STOP_FLAG = 0;
         find_exit2 = 0;
@@ -386,21 +362,18 @@ void task1(void)
         break;
     }
 
-    case 8:
-    { // 从终点返回巡线
+    case 8:{ // 从终点返回巡线
         break;
     }
 
-    default:
-        break;
+    default:break;
     }
 }
 
 //****处理各个路口判断进行继续行走****//
 int level;
-
-void Turn_right(void)
-{ // 右转
+u8 wasteTime;
+void Turn_right(void){ // 右转
     last_turn_dir = 3;
     cflag_turn = 1;
     lock_Loc();
@@ -408,88 +381,66 @@ void Turn_right(void)
     changeTurnAgle(90);
     while (turn_in_progress)
     {
-        // int levels = read_infrared_sensor(); // 以下判断该路口前进方向是否可行
-        // if (levels & 0b01110)
-        // {                     // 此时levels不为零，说明前方有路
-        //     break;
-        // }
-        buzzerTurnOn();
+        delay_ms(1);
     }; // 等待转弯完成
-    buzzerTurnOff();
-    // level = read_infrared_levels();
-    // while (((level & 0b01110) == 0))
-    // {
-    //     level = read_infrared_levels();
-    // }
+    buzzerTurnAndClose();
     lock_Loc();
-    // Set_Pwm(0, 0);
     cflag_turn = 0;
+    // start_move(40);
+    // gray_allow = 1;  //允许灰度读误差但不读路口
+    // gray_dir_allow = 0;
+    // delay_ms(500);
 }
 
-void Turn_left(void)
-{ // 左转
+void Turn_left(void){ // 左转
     last_turn_dir = 1;
     cflag_turn = 1;
     lock_Loc();
     direct--;
     changeTurnAgle(-90);
-    while (turn_in_progress)
-    {
-        buzzerTurnOn();
+    while (turn_in_progress){
+        delay_ms(1);
     }; // 等待转弯完成
-    buzzerTurnOff();
-    // Set_Pwm(-2000, 2000);
-    // delay_ms(300);
-    // level = read_infrared_levels();
-
-    // while (((level & 01110) == 0))
-    // {
-    //     level = read_infrared_levels();
-    // }
+    buzzerTurnAndClose();
     lock_Loc();
     // Set_Pwm(0, 0);
     cflag_turn = 0;
+    // start_move(40);
+    // gray_allow = 1;  //允许灰度读误差但不读路口
+    // gray_dir_allow = 0;
+    // delay_ms(500);
 }
 
-void Turn_back(void)
-{
+void Turn_back(void){
     last_turn_dir = 2;
     cflag_turn = 1;
-    delay_ms(10);
     lock_Loc();
     direct += 2;
     changeTurnAgle(180);
-    while (turn_in_progress)
-    {
-        buzzerTurnOn();
+    while (turn_in_progress){
+       delay_ms(1);
     }; // 等待转弯完成
-    buzzerTurnOff();
-
-    // level = read_infrared_levels();
-    // while (((level & 01110) == 0))
-    // {
-    //     level = read_infrared_levels();
-    // }
+    buzzerTurnAndClose();
     lock_Loc();
     // Set_Pwm(0, 0);
-    cflag_turn = 0;
     start_move(40);
-    gray_calc_error = 1;
+    gray_allow = 1;  //允许灰度读误差但不读路口
+    gray_dir_allow = 0;
+    delay_count_10ms = 0;
+    while(delay_count_10ms<200){
+        delay_ms(1);
+    };
+    cflag_turn = 0;
 }
 
-void Turn_up(void)
-{
+void Turn_up(void){
     last_turn_dir = 0;
     cflag_turn = 1;
     delay_ms(10);
-    // judge_dir();
-    // level = read_infrared_levels();
-    // delay_ms(150);
     cflag_turn = 0;
 }
 
-void start_point(void) // 初始化第一个节点
-{
+void start_point(void){
     point[0].x = 0;
     point[0].y = 0;
     point[0].qian = 1;
@@ -539,12 +490,8 @@ void start_point(void) // 初始化第一个节点
  * @param get_hou 是否可以向后
  * @return int 返回当前方向
  */
-int add_point(float get_y, float get_x, int get_left, int get_qian, int get_right, int get_hou)
-{
-
-    // printf("x:%.1f,y:%.1f",get_x,get_y);
+int add_point(float get_y, float get_x, int get_left, int get_qian, int get_right, int get_hou){
     direction_t = direct;
-    // judge_dir();
     if (go == &save)
     { // save是map用于初始化的结构体，所以当go==一个初始化节点，即未记录的节点时
         // printf("save\r\n");
@@ -834,9 +781,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                     {
                         if ((point[p_point].next_hou == tail) || (point[p_point].next_right == tail) || (point[p_point].next_qian == tail) || (point[p_point].next_left == tail))
                         {
-                            //							if(point[p_point].node_num == 1&&(p_point !=0) ){
-                            //									continue;//如果这个节点是一个死胡同节点，直接跳过
-                            //							}
+							// if(point[p_point].node_num == 1&&(p_point !=0) ){
+							// 		continue;//如果这个节点是一个死胡同节点，直接跳过
+							// }
                             if (point[p_point].no < nomin)
                             {
                                 nomin = point[p_point].no;
@@ -939,15 +886,15 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         }
         else
         {
-            //            last_locx = go->y;
-            //            last_locy = go->x;
+            // last_locx = go->y;
+            // last_locy = go->x;
             last_locx = go->x;
             last_locy = go->y;
             p_t--;
             last->no++;
             now = go;
-            //						now->x = get_x;
-            //						now->y =get_y;
+            // now->x = get_x;
+            // now->y =get_y;
             printf("delete\r\n");
             // 根据当前方向更新距离
             switch (direction_t % 4)
@@ -968,40 +915,40 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         }
     }
 
-    //		direction_t = get_min_node_view();
-    //			//printf("num:%d",now->node_num);
-    //		//printf("l:%d,q:%d,r:%d,h:%d\r\n",now->left_view,now->qian_view,now->right_view,now->hou_view);
-    //		switch(direction_t%4){								//根据此次行进的方向置位对应方向的访问值
-    //				case 0:{
-    //						go = now->next_hou;
-    //						now->hou_view = max_node_view();
-    //						last = now;
-    //						return direction_t;
-    //					break;
-    //				}
-    //				case 1:{
-    //						go=now->next_left;
-    //						now->left_view = max_node_view();
-    //						last = now;
-    //						return direction_t;
-    //					break;
-    //				}
-    //				case 2:{
-    //						go=now->next_qian;
-    //						now->qian_view = max_node_view();
-    //						last = now;
-    //						return direction_t;
-    //					break;
-    //				}
-    //				case 3:{
-    //						go = now->next_right;
-    //						now->right_view = max_node_view();
-    //						last = now;
-    //						return direction_t;
-    //						break;
-    //					}
-    //			}
-    //    return 777; // 报错
+    // direction_t = get_min_node_view();
+    // //printf("num:%d",now->node_num);
+    // //printf("l:%d,q:%d,r:%d,h:%d\r\n",now->left_view,now->qian_view,now->right_view,now->hou_view);
+    // switch(direction_t%4){								//根据此次行进的方向置位对应方向的访问值
+    //     case 0:{
+    //             go = now->next_hou;
+    //             now->hou_view = max_node_view();
+    //             last = now;
+    //             return direction_t;
+    //         break;
+    //     }
+    //     case 1:{
+    //             go=now->next_left;
+    //             now->left_view = max_node_view();
+    //             last = now;
+    //             return direction_t;
+    //         break;
+    //     }
+    //     case 2:{
+    //             go=now->next_qian;
+    //             now->qian_view = max_node_view();
+    //             last = now;
+    //             return direction_t;
+    //         break;
+    //     }
+    //     case 3:{
+    //             go = now->next_right;
+    //             now->right_view = max_node_view();
+    //             last = now;
+    //             return direction_t;
+    //             break;
+    //         }
+    // }
+    // return 777; // 报错
     // direct=judge_dir();
 
     if (judge_node(now) == 1)
@@ -1863,331 +1810,331 @@ int judge_node(struct map *node)
 //     //     ANO_Direct_distance(direct,blue_node_num);
 //     // }
 
-//     switch (STATE2)
-//     {
-//     case 0:
-//     { // 初始化
-//         Read_pin = 0;
-//         Read_pin_pre = 0;
-//         Key_count = 0;
-//         PARA_MOTO.TVL = 0;
-//         PARA_MOTO.TVR = 0;
-//         INTERRUPT_FLAG = 1;
-//         cflag_turn = 1;
-//         for (int i = 0; i < 50; i++)
-//         {
-//             node2_list[i] = 0;
-//         }
-//         STATE2++;
-//         break;
-//     }
+    // switch (STATE2)
+    // {
+    // case 0:
+    // { // 初始化
+    // Read_pin = 0;
+    // Read_pin_pre = 0;
+    // Key_count = 0;
+    // PARA_MOTO.TVL = 0;
+    // PARA_MOTO.TVR = 0;
+    // INTERRUPT_FLAG = 1;
+    // cflag_turn = 1;
+    // for (int i = 0; i < 50; i++)
+    // {
+    //     node2_list[i] = 0;
+    // }
+    // STATE2++;
+    // break;
+    // }
 
-//     case 1:
-//     { // 等待启动、转状态
-//         if (START_FLAG == 1)
-//         {
-//             STATE2++;
-//         }
-//         if (DL_GPIO_readPins(KEY_Group_PORT, KEY_Group_P21_PIN) > 0)
-//         {
-//             Read_pin = 0;
-//         }
-//         else
-//         {
-//             Read_pin = 1;
-//         }
-//         if (Read_pin == 1 && Read_pin_pre == 1) // 改成用宏开始，或Start_Command 可能要写一个校准，以是常量
-//         {
-//             Key_count += 1;
-//             if (Key_count == 3)
-//             {
-//                 START_FLAG = 1;
-//                 Key_count = 0;
-//                 Read_pin = 0;
-//                 Read_pin_pre = 0;
-//                 STATE2++;
-//                 break;
-//             }
-//         }
-//         Read_pin_pre = Read_pin;
-//         break;
-//     }
+    // case 1:
+    // { // 等待启动、转状态
+    // if (START_FLAG == 1)
+    // {
+    //     STATE2++;
+    // }
+    // if (DL_GPIO_readPins(KEY_Group_PORT, KEY_Group_P21_PIN) > 0)
+    // {
+    //     Read_pin = 0;
+    // }
+    // else
+    // {
+    //     Read_pin = 1;
+    // }
+    // if (Read_pin == 1 && Read_pin_pre == 1) // 改成用宏开始，或Start_Command 可能要写一个校准，以是常量
+    // {
+    //     Key_count += 1;
+    //     if (Key_count == 3)
+    //     {
+    //         START_FLAG = 1;
+    //         Key_count = 0;
+    //         Read_pin = 0;
+    //         Read_pin_pre = 0;
+    //         STATE2++;
+    //         break;
+    //     }
+    // }
+    // Read_pin_pre = Read_pin;
+    // break;
+    // }
 
-//     case 2:
-//     { // 收到开始开始行走状态
-//         if (START_FLAG == 1)
-//         {
-//             blue_node_num++;
-//             START_FLAG = 0;
-//             // yaw_adjust = yaw_int;  //记录初始角度
-//             // start_point();
-//             PARA_MOTO.TVL = 30;
-//             PARA_MOTO.TVR = 30;
-//             PID_init();
-//             cflag_turn = 0;
-//             Set_Target_Veclocity(PARA_MOTO.TVL, PARA_MOTO.TVR);
-//             // start_point();
-//             OLED_ShowString(0, 32, (uint8_t *)"start", 8, 1);
-//             OLED_Refresh();
-//             delay_ms(100);
-//             INTERRUPT_FLAG = 0;
-//             HC_SR04_ALLOW_FLAG = 0;
-//             delay_count = 0;
-//             STATE2++;
-//         }
-//         break;
-//     }
+    // case 2:
+    // { // 收到开始开始行走状态
+    // if (START_FLAG == 1)
+    // {
+    //     blue_node_num++;
+    //     START_FLAG = 0;
+    //     // yaw_adjust = yaw_int;  //记录初始角度
+    //     // start_point();
+    //     PARA_MOTO.TVL = 30;
+    //     PARA_MOTO.TVR = 30;
+    //     PID_init();
+    //     cflag_turn = 0;
+    //     Set_Target_Veclocity(PARA_MOTO.TVL, PARA_MOTO.TVR);
+    //     // start_point();
+    //     OLED_ShowString(0, 32, (uint8_t *)"start", 8, 1);
+    //     OLED_Refresh();
+    //     delay_ms(100);
+    //     INTERRUPT_FLAG = 0;
+    //     HC_SR04_ALLOW_FLAG = 0;
+    //     delay_count = 0;
+    //     STATE2++;
+    // }
+    // break;
+    // }
 
-//     case 3:
-//     { // 循环状态 1:检测障碍物 2：识别终点  3：识别到黑复合道路
-//         if (HCSR04_WORK_FLAG == 0)
-//         { // 避障器
-//             HCSR04_WORK_FLAG = 1;
-//             distance = Hcsr04GetLength();
-//             if (distance < 30)
-//             {
-//                 INTERRUPT_FLAG = 1;
-//                 distance = Hcsr04GetLength();
-//                 Set_Pwm(0, 0);
-//             }
-//             else
-//             {
-//                 INTERRUPT_FLAG = 0;
-//             }
-//         }
+    // case 3:
+    // { // 循环状态 1:检测障碍物 2：识别终点  3：识别到黑复合道路
+    // if (HCSR04_WORK_FLAG == 0)
+    // { // 避障器
+    //     HCSR04_WORK_FLAG = 1;
+    //     distance = Hcsr04GetLength();
+    //     if (distance < 30)
+    //     {
+    //         INTERRUPT_FLAG = 1;
+    //         distance = Hcsr04GetLength();
+    //         Set_Pwm(0, 0);
+    //     }
+    //     else
+    //     {
+    //         INTERRUPT_FLAG = 0;
+    //     }
+    // }
 
-//         if (nining_flag)
-//         {
-//             INTERRUPT_FLAG2 = 1;
-//             Set_Pwm(1000, 1000);
-//         }
+    // if (nining_flag)
+    // {
+    //     INTERRUPT_FLAG2 = 1;
+    //     Set_Pwm(1000, 1000);
+    // }
 
-//         if (rain_flag)
-//         {
-//             INTERRUPT_FLAG = 1;
-//             cflag_turn = 1;
-//             Set_Pwm(0, 0);
-//             while (rain_flag)
-//             {
-//                 buzzer_turn_on_delay(10);
-//                 delay_ms(100);
-//             }
-//             INTERRUPT_FLAG = 0;
-//             cflag_turn = 0;
-//         }
+    // if (rain_flag)
+    // {
+    //     INTERRUPT_FLAG = 1;
+    //     cflag_turn = 1;
+    //     Set_Pwm(0, 0);
+    //     while (rain_flag)
+    //     {
+    //         buzzer_turn_on_delay(10);
+    //         delay_ms(100);
+    //     }
+    //     INTERRUPT_FLAG = 0;
+    //     cflag_turn = 0;
+    // }
 
-//         if (ban_flag)
-//         {
-//             INTERRUPT_FLAG = 1;
-//             cflag_turn = 1;
-//             Set_Pwm(0, 0);
-//             while (ban_flag)
-//             {
-//                 buzzer_turn_on_delay(50);
-//                 delay_ms(100);
-//             }
-//             cflag_turn = 0;
-//             INTERRUPT_FLAG = 0;
-//         }
-//         // printf("%.2f\r\n",distance);
-//         // INFRARED_cal_error();
-//         if (NODE_DETECT_FLAG)
-//         {
-//             NODE_DETECT_FLAG = 0;
-//             buzzer_turn_on_delay(10);
-//             INTERRUPT_FLAG = 1;
-//             cflag_turn = 1; // 暂停巡黑边
-//             INFRARED_ERROR = 0;
-//             Pwm_diff_zero();
-//             delay_ms(100);  // 往前走走0.5s  //可能增加一个延时计数，定时器使用
-//             Locationhold(); // 更新方向与节点参数
-//             if (STOP_FLAG)
-//             {
-//                 STATE2++;
-//                 break;
-//             }
-//             int levels = read_infrared_levels();
-//             if (levels & 0b01110)
-//             {                     // 此时levels不为零，说明前方有路
-//                 TURN_UP_FLAG = 1; // 允许前进
-//                 buzzer_turn_on_delay(10);
-//                 STATE2++;
-//             }
-//             else
-//             {
-//                 TURN_UP_FLAG = 0;
-//                 STATE2++;
-//             }
-//         }
-//         break;
-//     }
+    // if (ban_flag)
+    // {
+    //     INTERRUPT_FLAG = 1;
+    //     cflag_turn = 1;
+    //     Set_Pwm(0, 0);
+    //     while (ban_flag)
+    //     {
+    //         buzzer_turn_on_delay(50);
+    //         delay_ms(100);
+    //     }
+    //     cflag_turn = 0;
+    //     INTERRUPT_FLAG = 0;
+    // }
+    // // printf("%.2f\r\n",distance);
+    // // INFRARED_cal_error();
+    // if (NODE_DETECT_FLAG)
+    // {
+    //     NODE_DETECT_FLAG = 0;
+    //     buzzer_turn_on_delay(10);
+    //     INTERRUPT_FLAG = 1;
+    //     cflag_turn = 1; // 暂停巡黑边
+    //     INFRARED_ERROR = 0;
+    //     Pwm_diff_zero();
+    //     delay_ms(100);  // 往前走走0.5s  //可能增加一个延时计数，定时器使用
+    //     Locationhold(); // 更新方向与节点参数
+    //     if (STOP_FLAG)
+    //     {
+    //         STATE2++;
+    //         break;
+    //     }
+    //     int levels = read_infrared_levels();
+    //     if (levels & 0b01110)
+    //     {                     // 此时levels不为零，说明前方有路
+    //         TURN_UP_FLAG = 1; // 允许前进
+    //         buzzer_turn_on_delay(10);
+    //         STATE2++;
+    //     }
+    //     else
+    //     {
+    //         TURN_UP_FLAG = 0;
+    //         STATE2++;
+    //     }
+    // }
+    // break;
+    // }
 
-//     case 4:
-//     {                         // 循环接收节点，记录并执行转弯
-//         NODE_DETECT_FLAG = 0; // 清除收节点标志
-//         set_corner_dir(direct+2);
-//         if (STOP_FLAG == 1)
-//         {
-//             find_exit2 = 1;  //找到终点标志
-//             INTERRUPT_FLAG = 1;
-//             stop_move();
-//             Set_Pwm(0, 0);   //这里不是设置pwm为0，而是设置速度为0
-//             STATE = 5;
-//             Clear_NODEflag(); // 清除左右方向
-//         }
-//         else if (TURN_BACK_FLAG)
-//         {
-//             TURN_BACK_FLAG = 0;
-//         }
-//         else if (BOTH_FLAG)
-//         {
-//             BOTH_FLAG =0;
-//             buzzer_turn_on_delay(10);
-//             set_corner_dir(direct + 1);
-//             set_corner_dir(direct - 1);
-//         }
-//         else if(TURN_LEFT_FLAG){
-//             TURN_LEFT_FLAG = 0;
-//             set_corner_dir(direct - 1);
-//         }
-//         else if (TURN_RIGHT_FLAG)
-//         {
-//             TURN_RIGHT_FLAG =0;
-//             set_corner_dir(direct+1);
-//         }
-//         else if(TURN_UP_FLAG){
-//             TURN_UP_FLAG = 0;
-//             set_corner_dir(direct);
-//         }
+    // case 4:
+    // {                         // 循环接收节点，记录并执行转弯
+    // NODE_DETECT_FLAG = 0; // 清除收节点标志
+    // set_corner_dir(direct+2);
+    // if (STOP_FLAG == 1)
+    // {
+    //     find_exit2 = 1;  //找到终点标志
+    //     INTERRUPT_FLAG = 1;
+    //     stop_move();
+    //     Set_Pwm(0, 0);   //这里不是设置pwm为0，而是设置速度为0
+    //     STATE = 5;
+    //     Clear_NODEflag(); // 清除左右方向
+    // }
+    // else if (TURN_BACK_FLAG)
+    // {
+    //     TURN_BACK_FLAG = 0;
+    // }
+    // else if (BOTH_FLAG)
+    // {
+    //     BOTH_FLAG =0;
+    //     buzzer_turn_on_delay(10);
+    //     set_corner_dir(direct + 1);
+    //     set_corner_dir(direct - 1);
+    // }
+    // else if(TURN_LEFT_FLAG){
+    //     TURN_LEFT_FLAG = 0;
+    //     set_corner_dir(direct - 1);
+    // }
+    // else if (TURN_RIGHT_FLAG)
+    // {
+    //     TURN_RIGHT_FLAG =0;
+    //     set_corner_dir(direct+1);
+    // }
+    // else if(TURN_UP_FLAG){
+    //     TURN_UP_FLAG = 0;
+    //     set_corner_dir(direct);
+    // }
 
-//         if (!END_FALG)
-//         {
-//             ad_direction = add_point(RE_LocY,RE_LocX,ab_fy,ab_x,ab_y,ab_fx); //记录节点，返回行驶方向（返回的是绝对方向）
-//         }else
-//         {
-//             ab_direction = gogogo(RE_LocY,RE_LocX,ab_fy,ab_x,ab_y,ab_fx);    //返程数组
-//         }
+    // if (!END_FALG)
+    // {
+    //     ad_direction = add_point(RE_LocY,RE_LocX,ab_fy,ab_x,ab_y,ab_fx); //记录节点，返回行驶方向（返回的是绝对方向）
+    // }else
+    // {
+    //     ab_direction = gogogo(RE_LocY,RE_LocX,ab_fy,ab_x,ab_y,ab_fx);    //返程数组
+    // }
 
-//         if (!END_FLAG)
-//         {
-//             switch (ab_direction)
-//             {
-//             switch (ab_direction){            //get_dir(ab_direction)
-//                 case turn_left:{ //向左 1
-//                         printf("turn_left\r\n");
-//                         cflag_left =1;
-//                         break;}
-//                 case turn_right:{ //向右  3
-//                         printf("turn_right\r\n");
-//                         cflag_right = 1;
-//                         break;}
-//                 case turn_back:{ //向后
-//                         printf("turn_back\r\n");
-//                         cflag_tn180 = 1;
-//                         break;}
-//                 case turn_up:{
-//                         printf("turn_up\r\n");
-//                         cflag_up=1;
-//                         break; }
-//                 default:
-//                         printf("other\r\n");
-//                         break;}
-//             }
-//         clear_corner_dir();
-//         }else{
-//             switch (get_dir(ab_direction))
-//             {
-//                 case turn_left:{ //向左 1
-//                         cflag_left =1;
-//                         break;}
-//                 case turn_right:{ //向右  3
-//                         printf("r\r\n");
-//                         cflag_right = 1;
-//                         break;}
-//                 case turn_back:{ //向后
-//                         cflag_tn180 = 1;
-//                         printf("b\r\n");
-//                         break;}
-//                 case turn_up:{
-//                         printf("u\r\n");
-//                         cflag_up=1;
-//                         break; }
+    // if (!END_FLAG)
+    // {
+    //     switch (ab_direction)
+    //     {
+    //     switch (ab_direction){            //get_dir(ab_direction)
+    //         case turn_left:{ //向左 1
+    //                 printf("turn_left\r\n");
+    //                 cflag_left =1;
+    //                 break;}
+    //         case turn_right:{ //向右  3
+    //                 printf("turn_right\r\n");
+    //                 cflag_right = 1;
+    //                 break;}
+    //         case turn_back:{ //向后
+    //                 printf("turn_back\r\n");
+    //                 cflag_tn180 = 1;
+    //                 break;}
+    //         case turn_up:{
+    //                 printf("turn_up\r\n");
+    //                 cflag_up=1;
+    //                 break; }
+    //         default:
+    //                 printf("other\r\n");
+    //                 break;}
+    //     }
+    // clear_corner_dir();
+    // }else{
+    //     switch (get_dir(ab_direction))
+    //     {
+    //         case turn_left:{ //向左 1
+    //                 cflag_left =1;
+    //                 break;}
+    //         case turn_right:{ //向右  3
+    //                 printf("r\r\n");
+    //                 cflag_right = 1;
+    //                 break;}
+    //         case turn_back:{ //向后
+    //                 cflag_tn180 = 1;
+    //                 printf("b\r\n");
+    //                 break;}
+    //         case turn_up:{
+    //                 printf("u\r\n");
+    //                 cflag_up=1;
+    //                 break; }
 
-//                 default:
-//                         break;}
-//             }
-//            if(STOP_FLAG==0){  //没有终点停止标识  考虑在到达终点时如何停下
-// 			//printf("turn");
-//                         //***执行右转操作***//  以yaw角度为目标  ,实际测试，按照现有的安装方式，右转角度变小
-//                 if(cflag_left == 1){
-//                         Turn_left();}
-//                 else if(cflag_right == 1){
-//                         Turn_right();}
-//                 //Locationhold();
-//                 else if(cflag_tn180 ==1){
-//                         Turn_back();}
-//                 else if(cflag_up == 1){
-//                         Turn_up();}
-//                 Clear_FLAG();
-//                 STATE --; //回到循迹状态
-// 		    }else{ //返回时还需要清除cflag——turn启用灰度
-// 					END_FLAG = 1;
-// 					STATE=5;
-// 					//printf("STOP");
-// 			}
-//             break;
-//         }
+    //         default:
+    //                 break;}
+    //     }
+    //     if(STOP_FLAG==0){  //没有终点停止标识  考虑在到达终点时如何停下
+    //     //printf("turn");
+    //                 //***执行右转操作***//  以yaw角度为目标  ,实际测试，按照现有的安装方式，右转角度变小
+    //         if(cflag_left == 1){
+    //                 Turn_left();}
+    //         else if(cflag_right == 1){
+    //                 Turn_right();}
+    //         //Locationhold();
+    //         else if(cflag_tn180 ==1){
+    //                 Turn_back();}
+    //         else if(cflag_up == 1){
+    //                 Turn_up();}
+    //         Clear_FLAG();
+    //         STATE --; //回到循迹状态
+    //     }else{ //返回时还需要清除cflag——turn启用灰度
+    //             END_FLAG = 1;
+    //             STATE=5;
+    //             //printf("STOP");
+    //     }
+    //     break;
+    // }
 
-// 	case 5:{  //到达终点置位相关标志
-// 		//printf("state5\r\n");
-// 		cflag_turn=1;  	//停止读灰度
-// 		lock_Loc();
-//         stop_move();
-// 		// Set_Pwm(0,0);
-// 		//find_exit2 = 1;
-// 		END_FLAG = 1;       //置为终点标志
-// 		//STOP_FLAG = 0;
-// 		buzzer_turn_on_delay(200);
-// 		START_FLAG = 0;
-// 		STATE++;
-// 		break;}
+    // case 5:{  //到达终点置位相关标志
+    // //printf("state5\r\n");
+    // cflag_turn=1;  	//停止读灰度
+    // lock_Loc();
+    // stop_move();
+    // // Set_Pwm(0,0);
+    // //find_exit2 = 1;
+    // END_FLAG = 1;       //置为终点标志
+    // //STOP_FLAG = 0;
+    // buzzer_turn_on_delay(200);
+    // START_FLAG = 0;
+    // STATE++;
+    // break;}
 
-// 	case 6:{  //到达终点后等待触发状态
-// 		//printf("state6\r\n");
-//         if(START_FLAG==1){
-//             START_FLAG = 0;
-//             STATE++ ;
-//         }
-//         if(k1.is_pull)
-//         {
-//             k1.is_pull=0;
-//             START_FLAG = 1;
-//         }
-//     break; }
+    // case 6:{  //到达终点后等待触发状态
+    // //printf("state6\r\n");
+    // if(START_FLAG==1){
+    //     START_FLAG = 0;
+    //     STATE++ ;
+    // }
+    // if(k1.is_pull)
+    // {
+    //     k1.is_pull=0;
+    //     START_FLAG = 1;
+    // }
+    // break; }
 
-// 	case 7:{  //从终点掉头 ,先不写
-// 		// 	//printf("state7\r\n");
-// 		// STOP_FLAG = 0;
-// 		// find_exit2 = 0;
-// 		// HC_SR04_ALLOW_FLAG = 0;
-// 		// //judge_dir();
-// 		// // NODE_DETECT_FLAG=1;//发现终点标志
-// 		// lock_Loc(); //由于在turn——back中也会调用，所以在此调用
-// 		// Turn_back();
-// 		// Set_Pwm(0,0);
-// 		// Clear_levels();
-// 		// INTERRUPT_FLAG = 0;
-// 		// PID_init();
-// 		// cflag_turn = 0;
-// 		// //judge_dir();
-// 		// STATE = 3;
-// 		// break;
-// 		}
+    // case 7:{  //从终点掉头 ,先不写
+    // // 	//printf("state7\r\n");
+    // // STOP_FLAG = 0;
+    // // find_exit2 = 0;
+    // // HC_SR04_ALLOW_FLAG = 0;
+    // // //judge_dir();
+    // // // NODE_DETECT_FLAG=1;//发现终点标志
+    // // lock_Loc(); //由于在turn——back中也会调用，所以在此调用
+    // // Turn_back();
+    // // Set_Pwm(0,0);
+    // // Clear_levels();
+    // // INTERRUPT_FLAG = 0;
+    // // PID_init();
+    // // cflag_turn = 0;
+    // // //judge_dir();
+    // // STATE = 3;
+    // // break;
+    // }
 
-// 	case 8:{  //从终点出发返回巡线
-// 		break;}
+    // case 8:{  //从终点出发返回巡线
+    // break;}
 
-// 	default:
-// 		break;
-//     }
-// }
+    // default:
+    // break;
+    // }
+    // }

@@ -345,7 +345,7 @@
           "cpuName": "STM32F103C8 (allow opt. bytes)"
         },
         "proType": 1,
-        "speed": 8000,
+        "speed": 10000,
         "otherCmds": ""
       },
       "uploadConfigMap": {},

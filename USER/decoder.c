@@ -6,6 +6,7 @@ u8 counter_pull=0;
 int CALC_LEFT = 0, CALC_RIGHT = 0; //里程计
 u8 oledUpdateFlag=0;
 u8 oledCount =0 ;
+u32 delay_count_10ms=0;
 //定时器溢出模式下中断
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -16,6 +17,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if(htim->Instance == TIM1)  //10ms定时中断
     {
 		oledCount++;
+        delay_count_10ms++;
 		if (oledCount>=50)
 		{
 			oledCount = 0;

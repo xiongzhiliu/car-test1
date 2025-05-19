@@ -14068,3 +14068,485 @@ These source files will be recompiled
 [2025-05-19 14:11:06]	[done]
 	build successfully !
 
+[2025-05-19 16:33:15]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:33:15]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:446:21: error: non-object type 'int (bool)' is not assignable
+  446 |     gray_calc_error = 1;
+      |     ~~~~~~~~~~~~~~~ ^
+1 error generated.
+
+[2025-05-19 16:34:56]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 16:34:58]	[done]
+	build successfully !
+
+[2025-05-19 16:35:01]	[done]
+	build successfully !
+
+[2025-05-19 16:40:12]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:40:13]	[done]
+	build successfully !
+
+[2025-05-19 16:41:46]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:41:47]	[done]
+	build successfully !
+
+[2025-05-19 16:42:56]	[done]
+	build successfully !
+
+[2025-05-19 16:46:32]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:46:33]	[done]
+	build successfully !
+
+[2025-05-19 16:47:03]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:47:04]	[done]
+	build successfully !
+
+[2025-05-19 16:48:11]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:48:13]	[done]
+	build successfully !
+
+[2025-05-19 16:49:16]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:49:17]	[done]
+	build successfully !
+
+[2025-05-19 16:50:37]	[done]
+	build successfully !
+
+[2025-05-19 16:58:24]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\controlApid.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 16:58:25]	[done]
+	build successfully !
+
+[2025-05-19 17:00:22]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:00:23]	[done]
+	build successfully !
+
+[2025-05-19 17:06:31]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 17:06:31]	compilation failed at : "e:\Keil\Project\car-test1\USER\gray.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/gray.o -MMD ./../USER/gray.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/gray.c:165:53: error: indirection requires pointer operand ('int' invalid)
+  165 |     }else if ((gray_value & 0b01110)&&!(gray_value &*0b10001))
+      |                                                     ^~~~~~~~
+./../USER/gray.c:171:7: error: 'break' statement not in loop or switch statement
+  171 |       break;
+      |       ^
+2 errors generated.
+
+[2025-05-19 17:06:52]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': object (.o) file not exist
+
+[2025-05-19 17:06:52]	compilation failed at : "e:\Keil\Project\car-test1\USER\gray.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/gray.o -MMD ./../USER/gray.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/gray.c:171:7: error: use of undeclared identifier 'NOP'
+  171 |       NOP;
+      |       ^
+1 error generated.
+
+[2025-05-19 17:07:30]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': object (.o) file not exist
+
+[2025-05-19 17:07:30]	compilation failed at : "e:\Keil\Project\car-test1\USER\gray.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/gray.o -MMD ./../USER/gray.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/gray.c:171:7: error: use of undeclared identifier 'nop'
+  171 |       nop;
+      |       ^
+1 error generated.
+
+[2025-05-19 17:08:36]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': object (.o) file not exist
+
+[2025-05-19 17:08:37]	[done]
+	build successfully !
+
+[2025-05-19 17:09:21]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 17:09:22]	[done]
+	build successfully !
+
+[2025-05-19 17:11:37]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\controlApid.c': source file has been changed.
+
+[2025-05-19 17:11:38]	[done]
+	build successfully !
+
+[2025-05-19 17:17:12]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:17:13]	[done]
+	build successfully !
+
+[2025-05-19 17:20:56]	[info] incremental build: 3 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:20:58]	[done]
+	build successfully !
+
+[2025-05-19 17:22:06]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+
+[2025-05-19 17:22:07]	[done]
+	build successfully !
+
+[2025-05-19 17:24:56]	[done]
+	build successfully !
+
+[2025-05-19 17:25:46]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:25:47]	[done]
+	build successfully !
+
+[2025-05-19 17:28:45]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\buzzer.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:28:46]	[done]
+	build successfully !
+
+[2025-05-19 17:29:18]	[info] incremental build: 18 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\buzzer.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\controlApid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:29:20]	[done]
+	build successfully !
+
+[2025-05-19 17:30:07]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:30:08]	[done]
+	build successfully !
+
+[2025-05-19 17:31:12]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:31:13]	[done]
+	build successfully !
+
+[2025-05-19 17:33:02]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:33:03]	[done]
+	build successfully !
+
+[2025-05-19 17:35:10]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:35:11]	[done]
+	build successfully !
+
+[2025-05-19 17:38:22]	[info] incremental build: 18 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\buzzer.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\controlApid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\buzzer.h' has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:38:24]	[done]
+	build successfully !
+
+[2025-05-19 17:41:16]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 17:41:18]	[done]
+	build successfully !
+
+[2025-05-19 19:44:18]	[done]
+	build successfully !
+
+[2025-05-19 19:47:17]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 19:47:19]	[done]
+	build successfully !
+
+[2025-05-19 19:47:22]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 19:47:24]	[done]
+	build successfully !
+
+[2025-05-19 19:50:57]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 19:50:59]	[done]
+	build successfully !
+
+[2025-05-19 19:52:04]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 19:52:06]	[done]
+	build successfully !
+
+[2025-05-19 19:53:41]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 19:53:42]	[done]
+	build successfully !
+
+[2025-05-19 19:56:59]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\delay.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 19:57:00]	[done]
+	build successfully !
+
+[2025-05-19 20:00:34]	[info] incremental build: 18 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\buzzer.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\controlApid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 20:00:35]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:50:5: error: redefinition of 'delay_count' with a different type: 'int' vs 'uint32_t' (aka 'unsigned int')
+   50 | int delay_count;               // 识别路口后延时计数
+      |     ^
+../USER/inc\decoder.h:31:12: note: previous declaration is here
+   31 | extern u32 delay_count;
+      |            ^
+1 error generated.
+
+[2025-05-19 20:00:40]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:00:40]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:50:5: error: redefinition of 'delay_count' with a different type: 'int' vs 'uint32_t' (aka 'unsigned int')
+   50 | int delay_count;               // 识别路口后延时计数
+      |     ^
+../USER/inc\decoder.h:31:12: note: previous declaration is here
+   31 | extern u32 delay_count;
+      |            ^
+1 error generated.
+
+[2025-05-19 20:01:11]	[info] incremental build: 18 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\buzzer.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\controlApid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:01:13]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:50:5: error: redefinition of 'delay_count' with a different type: 'int' vs 'uint32_t' (aka 'unsigned int')
+   50 | int delay_count;               // 识别路口后延时计数
+      |     ^
+../USER/inc\decoder.h:31:12: note: previous declaration is here
+   31 | extern u32 delay_count;
+      |            ^
+1 error generated.
+
+[2025-05-19 20:01:57]	[info] incremental build: 18 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\buzzer.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\controlApid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\decoder.h' has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:01:59]	[done]
+	build successfully !
+
+[2025-05-19 20:02:50]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 20:02:51]	[done]
+	build successfully !
+

@@ -41,7 +41,6 @@ void delay_ms(volatile u16 nms)
 {
     u32 temp;
     if (nms == 0) return; // 避免 LOAD 值为 0
-
     while (nms) {
         if ((u32)nms * fac_ms > 0xFFFFFF) {
             SysTick->LOAD = 0xFFFFFF; // 最大加载值

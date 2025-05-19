@@ -7,7 +7,7 @@ float Movement=0;
 int encoder_speed;
 u8 Qina_flag=0,Hou_flag=0;
 int Integral=0; //全局变量速度PI控制的积分值,积分值可以用于控制速度
-int xiuzheng=10;  //电机位置和灰度位置的差值
+int xiuzheng=1;  //电机位置和灰度位置的差值
 int LocX=0,LocY=0,last_locx=0,last_locy=0,RE_LocX=0,RE_LocY=0;      //绝对坐标 起始方向为绝对坐标x正向；暂存的绝对坐标
 u8 ab_x=0,ab_fx=0,ab_y=0,ab_fy=0;				//绝对方向 起始方向为绝对方向x正向
 u8 direct=130; 									//全局绝对默认方向为2（模4运算）
@@ -510,18 +510,15 @@ void set_corner_dir(int dir){
 		dir +=4;} //保证dir是正数 
 	switch(dir%4)
 	{
-		case 0:
-      ab_fx=1;  //绝对x方向可行
-      break;		
-		case 1:	
-		  ab_fy=1;
-      break;
-		case 2:
-		  ab_x=1;  //x反方向
-      break;
-		case 3:
-		  ab_y=1;
-      break;
+		case 0:ab_fx=1;  //绝对x方向可行
+      		break;		
+		case 1:	ab_fy=1;
+			break;
+		case 2:ab_x=1;  //x反方向
+      		break;
+		case 3:ab_y=1;
+      		break;
+		default:break;
 	}
 }
 

@@ -2,6 +2,7 @@
 #define TASK_H
 
 #include "headfiles.h"
+#include "decoder.h"
 
 #define turnLeft 1
 #define turnRight 3

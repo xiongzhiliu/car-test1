@@ -28,7 +28,7 @@ struct key
 extern struct key k1;
 extern struct moto_decoer left,right;//里程计
 extern u8 oledUpdateFlag;
-
+extern u32 delay_count_10ms;
 int Read_Velocity_L();
 int Read_Velocity_R();
 void lock_Loc(void);
