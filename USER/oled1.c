@@ -1,6 +1,6 @@
-#include "oled.h"
+#include "oled1.h"
 #include "delay.h"
-#include "oledfont.h"
+#include "oledfont1.h"
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"

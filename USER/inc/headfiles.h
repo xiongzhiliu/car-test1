@@ -32,7 +32,10 @@
 #include "inv_mpu_dmp_motion_driver.h"
 #include "IOI2C.h"
 
-#include "oled.h"
+// #include "oled1.h"
+#include "../BSP/OLED/OLED.h"
+
+#include "delay.h"
 #include "myadc.h"
 #include "LED.h"
 #include "moto.h"
@@ -72,7 +75,7 @@ extern u8 moto_lock_flag;
 extern u8 Qina_flag, Hou_flag,Flag_sudu; // Flags for forward and backward movement, and speed control(1 is high speed,2 is low speed)
 extern u8 turn_mode;   // Flag for turn control
 extern int I0ntegral;  // Integral value for speed control,use to clear the integral value void overflow and restart the speed control
-extern float Movement,setAngleForward; // Movement speed value for speed control ，angle when car turn forward used in balance
+extern float Movement,setAngleForward; // speed value for speed control ，angle when car turn forward used in balance
 
 extern int ab_direction;
 

@@ -20,15 +20,17 @@ void MOTO_init()
  */
 void Moto_SetPwm(int lf,int rg)
 {   
+    // 电机锁定检查
     if (moto_lock_flag==1)
     {
         rg=0;
         lf=0;
     }
       
-    if(ABS_int(lf)>=7000||ABS_int(rg)>=7000){ //电机保护
+    // 电机过流保护
+    if(ABS_int(lf)>=7190||ABS_int(rg)>=7190){ 
         moto_flow_times++;
-        if (moto_flow_times >=20)
+        if (moto_flow_times >=50)
         {
             moto_lock_flag = 1;
             rg = 0;
@@ -38,22 +40,21 @@ void Moto_SetPwm(int lf,int rg)
     {
         moto_flow_times = 0;
     }
-//	printf("%d,%d\r\n",lf,rg);
-//	lf = lf*100 /9999 ;
-//	rg = rg*100 /9999 ;
+
+    // 右电机PWM控制
     if(rg>0)
     {
         rg+= moto_dead_zone;
-        HAL_GPIO_WritePin(moto1_1_GPIO_Port,moto1_1_Pin,GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(moto1_2_GPIO_Port,moto1_2_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(moto1_1_GPIO_Port,moto1_1_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(moto1_2_GPIO_Port,moto1_2_Pin,GPIO_PIN_RESET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_3,rg);
 				
     }else if (rg<0)
     {
         rg = (- rg);
         rg+= moto_dead_zone;
-        HAL_GPIO_WritePin(moto1_1_GPIO_Port,moto1_1_Pin,GPIO_PIN_SET);
-        HAL_GPIO_WritePin(moto1_2_GPIO_Port,moto1_2_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(moto1_1_GPIO_Port,moto1_1_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(moto1_2_GPIO_Port,moto1_2_Pin,GPIO_PIN_SET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_3,rg);
     }
     else
@@ -63,18 +64,19 @@ void Moto_SetPwm(int lf,int rg)
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_3,0);
     }
 
+    // 左电机PWM控制
     if(lf>0)
     {
         lf+= moto_dead_zone;
-        HAL_GPIO_WritePin(moto2_1_GPIO_Port,moto2_1_Pin,GPIO_PIN_SET);
-        HAL_GPIO_WritePin(moto2_2_GPIO_Port,moto2_2_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(moto2_1_GPIO_Port,moto2_1_Pin,GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(moto2_2_GPIO_Port,moto2_2_Pin,GPIO_PIN_SET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_4,lf);
     }else if (lf<0)
     {
         lf = (- lf);
         lf+= moto_dead_zone;
-        HAL_GPIO_WritePin(moto2_1_GPIO_Port,moto2_1_Pin,GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(moto2_2_GPIO_Port,moto2_2_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(moto2_1_GPIO_Port,moto2_1_Pin,GPIO_PIN_SET);
+        HAL_GPIO_WritePin(moto2_2_GPIO_Port,moto2_2_Pin,GPIO_PIN_RESET);
         __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_4,lf);
     }
     else

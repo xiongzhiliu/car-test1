@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../USER;../USER/inc;../BSP/Bmpu6050;../BSP</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../USER;../USER/inc;../BSP/Bmpu6050;..\BSP\OLED</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1071,16 +1071,6 @@
               </FileOption>
             </File>
             <File>
-              <FileName>oled.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\oled.c</FilePath>
-            </File>
-            <File>
-              <FileName>pid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\pid.c</FilePath>
-            </File>
-            <File>
               <FileName>printf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\printf.c</FilePath>
@@ -1115,6 +1105,21 @@
               <FileType>5</FileType>
               <FilePath>..\USER\inc\proc.h</FilePath>
             </File>
+            <File>
+              <FileName>controlApid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\controlApid.c</FilePath>
+            </File>
+            <File>
+              <FileName>task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\task.c</FilePath>
+            </File>
+            <File>
+              <FileName>buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\buzzer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1139,6 +1144,26 @@
               <FileName>MPU6050.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\Bmpu6050\MPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\OLED\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\OLED\OLED.h</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\OLED\OLED_Data.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BSP\OLED\OLED_Data.h</FilePath>
             </File>
           </Files>
         </Group>

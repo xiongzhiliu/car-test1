@@ -1,7 +1,8 @@
 #include "interrupt.h"
 #include "headfiles.h"
 #include "string.h"
-bool gray_flag = 0;
+bool gray_dir_allow = 0,gray_allow=1;    //灰度检查路口禁止标志；中断中灰度读取允许标志
+
 u8 INT_FLAG=0;
 u8 turn_allow_flag=0;
 u8 turn_mode = 1;  //0:不启动，1：直接叠加，2：编码器模式
@@ -18,14 +19,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
         if(INT_FLAG) //10ms执行控制一次
         {
             Get_Angle(2);//卡尔曼滤波
-            if(ABS_float(angle)>20) //判断是否需要转向
-            {
-                moto_lock_flag = 1;
-            }
-            if(!interrupt_allow_flag)  //判断按键是否按下启动
-							return;
+            // if(ABS_float(angle)>40) //判断是否需要转向
+            // {
+            //     moto_lock_flag = 1;
+            // }
             vl = Read_Velocity_L();
             vr = Read_Velocity_R();
+            // printf("vl:%d,vr:%d\r\n",vl,vr);
+            if(!interrupt_allow_flag)  //判断按键是否按下启动
+							return;
+           
             Location();   //更新坐标
             // int velocity_out = velocitydir2(vl, vr);
             // Balance_Pwm = balance(Angle_Balance + velocity_out, Gyro_Balance);
@@ -36,7 +39,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 						// //printf("vl:%d,vr:%d\r\n",vl,vr);
             Balance_Pwm =balance(Angle_Balance,Gyro_Balance);  
             Velocity_Pwm = velocitydir2(vl,vr);		//===平衡PID控制	
-            error = gray_calc_error(gray_flag);  
+            if(gray_allow)
+            {
+              error = gray_calc_error(gray_dir_allow);  
+            }else{
+              error = 0;
+            }
             Turn_Pwm = turnWithStage(error,Gyro_Z);
 
             moto_pwm_l = Balance_Pwm + Velocity_Pwm - Turn_Pwm;

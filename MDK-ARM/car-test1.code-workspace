@@ -9,10 +9,11 @@
     ],
     "settings": {
         "files.associations": {
+            "decoder.h": "c",
+            "task.h": "c",
             "headfiles.h": "c",
-            "proc.h": "c",
-            "buzzer.h": "c",
-            "interrupt.h": "c"
+            "oled_data.h": "c",
+            "oled.h": "c"
         }
     },
     "extensions": {}

@@ -143,12 +143,6 @@
             "path": "../USER/myadc.c"
           },
           {
-            "path": "../USER/MYI2C.c"
-          },
-          {
-            "path": "../USER/oled.c"
-          },
-          {
             "path": "../USER/printf.c"
           },
           {
@@ -167,10 +161,10 @@
             "path": "../USER/proc.c"
           },
           {
-            "path": "../USER/task.c"
+            "path": "../USER/controlApid.c"
           },
           {
-            "path": "../USER/controlApid.c"
+            "path": "../USER/task.c"
           },
           {
             "path": "../USER/buzzer.c"
@@ -192,6 +186,18 @@
           },
           {
             "path": "../BSP/Bmpu6050/MPU6050.c"
+          },
+          {
+            "path": "../BSP/OLED/OLED.c"
+          },
+          {
+            "path": "../BSP/OLED/OLED_Data.c"
+          },
+          {
+            "path": "../BSP/OLED/OLED_Data.h"
+          },
+          {
+            "path": "../BSP/OLED/OLED.h"
           }
         ],
         "folders": []
@@ -212,7 +218,9 @@
   "targets": {
     "car-test1": {
       "excludeList": [
-        "<virtual_root>/USER/MYI2C.c"
+        "<virtual_root>/USER/MYI2C.c",
+        "<virtual_root>/USER/oled.c",
+        "<virtual_root>/USER/oled1.c"
       ],
       "toolchain": "AC6",
       "compileConfig": {

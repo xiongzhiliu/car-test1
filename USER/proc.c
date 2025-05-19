@@ -2,6 +2,7 @@
 
 u8 interrupt_allow_flag = 0;
 u8 start_flag = 0;
+u8 toggle_flag = 0;
 
 void rx_proc(void)
 {
@@ -51,7 +52,7 @@ void rx1_proc(void)
     if(rx_type==0) //balance PID
     {
       pid_init(&bal,kp,0,kd_ki);
-      pid_init(&velo,velo_kp,velo_ki,velo_kd);
+      //pid_init(&velo,velo_kp,velo_ki,velo_kd);
       printf("bal initialized with kp: %.4f, ki: %.4f, zz: %.2f\r\n", kp, kd_ki, ZhongZhi);
     }
     else if(rx_type==1) //velocity PID
@@ -97,88 +98,32 @@ void rx1_proc(void)
 
 void key_proc(void)
 {
-  if(k1.is_pull && !interrupt_allow_flag && !start_flag)
-  {
-    k1.is_pull =0;
-    interrupt_allow_flag = 1;
-  }else if(k1.is_pull && interrupt_allow_flag && !start_flag)
-  {
-    k1.is_pull=0;
-    start_flag = 1;
-  }
-
-  if(k1.is_pull_again)
-  {
-    k1.is_pull_again = 0;
-    if(Qina_flag)
+    if(k1.is_pull)
     {
-      Qina_flag = 0;
-      Movement = 0;   //速度清零
-      setAngleForward = 0;
-      turn_mode = 0;  //需要单独设置一个可以允许转向的情况
-      printf("Qina_flag cleared\r\n");
+        k1.is_pull = 0; // 清除按键标志
+        
+        if(k1.press_type == KEY_SHORT_PRESS)
+        {
+            // 处理短按操作
+//            printf("处理短按\r\n");
+            // 短按触发平衡或移动
+            if(!interrupt_allow_flag && !start_flag)
+            {
+                interrupt_allow_flag = 1;
+            }
+            else if(interrupt_allow_flag && !start_flag)
+            {
+                start_flag = 1;
+                //  changeTurnAgle(90);
+            }
+        }
+        else if(k1.press_type == KEY_LONG_PRESS)
+        {
+            // 处理长按操作
+//            printf("处理长按\r\n");
+            // 长按触发停止
+            // interrupt_allow_flag = 0;
+            // start_flag = 0;
+        }
     }
-    else
-    {
-      Qina_flag = 1;  
-     // Movement = 30;  //速度设置
-     // setAngleForward = 5; 
-      //turn_mode = 1;
-      printf("Qina_flag set\r\n");
-      changeTurnAgle(180);
-    }
-  }
-}
-
-
-
-/**
- * @brief  检测平衡小车是否被拿起
- * @param  Acceleration_Z 当前 Z 轴加速度
- * @param  Angle 当前小车的倾角
- * @param  encoder_left 左轮编码器值
- * @param  encoder_right 右轮编码器值
- * @retval 1 表示小车被拿起，0 表示未被拿起
- */
-int Detect_Pick_Up(float Acceleration_Z, float Angle, int encoder_left, int encoder_right) {
-  static u16 flag = 0, count_static = 0, count_angle = 0, count_speed = 0;
-
-  // 第一步：检测小车是否接近静止
-  if (flag == 0) {
-      if (ABS_int(encoder_left) + ABS_int(encoder_right) < 30) { // 静止条件
-          count_static++;
-      } else {
-          count_static = 0;
-      }
-      if (count_static > 10) { // 静止超过 100ms
-          flag = 1;
-          count_static = 0;
-      }
-  }
-
-  // 第二步：检测小车是否在接近水平的位置
-  if (flag == 1) {
-      if (++count_angle > 200) { // 超时 2000ms，重置状态
-          count_angle = 0;
-          flag = 0;
-      }
-      if (Acceleration_Z > 26000 && Angle > (-20 + ZhongZhi) && Angle < (20 + ZhongZhi)) { // 水平条件
-          flag = 2;
-          count_angle = 0;
-      }
-  }
-
-  // 第三步：检测小车轮胎是否达到最大转速
-  if (flag == 2) {
-      if (++count_speed > 100) { // 超时 1000ms，重置状态
-          count_speed = 0;
-          flag = 0;
-      }
-      if (ABS_int(encoder_left + encoder_right) > 135) { // 转速条件
-          flag = 0;
-          return 1; // 检测到小车被拿起
-      }
-  }
-
-  return 0; // 未检测到小车被拿起
 }

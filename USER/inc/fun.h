@@ -6,5 +6,5 @@
 int ABS_int(int t);
 float ABS_float(float t);
 int Threshold_int(int num,int th);
-
+void Test_Balance_Car(void);
 #endif 

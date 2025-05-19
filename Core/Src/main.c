@@ -28,6 +28,7 @@
 #include "mpu6050.h"
 #include "delay.h"
 #include "headfiles.h"
+#include "task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,7 +49,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-float ZhongZhi = -4.5;
+float ZhongZhi = -5.5; //机械中值 
 float pitch,roll,yaw; 		    
 short aacx,aacy,aacz;				
 short gyrox,gyroy,gyroz;		
@@ -58,8 +59,12 @@ float Acceleration_Z,Acceleration_X;
 int moto_pwm_l,moto_pwm_r;
 extern pids velo;
 float setAngleForward = 0; //全局设置前进时的目标角度 
-float bal_kp=1000,bal_ki=0,bal_kd=1.6;
-float velo_kp=100,velo_ki=0.4,velo_kd=0;
+//float Balance_Kp=300,Balance_Kd=1.0,Velocity_Kp=120,Velocity_Ki=0.4;//PID参数
+float bal_kp=1000,bal_ki=0,bal_kd=2.05;
+// float bal_kp=300,bal_ki=0,bal_kd=1.0;
+float velo_kp=130,velo_ki=0.7,velo_kd=0;
+// float bal_kp=800,bal_ki=0,bal_kd=1.6;
+// float velo_kp=100,velo_ki=0.35,velo_kd=0;
 float turn_kp=160,turn_ki=0,turn_kd=0.4;
 /* USER CODE END PV */
 
@@ -80,7 +85,7 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
-  OLED_ShowString(1,1,(u8 *)"Hello World",12,0);
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -111,9 +116,17 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+	
+  // __HAL_RCC_AFIO_CLK_ENABLE();  // 使能 AFIO 外设时钟
+  __HAL_AFIO_REMAP_SWJ_NOJTAG();
+  // __HAL_RCC_AFIO_CLK_DISABLE();  // 禁用AFIO外设时钟
+  //     // 恢复JTAG+SWD (完全恢复默认配置)
+  // MODIFY_REG(AFIO->MAPR, AFIO_MAPR_SWJ_CFG, 0x00000000);
+
 	delay_init(72);
 	HAL_NVIC_DisableIRQ(EXTI0_IRQn);
   OLED_Init(); 
+
   HAL_TIM_PWM_Init(&htim4);
 	HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_4);
@@ -127,6 +140,9 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim1);
 	encoder_speed=0;  //
 
+  // OLED_ShowString(1,1,"World Hello",OLED_8X16);
+  OLED_Update();
+
 	// pid_init(&bal,390,0,2.5);  
 	// pid_init(&velo,200,0.66,0);
 
@@ -138,30 +154,57 @@ int main(void)
 	MPU6050_initialize();           //=====MPU6050
   delay_ms(50);
 	DMP_Init();                     //=====DMP
-
+ 
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
 	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 	HAL_UART_Receive_IT(&huart2,&rxdat,1);
   HAL_UART_Receive_IT(&huart1,&rxdat_1,1);
-	printf("start\r\n");
+  printf("start\r\n");
 	memset(temp_rx,0,30);
   memset(temp_rx_1,0,30);
-
   //自定义初始化
-  turnInit(10); //设置转弯速度对应的误差为10
+  turnInit(23); 
 
-//		HAL_GPIO_WritePin(buzzer_GPIO_Port,buzzer_Pin,GPIO_PIN_SET); //
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    if (oledUpdateFlag == 1)
+    {
+      OLED_Clear();
+      oledUpdateFlag = 0;
+      printf("state:%d\r\n",STATE);
+      OLED_ShowString(1,1,"ST:",OLED_8X16);
+      OLED_ShowNum(17,1,STATE,1,OLED_8X16);
+      OLED_ShowString(1, 17, "JCT:", OLED_8X16);
+      OLED_ShowString(33, 17, (uint8_t*)junctionNames[lastJunctionType], OLED_8X16);
+      OLED_ShowString(1, 33, "DIR:", OLED_8X16);
+      const char* dir_names[] = {"F", "L", "B", "R"};
+      if(last_turn_dir >= 0 && last_turn_dir <= 3)
+          OLED_ShowString(33, 33, (uint8_t*)dir_names[last_turn_dir], OLED_8X16);
+      
+      // 显示上一个路口可转向方向
+      OLED_ShowString(1, 49, "WAY:", OLED_8X16);
+      uint8_t x = 33;
+      for(int i=0; i<4; i++) {
+          if(last_junction_dirs & (1<<i)) {
+              OLED_ShowString(x, 49, (uint8_t*)dir_names[i], OLED_8X16);
+              x += 10;
+          }
+      }
+    
+      OLED_Update();
+    }
+    
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-		task1();
+	  task1();
     rx_proc();
     key_proc();
+    // show_gray_value();
   }
   /* USER CODE END 3 */
 }

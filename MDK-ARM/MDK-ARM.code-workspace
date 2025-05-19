@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "headfiles.h": "c",
+            "decoder.h": "c",
+            "pid.h": "c"
+        },
+        "files.candidateGuessEncodings": [
+            "gb2312"
+        ]
+    },
+    "extensions": {}
+}

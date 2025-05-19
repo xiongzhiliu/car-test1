@@ -1,5 +1,5 @@
-#ifndef __OLED_H
-#define __OLED_H			  	 
+#ifndef __OLED1_H
+#define __OLED1_H			  	 
 #include "headfiles.h"
 #define u8 uint8_t
 #define u32 uint32_t

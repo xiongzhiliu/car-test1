@@ -9,10 +9,11 @@ u8 Qina_flag=0,Hou_flag=0;
 int Integral=0; //全局变量速度PI控制的积分值,积分值可以用于控制速度
 int xiuzheng=10;  //电机位置和灰度位置的差值
 int LocX=0,LocY=0,last_locx=0,last_locy=0,RE_LocX=0,RE_LocY=0;      //绝对坐标 起始方向为绝对坐标x正向；暂存的绝对坐标
-u8 ab_x=0,ab_fx=0,ab_y=0,ab_fy=0;					//绝对方向 起始方向为绝对方向x正向
-u8 direct=130; 																	//默认方向为1，与陀螺仪绑定
+u8 ab_x=0,ab_fx=0,ab_y=0,ab_fy=0;				//绝对方向 起始方向为绝对方向x正向
+u8 direct=130; 									//全局绝对默认方向为2（模4运算）
 int Encoder_Left,Encoder_Right;                 //左右编码器的脉冲计数（会一直清零） 在PID里面调用计算得出
 int Encoder_Sum=0,Encoder_Sum2=0;              	//左右编码器的累计  在Decoder里面累加
+u8 turn_in_progress = 0; //正在转向标志
 /**
  * @brief   PID初始化函数
  * @param1  pid结构体
@@ -53,12 +54,18 @@ void clear_pid(pids *pid)
  * @param2 
  * @retval    
  */ 
+/**
+ * @brief 直立环PD控制函数
+ * @param Angle 当前角度值
+ * @param Gyro 陀螺仪角速度值
+ * @return 平衡控制PWM值
+ * 1. 如果当前角度与机械中值的差值大于1度:
+ *    - 计算误差 = 当前角度 - 机械中值 + 前倾角度补偿
+ * 2. 否则误差就等于前倾角度补偿值
+ */
 int balance(float Angle,float Gyro){  
 	 int balance;
-	 if(ABS_float(Angle-ZhongZhi)>1)
-		 bal.error=Angle-ZhongZhi + setAngleForward;                       //===求平衡的角度差值 和机械中值的差
-	 else
-	 	bal.error= setAngleForward;
+	 bal.error=Angle-ZhongZhi + setAngleForward;                       //===求平衡的角度差值 和机械中值的差
 	 balance=bal.Kp*bal.error+Gyro*bal.Kd;   //===计算平衡控制的电机PWM  PD控制   kp是P系数 kd是D系数 
 	 return (int)balance;
 }
@@ -163,50 +170,83 @@ int turni, turnj;  			//转向阶段计数器
 int turnislow, turnjslow;  //慢速模式下的计数器
 int Tmax, rerror, lerror;   //转向时对应的固定偏移量
 int Tmaxslow, rerrorslow, lerrorslow;  //慢速模式下的最大值和偏移量
+uint8_t stable_count = 0;
 //转弯角度通过时间来测试 即Tmax和Tmaxslow
 void turnInit(int vel)  //vel确定了转弯的速度，不同的转弯速度转到对应角度的时间不同
 {
-	Tmax = (int)(56*40/vel);   //需要通过实验确定
+	Tmax = (int)(45*40/vel);   //需要通过实验确定
 	rerror =  + vel;
 	lerror =  - vel;
 	turni = Tmax;   //都为max时进入巡线程序
 	turnj = Tmax;
-	Tmaxslow = (int)(56*40*2/vel);
-	rerrorslow = + (int)(vel/2);
-	lerrorslow = - (int)(vel/2);
+	Tmaxslow = (int)(50*40*1.5/vel);
+	rerrorslow = + (int)(vel/1.5);
+	lerrorslow = - (int)(vel/1.5);
 	turnislow = Tmaxslow;
 	turnjslow = Tmaxslow;
 }	
 
 void changeTurnAgle(float degree)   //通过设置turni和turnj计数值来改变转向角度
 {
-	if(degree>0&&degree<=100)
+	
+	if(degree>0&&degree<=180)
 		turni = Tmax - degree/180*Tmax;
 	else if(degree>100)
 		turnislow = Tmaxslow - degree/180*Tmaxslow;
-	else if(degree<0&&degree>=-100)
+	else if(degree<0&&degree>=-180)
 		turnj = Tmax + degree/180*Tmax;
 	else 
 		turnjslow = Tmaxslow + degree/180*Tmaxslow;
+	turn_in_progress = 1;
 }
 
 // 阶段性控制转向
 int turnWithStage(int error,float gyro)
 {
 	int turn;
-
-	if(turni<Tmax&&turnj==Tmax)
+	if(turni<Tmax&&turnj==Tmax){
+		turn_in_progress = 1;
 		turn = turn_pwm(lerror, gyro);
-	else if(turni==Tmax&&turnj<Tmax)
+	}
+	else if(turni==Tmax&&turnj<Tmax){
+		turn_in_progress = 1;
 		turn = turn_pwm(rerror, gyro);
-	else if(turni==Tmax&&turnj==Tmax&&turnislow<Tmaxslow&&turnjslow==Tmaxslow)
+	}
+	else if(turni==Tmax&&turnj==Tmax&&turnislow<Tmaxslow&&turnjslow==Tmaxslow){
+		turn_in_progress = 1;
 		turn = turn_pwm(lerrorslow, gyro);
-	else if(turni==Tmax&&turnj==Tmax&&turnislow==Tmaxslow&&turnjslow<Tmaxslow)
+	}
+	else if(turni==Tmax&&turnj==Tmax&&turnislow==Tmaxslow&&turnjslow<Tmaxslow){
+		turn_in_progress = 1;
 		turn = turn_pwm(rerrorslow, gyro);
-	else if(turni==Tmax&&turnj==Tmax&& turnislow==Tmaxslow&&turnjslow==Tmaxslow)
+	}
+	else if(turni==Tmax&&turnj==Tmax&& turnislow==Tmaxslow&&turnjslow==Tmaxslow)  //上面的if是转弯控制，下面的if是直线控制
+	{
+		// printf("test1/r/n");
 		turn = turn_pwm(error, gyro);
-	else  //理论上不进入
+		if(turn_in_progress == 1) {
+			stable_count++;
+			if(stable_count > 5) { // 稳定5个周期后才清除标志
+				turn_in_progress = 0;
+				stable_count = 0;
+			} 
+		}else{
+			stable_count = 0;
+		}
+	}	
+	else{
 		turn = turn_pwm(0, gyro); //保持直走
+		if(turn_in_progress == 1) {
+			stable_count++;
+			if(stable_count > 5) { // 稳定5个周期后才清除标志
+				turn_in_progress = 0;
+				stable_count = 0;
+			} 
+		}else{
+			stable_count = 0;
+		}
+	} //理论上不进入
+		
 	
 	if(!Flag_Stop&&turni!=Tmax) turni++;
 	if(!Flag_Stop&&turnj!=Tmax) turnj++;
@@ -231,16 +271,26 @@ int turn_pwm(int error,float gyro)
 }
 
 
+u8 startFlag = 0; //确保第一次能启动
+u8 stopFlag = 0;
 void start_move(int vel)
 {
+	if(startFlag) return; //确保这个函数不会一直被调用到值积分一直被清除
 	Movement = vel;
-	setAngleForward = (int)vel/6;
+	Integral = 0;  //速度积分置为0
+	startFlag = 1;
+	stopFlag = 0;
+	// setAngleForward = (int)vel/6;
 }
 //全局刹车函数
 void stop_move(int itgr){
+	if(stopFlag) return;
 	Movement=0; //速度清零
 	setAngleForward = 0;
 	Integral = itgr; 
+	stopFlag = 1;
+	startFlag = 0;
+	// delay_ms(100);
 }
 
 /****************************以下代码仅做备份*******************************/
@@ -660,4 +710,58 @@ int get_corner_dir(int dir){
 
 	}
 	return 0;
+}
+
+
+
+
+/**
+ * @brief  检测平衡小车是否被拿起
+ * @param  Acceleration_Z 当前 Z 轴加速度
+ * @param  Angle 当前小车的倾角
+ * @param  encoder_left 左轮编码器值
+ * @param  encoder_right 右轮编码器值
+ * @retval 1 表示小车被拿起，0 表示未被拿起
+ */
+int Detect_Pick_Up(float Acceleration_Z, float Angle, int encoder_left, int encoder_right) {
+  static u16 flag = 0, count_static = 0, count_angle = 0, count_speed = 0;
+
+  // 第一步：检测小车是否接近静止
+  if (flag == 0) {
+      if (ABS_int(encoder_left) + ABS_int(encoder_right) < 30) { // 静止条件
+          count_static++;
+      } else {
+          count_static = 0;
+      }
+      if (count_static > 10) { // 静止超过 100ms
+          flag = 1;
+          count_static = 0;
+      }
+  }
+
+  // 第二步：检测小车是否在接近水平的位置
+  if (flag == 1) {
+      if (++count_angle > 200) { // 超时 2000ms，重置状态
+          count_angle = 0;
+          flag = 0;
+      }
+      if (Acceleration_Z > 26000 && Angle > (-20 + ZhongZhi) && Angle < (20 + ZhongZhi)) { // 水平条件
+          flag = 2;
+          count_angle = 0;
+      }
+  }
+
+  // 第三步：检测小车轮胎是否达到最大转速
+  if (flag == 2) {
+      if (++count_speed > 100) { // 超时 1000ms，重置状态
+          count_speed = 0;
+          flag = 0;
+      }
+      if (ABS_int(encoder_left + encoder_right) > 135) { // 转速条件
+          flag = 0;
+          return 1; // 检测到小车被拿起
+      }
+  }
+
+  return 0; // 未检测到小车被拿起
 }

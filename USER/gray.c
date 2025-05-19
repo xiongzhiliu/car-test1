@@ -29,35 +29,48 @@ void show_gray_value(void)
   printf("Gray value: %d\r\n", gray_value);
 }
 
-int gray_calc_error(bool judge_flag)
+
+/**
+ * @brief 灰度计算误差
+ * 
+ * @param judge_flag  是否允许判断路口；1：允许 0：不允许
+ * @return int 
+ */
+int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
 {
 
   u8 gray_value = read_infrared_sensor();
   switch(gray_value) {
 		case 0b00001: error = -6; break; // 最左边检测到线
 		case 0b00011: error = -4; break;
-		case 0b00110: error = 2; break;  // 中间检测到线
+		case 0b00010: error = -3; break;  // 中间检测到线
+		case 0b00110: error = -2; break;  // 中间检测到线
 		case 0b00100: error = 0; break;  // 中间检测到线
 		case 0b01110: error = 0; break;  // 中间检测到线
 		case 0b01100: error = 2; break;
+		case 0b01000: error = 3; break;
 		case 0b11000: error = 4; break;
 		case 0b10000: error = 6; break; // 最右边检测到线
 		// 其他情况可以根据实际需求添加
     /**************以下为路口状态*******************/
     case 0b00000:
-      if(judge_flag==0 && last_level == 0b00000) {
+      if(judge_flag==1 && last_level == 0b00000) {
         white_counter++;
-        NODE_DETECT_FLAG = 1;
-        TURN_BACK_FLAG = 1;    
+        if (white_counter > 10) {  // 10次全白判断为路口，待测试
+            //buzzer_turn_on_delay(50);
+            NODE_DETECT_FLAG = 1;
+            TURN_BACK_FLAG = 1;
+        }
+      }else{
+        white_counter = 0;	
       }
       break;
 
     case 0b11111:
-      if(judge_flag==0 && last_level == 0b11111){
+      if(judge_flag==1 && last_level == 0b11111){
         wbf_counter++;
         if (wbf_counter > 40 ){  //10次全黑判断为终点，待测试
             //buzzer_turn_on_delay(50);
-            stop_move(-1500);
             error = 0;
             STOP_FLAG = 1; 
             NODE_DETECT_FLAG = 1; //终点节点		
@@ -69,7 +82,7 @@ int gray_calc_error(bool judge_flag)
       break;
         
     case 0b11100:
-      if(judge_flag==0 && last_level == 0b11100)
+      if(judge_flag==1 && last_level == 0b11100)
       {
         l_counter ++;          
         if(l_counter >= filter_times)       //连续读到三次相同level便认为有路口
@@ -77,14 +90,13 @@ int gray_calc_error(bool judge_flag)
           NODE_DETECT_FLAG = 1;
           TURN_LEFT_FLAG = 1;
         }
-        else{
+      }else{
           l_counter = 0;
         }
-      }
       break;
 
     case 0b11110:
-      if(judge_flag==0 && last_level == 0b11110)
+      if(judge_flag==1 && last_level == 0b11110)
       {
         l_counter ++;
         if(l_counter >= filter_times)       //连续读到三次相同level便认为有路口
@@ -92,14 +104,13 @@ int gray_calc_error(bool judge_flag)
           NODE_DETECT_FLAG = 1;
           TURN_LEFT_FLAG = 1;
         }
-        else{
+      }else{
           l_counter = 0;
-        }
       }
       break;
 
     case 0b00111:
-      if(judge_flag==0 && last_level == 0b00111)
+      if(judge_flag==1 && last_level == 0b00111)
       {
         r_counter ++;
         if(r_counter >= filter_times)       //连续读到三次相同level便认为有路口
@@ -107,14 +118,13 @@ int gray_calc_error(bool judge_flag)
           NODE_DETECT_FLAG = 1;
           TURN_RIGHT_FLAG = 1;
         }
-        else{
+      }else{
           r_counter = 0;
-        }
       }
       break;
 
     case 0b01111:
-      if(judge_flag==0 && last_level == 0b01111)
+      if(judge_flag==1 && last_level == 0b01111)
       {
         r_counter ++;
         if(r_counter >= filter_times)       //连续读到三次相同level便认为有路口
@@ -123,16 +133,16 @@ int gray_calc_error(bool judge_flag)
           TURN_RIGHT_FLAG = 1;
         }
       }
-       else{
+      else{
           r_counter = 0;
-        }
+      }
       break;
       
 
 		default: error = 0; break;
 	}
 
-  if(judge_flag==0 && gray_value != 0b11111){
+  if(judge_flag==1 && gray_value != 0b11111){
     if(last_level == 0b11111){
       if(gray_value == 0b00000){
         NODE_DETECT_FLAG = 1;
@@ -145,7 +155,6 @@ int gray_calc_error(bool judge_flag)
       }
     }
   }
-
 
   last_level = gray_value;
   return error;

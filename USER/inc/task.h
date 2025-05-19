@@ -30,6 +30,17 @@ typedef struct{ 													//地图结构体
 //	struct map *pervious;
 } map;
 
+typedef enum {
+    JUNCTION_NONE,      // 无路口
+    JUNCTION_LEFT,      // 左转路口
+    JUNCTION_RIGHT,     // 右转路口
+    JUNCTION_BOTH,      // 左右都可转路口
+    JUNCTION_FRONT,     // 直行路口
+    JUNCTION_BACK,      // 掉头路口
+    JUNCTION_END        // 终点路口
+} JunctionType;
+
+
 void start_point(void);
 int add_point(float get_y, float get_x, int get_left, int get_qian, int get_right, int get_hou);
 int gogogo(float get_x, float get_y, int get_left, int get_qian, int get_right, int get_hou);
@@ -46,5 +57,10 @@ int get_min_node_view(void);
 int judge_node(struct map *node);
 
 
-void task1();
+void task1(void);
+extern uint8_t STATE, STATE2; // task函数state状态，初始状态为0
+extern char* junctionNames[];
+extern JunctionType lastJunctionType;
+extern uint8_t last_junction_dirs;
+extern int last_turn_dir;
 #endif

@@ -4,70 +4,95 @@ struct key k1={0,0,0,0};
 struct moto_decoer left={0,0,0}, right={0,0,0};
 u8 counter_pull=0;
 int CALC_LEFT = 0, CALC_RIGHT = 0; //里程计
+u8 oledUpdateFlag=0;
+u8 oledCount =0 ;
 //定时器溢出模式下中断
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if(htim->Instance == TIM2)  //判断溢出
-	{
-			int num = __HAL_TIM_GetAutoreload(&htim2);
-			if(num >=65535 ) //正转
-					left.full_t++;
-			else
-					left.full_t--;
-			__HAL_TIM_SetAutoreload(&htim2,65535);
-	}
-	
-	if(htim->Instance == TIM3)  //判断溢出
-	{
-			int num = __HAL_TIM_GetAutoreload(&htim3);
-			if(num >= 65535)
-					right.full_t++;
-			else
-					right.full_t--;
-			__HAL_TIM_SetAutoreload(&htim3,65535);
-	}
-	
-	if(htim->Instance == TIM1)
-	{
-		
-		switch(k1.state)
+{	
+	static u8 key_pressed = 0;     // 按键按下标志
+    static u16 long_press_count = 0; // 长按计数器
+
+	if(htim->Instance == TIM1)  //10ms定时中断
+    {
+		oledCount++;
+		if (oledCount>=50)
 		{
-			case 0:
-				if(HAL_GPIO_ReadPin(key_GPIO_Port,key_Pin) == GPIO_PIN_RESET)
-				{
-					k1.state = 1;
-				}
-				break;
-				
-			case 1:
-				if(HAL_GPIO_ReadPin(key_GPIO_Port,key_Pin) == GPIO_PIN_RESET)
-				{
-					k1.state = 0;
-					k1.is_pull = 1;
-					if(counter_pull >50)
-					{
-						k1.is_pull_again = 1;
-						counter_pull = 0;
-					}
-				}else
-				{
-					k1.state = 0;
-				}
-				if(k1.is_pull)
-				{
-					counter_pull++;
-				}else
-				{
-					counter_pull = 0;
-				}	
-				break;
-				
-			default:
-				k1.state=0;
-				break;
+			oledCount = 0;
+			oledUpdateFlag = 1;
 		}
-		__HAL_TIM_CLEAR_IT(&htim1,TIM_IT_UPDATE);
-	}
+		
+        switch(k1.state)
+        {
+            case 0: // 初始状态：检测按键按下
+                if(HAL_GPIO_ReadPin(key_GPIO_Port, key_Pin) == GPIO_PIN_RESET)
+                {
+                    counter_pull++;
+                    if(counter_pull >= KEY_DEBOUNCE_COUNT) // 消抖
+                    {
+                        k1.state = 1;       // 切换到按下状态
+                        counter_pull = 0;    // 清零计数器
+                        key_pressed = 1;     // 设置按键按下标志
+                        long_press_count = 0; // 清零长按计数器
+                    }
+                }
+                else
+                {
+                    counter_pull = 0;  // 未持续按下，清零计数器
+                }
+                break;
+                
+            case 1: // 按下状态：检测长按或释放
+                if(HAL_GPIO_ReadPin(key_GPIO_Port, key_Pin) == GPIO_PIN_RESET)
+                {
+                    long_press_count++;  // 按键持续按下，增加长按计数
+                    
+                    if(long_press_count >= KEY_LONG_PRESS_COUNT) // 达到长按阈值
+                    {
+                        k1.is_pull = 1;      // 触发按键事件
+                        k1.press_type = KEY_LONG_PRESS; // 标记为长按
+                        k1.state = 2;        // 切换到等待释放状态
+                        printf("Key long press detected\r\n");
+                    }
+                }
+                else // 按键释放
+                {
+                    if(key_pressed) // 确保之前按键确实被按下
+                    {
+                        if(long_press_count < KEY_LONG_PRESS_COUNT) // 短按释放
+                        {
+                            k1.is_pull = 1;      // 触发按键事件
+                            k1.press_type = KEY_SHORT_PRESS; // 标记为短按
+                            printf("Key short press detected\r\n");
+                        }
+                        key_pressed = 0;    // 清除按下标志
+                    }
+                    k1.state = 0;       // 返回初始状态
+                    counter_pull = 0;    // 清零计数器
+                    long_press_count = 0; // 清零长按计数器
+                }
+                break;
+                
+            case 2: // 长按后等待释放状态
+                if(HAL_GPIO_ReadPin(key_GPIO_Port, key_Pin) != GPIO_PIN_RESET) // 按键释放
+                {
+                    k1.state = 0;       // 返回初始状态
+                    key_pressed = 0;    // 清除按下标志
+                    counter_pull = 0;    // 清零计数器
+                    long_press_count = 0; // 清零长按计数器
+                    printf("Key released after long press\r\n");
+                }
+                break;
+                
+            default:
+                k1.state = 0;
+                counter_pull = 0;
+                long_press_count = 0;
+                break;
+        }
+        __HAL_TIM_CLEAR_IT(&htim1, TIM_IT_UPDATE);
+    }
+
 }
 
 int Read_Velocity_L()
