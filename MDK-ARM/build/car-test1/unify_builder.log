@@ -14550,3 +14550,626 @@ These source files will be recompiled
 [2025-05-19 20:02:51]	[done]
 	build successfully !
 
+[2025-05-19 20:33:35]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 20:33:36]	[done]
+	build successfully !
+
+[2025-05-19 20:40:27]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 20:40:27]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:472:14: error: no member named 'qianAssessible' in 'struct map'
+  472 |     point[0].qianAssessible = 1;
+      |     ~~~~~~~~ ^
+./../USER/task.c:567:38: error: expected identifier or '('
+  567 |                         struct map* (struct map::*next_ptrs[4])(void) = {
+      |                                      ^
+./../USER/task.c:567:38: error: expected ')'
+./../USER/task.c:567:37: note: to match this '('
+  567 |                         struct map* (struct map::*next_ptrs[4])(void) = {
+      |                                     ^
+./../USER/task.c:645:14: error: no member named 'qianAccessible' in 'struct map'
+  645 |         now->qianAccessible = get_qian;
+      |         ~~~  ^
+./../USER/task.c:646:14: error: no member named 'houAccessible' in 'struct map'
+  646 |         now->houAccessible = get_hou;
+      |         ~~~  ^
+5 errors generated.
+
+[2025-05-19 20:41:17]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:41:17]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:472:14: error: no member named 'qianAssessible' in 'struct map'; did you mean 'qianAccessible'?
+  472 |     point[0].qianAssessible = 1;
+      |              ^~~~~~~~~~~~~~
+      |              qianAccessible
+./../USER/task.c:35:8: note: 'qianAccessible' declared here
+   35 |     u8 qianAccessible;
+      |        ^
+./../USER/task.c:567:38: error: expected identifier or '('
+  567 |                         struct map* (struct map::*next_ptrs[4])(void) = {
+      |                                      ^
+./../USER/task.c:567:38: error: expected ')'
+./../USER/task.c:567:37: note: to match this '('
+  567 |                         struct map* (struct map::*next_ptrs[4])(void) = {
+      |                                     ^
+3 errors generated.
+
+[2025-05-19 20:41:33]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:41:33]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:567:38: error: expected identifier or '('
+  567 |                         struct map* (struct map::*next_ptrs[4])(void) = {
+      |                                      ^
+./../USER/task.c:567:38: error: expected ')'
+./../USER/task.c:567:37: note: to match this '('
+  567 |                         struct map* (struct map::*next_ptrs[4])(void) = {
+      |                                     ^
+2 errors generated.
+
+[2025-05-19 20:44:35]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:44:36]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:460:14: error: no member named 'righAccessible' in 'struct map'; did you mean 'rightAccessible'?
+  460 |     point[0].righAccessible = 0;
+      |              ^~~~~~~~~~~~~~
+      |              rightAccessible
+./../USER/task.c:34:8: note: 'rightAccessible' declared here
+   34 |     u8 rightAccessible;
+      |        ^
+./../USER/task.c:461:14: error: no member named 'qianAccessible' in 'struct map'; did you mean 'qinaAccessible'?
+  461 |     point[0].qianAccessible = 0;
+      |              ^~~~~~~~~~~~~~
+      |              qinaAccessible
+./../USER/task.c:35:8: note: 'qinaAccessible' declared here
+   35 |     u8 qinaAccessible;
+      |        ^
+./../USER/task.c:472:14: error: no member named 'qianAssessible' in 'struct map'; did you mean 'qinaAccessible'?
+  472 |     point[0].qianAssessible = 1;
+      |              ^~~~~~~~~~~~~~
+      |              qinaAccessible
+./../USER/task.c:35:8: note: 'qinaAccessible' declared here
+   35 |     u8 qinaAccessible;
+      |        ^
+./../USER/task.c:735:14: error: no member named 'qianAccessible' in 'struct map'; did you mean 'qinaAccessible'?
+  735 |         now->qianAccessible = get_qian;
+      |              ^~~~~~~~~~~~~~
+      |              qinaAccessible
+./../USER/task.c:35:8: note: 'qinaAccessible' declared here
+   35 |     u8 qinaAccessible;
+      |        ^
+4 errors generated.
+
+[2025-05-19 20:44:50]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:44:50]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:460:14: error: no member named 'righAccessible' in 'struct map'; did you mean 'rightAccessible'?
+  460 |     point[0].righAccessible = 0;
+      |              ^~~~~~~~~~~~~~
+      |              rightAccessible
+./../USER/task.c:34:8: note: 'rightAccessible' declared here
+   34 |     u8 rightAccessible;
+      |        ^
+./../USER/task.c:472:14: error: no member named 'qianAssessible' in 'struct map'; did you mean 'qianAccessible'?
+  472 |     point[0].qianAssessible = 1;
+      |              ^~~~~~~~~~~~~~
+      |              qianAccessible
+./../USER/task.c:35:8: note: 'qianAccessible' declared here
+   35 |     u8 qianAccessible;
+      |        ^
+2 errors generated.
+
+[2025-05-19 20:45:57]	[info] incremental build: 18 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\IOI2C.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\MPU6050.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\BSP\Bmpu6050\inv_mpu_dmp_motion_driver.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\main.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\Core\Src\stm32f1xx_it.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\Interrupt.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\buzzer.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\controlApid.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\decoder.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\delay.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\filter.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\fun.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\gray.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\moto.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\myadc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\proc.c': dependence 'e:\Keil\Project\car-test1\MDK-ARM\..\USER\inc\task.h' has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:45:59]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:460:14: error: no member named 'righAccessible' in 'struct map'; did you mean 'rightAccessible'?
+  460 |     point[0].righAccessible = 0;
+      |              ^~~~~~~~~~~~~~
+      |              rightAccessible
+./../USER/task.c:34:8: note: 'rightAccessible' declared here
+   34 |     u8 rightAccessible;
+      |        ^
+./../USER/task.c:472:14: error: no member named 'qianAssessible' in 'struct map'; did you mean 'qianAccessible'?
+  472 |     point[0].qianAssessible = 1;
+      |              ^~~~~~~~~~~~~~
+      |              qianAccessible
+./../USER/task.c:35:8: note: 'qianAccessible' declared here
+   35 |     u8 qianAccessible;
+      |        ^
+2 errors generated.
+
+[2025-05-19 20:46:30]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:46:31]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:472:14: error: no member named 'qianAssessible' in 'struct map'; did you mean 'qianAccessible'?
+  472 |     point[0].qianAssessible = 1;
+      |              ^~~~~~~~~~~~~~
+      |              qianAccessible
+./../USER/task.c:35:8: note: 'qianAccessible' declared here
+   35 |     u8 qianAccessible;
+      |        ^
+1 error generated.
+
+[2025-05-19 20:46:51]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 20:46:53]	[done]
+	build successfully !
+
+[2025-05-19 20:48:09]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 20:48:11]	[done]
+	build successfully !
+
+[2025-05-19 21:01:06]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 21:01:06]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:1382:9: error: expected identifier or '('
+ 1382 |         if (now->hou == 1)
+      |         ^
+./../USER/task.c:1391:9: error: expected identifier or '('
+ 1391 |         if (now->left == 1)
+      |         ^
+./../USER/task.c:1400:9: error: expected identifier or '('
+ 1400 |         if (now->qian == 1)
+      |         ^
+./../USER/task.c:1409:9: error: expected identifier or '('
+ 1409 |         break;
+      |         ^
+./../USER/task.c:1410:5: error: extraneous closing brace ('}')
+ 1410 |     }
+      |     ^
+./../USER/task.c:1412:5: error: expected identifier or '('
+ 1412 |     case 1:
+      |     ^
+./../USER/task.c:1452:5: error: expected identifier or '('
+ 1452 |     case 2:
+      |     ^
+./../USER/task.c:1492:5: error: expected identifier or '('
+ 1492 |     case 3:
+      |     ^
+./../USER/task.c:1533:5: error: expected identifier or '('
+ 1533 |     default:
+      |     ^
+./../USER/task.c:1535:5: error: extraneous closing brace ('}')
+ 1535 |     }
+      |     ^
+./../USER/task.c:1611:5: error: expected identifier or '('
+ 1611 |     return 777; // 报错
+      |     ^
+./../USER/task.c:1612:1: error: extraneous closing brace ('}')
+ 1612 | }
+      | ^
+12 errors generated.
+
+[2025-05-19 21:01:15]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 21:01:15]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:1412:5: error: 'case' statement not in switch statement
+ 1412 |     case 1:
+      |     ^
+./../USER/task.c:1450:9: error: 'break' statement not in loop or switch statement
+ 1450 |         break;
+      |         ^
+./../USER/task.c:1452:5: error: 'case' statement not in switch statement
+ 1452 |     case 2:
+      |     ^
+./../USER/task.c:1490:9: error: 'break' statement not in loop or switch statement
+ 1490 |         break;
+      |         ^
+./../USER/task.c:1492:5: error: 'case' statement not in switch statement
+ 1492 |     case 3:
+      |     ^
+./../USER/task.c:1530:9: error: 'break' statement not in loop or switch statement
+ 1530 |         break;
+      |         ^
+./../USER/task.c:1534:9: error: 'break' statement not in loop or switch statement
+ 1534 |         break;
+      |         ^
+./../USER/task.c:1533:5: error: 'default' statement not in switch statement
+ 1533 |     default:
+      |     ^
+./../USER/task.c:1611:5: error: expected identifier or '('
+ 1611 |     return 777; // 报错
+      |     ^
+./../USER/task.c:1612:1: error: extraneous closing brace ('}')
+ 1612 | }
+      | ^
+10 errors generated.
+
+[2025-05-19 21:01:45]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 21:01:46]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:1382:9: error: expected identifier or '('
+ 1382 |         if (now->hou == 1)
+      |         ^
+./../USER/task.c:1391:9: error: expected identifier or '('
+ 1391 |         if (now->left == 1)
+      |         ^
+./../USER/task.c:1400:9: error: expected identifier or '('
+ 1400 |         if (now->qian == 1)
+      |         ^
+./../USER/task.c:1409:9: error: expected identifier or '('
+ 1409 |         break;
+      |         ^
+./../USER/task.c:1410:5: error: extraneous closing brace ('}')
+ 1410 |     }
+      |     ^
+./../USER/task.c:1413:5: error: expected identifier or '('
+ 1413 |     { // 当前方向向左
+      |     ^
+./../USER/task.c:1452:5: error: expected identifier or '('
+ 1452 |     case 2:
+      |     ^
+./../USER/task.c:1492:5: error: expected identifier or '('
+ 1492 |     case 3:
+      |     ^
+./../USER/task.c:1533:5: error: expected identifier or '('
+ 1533 |     default:
+      |     ^
+./../USER/task.c:1535:5: error: extraneous closing brace ('}')
+ 1535 |     }
+      |     ^
+./../USER/task.c:1611:5: error: expected identifier or '('
+ 1611 |     return 777; // 报错
+      |     ^
+./../USER/task.c:1612:1: error: extraneous closing brace ('}')
+ 1612 | }
+      | ^
+12 errors generated.
+
+[2025-05-19 21:02:27]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 21:02:29]	[done]
+	build successfully !
+
+[2025-05-19 21:06:54]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 21:06:55]	[done]
+	build successfully !
+
+[2025-05-19 21:10:48]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 21:10:49]	[done]
+	build successfully !
+
+[2025-05-19 21:10:59]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 21:11:01]	[done]
+	build successfully !
+
+[2025-05-19 21:13:41]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 21:13:42]	[done]
+	build successfully !
+
+[2025-05-19 21:47:09]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 21:47:10]	[done]
+	build successfully !
+
+[2025-05-19 21:51:59]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 21:52:01]	[done]
+	build successfully !
+
+[2025-05-19 21:52:42]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+
+[2025-05-19 21:52:43]	[done]
+	build successfully !
+
+[2025-05-19 21:53:09]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+
+[2025-05-19 21:53:10]	[done]
+	build successfully !
+
+[2025-05-19 21:54:18]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\Core\Src\main.c': source file has been changed.
+
+[2025-05-19 21:54:19]	[done]
+	build successfully !
+
+[2025-05-19 22:12:19]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 22:12:20]	[done]
+	build successfully !
+
+[2025-05-19 22:13:33]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 22:13:34]	[done]
+	build successfully !
+
+[2025-05-19 22:15:08]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 22:15:08]	compilation failed at : "e:\Keil\Project\car-test1\USER\gray.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/gray.o -MMD ./../USER/gray.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/gray.c:154:25: error: expected ';' after expression
+  154 |         nodeJudgePending
+      |                         ^
+      |                         ;
+./../USER/gray.c:154:9: warning: expression result unused [-Wunused-value]
+  154 |         nodeJudgePending
+      |         ^~~~~~~~~~~~~~~~
+1 warning and 1 error generated.
+
+[2025-05-19 22:15:21]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': object (.o) file not exist
+
+[2025-05-19 22:15:22]	[done]
+	build successfully !
+
+[2025-05-19 22:20:29]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:20:30]	[done]
+	build successfully !
+
+[2025-05-19 22:21:11]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:21:13]	[done]
+	build successfully !
+
+[2025-05-19 22:21:27]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:21:28]	[done]
+	build successfully !
+
+[2025-05-19 22:22:02]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 22:22:03]	[done]
+	build successfully !
+
+[2025-05-19 22:22:47]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 22:22:48]	[done]
+	build successfully !
+
+[2025-05-19 22:27:16]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:27:18]	[done]
+	build successfully !
+
+[2025-05-19 22:29:57]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:29:59]	[done]
+	build successfully !
+
+[2025-05-19 22:30:53]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\gray.c': source file has been changed.
+
+[2025-05-19 22:30:54]	[done]
+	build successfully !
+
+[2025-05-19 22:33:33]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:33:34]	[done]
+	build successfully !
+
+[2025-05-19 22:37:22]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:37:22]	compilation failed at : "e:\Keil\Project\car-test1\USER\task.c", exit code: 1
+command: 
+  "d:\Keil_v5\ARM\ARMCLANG\bin\armclang.exe" --target=arm-arm-none-eabi -c -xc -std=c99 -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../USER -I../USER/inc -I../BSP/Bmpu6050 -I../BSP -IRTE/_car-test1 -DUSE_HAL_DRIVER -DSTM32F103xB -mcpu=cortex-m3 -mlittle-endian -D__MICROLIB -O3 -ffunction-sections -funsigned-char -fshort-enums -fshort-wchar -fno-rtti -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -g -o ./build/car-test1/.obj/__/USER/task.o -MMD ./../USER/task.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./../USER/task.c:300:5: error: 'case' statement not in switch statement
+  300 |     case 5:{ // 到达终点置位置标志
+      |     ^
+./../USER/task.c:311:9: error: 'break' statement not in loop or switch statement
+  311 |         break;
+      |         ^
+./../USER/task.c:314:5: error: 'case' statement not in switch statement
+  314 |     case 6:{ // 到达终点等待启动状态
+      |     ^
+./../USER/task.c:320:9: error: 'break' statement not in loop or switch statement
+  320 |         break;
+      |         ^
+./../USER/task.c:323:5: error: 'case' statement not in switch statement
+  323 |     case 7:{ // 从终点脱离
+      |     ^
+./../USER/task.c:341:9: error: 'break' statement not in loop or switch statement
+  341 |         break;
+      |         ^
+./../USER/task.c:344:5: error: 'case' statement not in switch statement
+  344 |     case 8:{ // 从终点返回巡线
+      |     ^
+./../USER/task.c:345:9: error: 'break' statement not in loop or switch statement
+  345 |         break;
+      |         ^
+./../USER/task.c:348:13: error: 'break' statement not in loop or switch statement
+  348 |     default:break;
+      |             ^
+./../USER/task.c:348:5: error: 'default' statement not in switch statement
+  348 |     default:break;
+      |     ^
+./../USER/task.c:350:1: error: extraneous closing brace ('}')
+  350 | }
+      | ^
+11 errors generated.
+
+[2025-05-19 22:38:45]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': object (.o) file not exist
+
+[2025-05-19 22:38:46]	[done]
+	build successfully !
+
+[2025-05-19 22:39:45]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'e:\Keil\Project\car-test1\USER\task.c': source file has been changed.
+
+[2025-05-19 22:39:46]	[done]
+	build successfully !
+

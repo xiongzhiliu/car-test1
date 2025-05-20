@@ -30,6 +30,10 @@ struct map // 地图结构体
     uint8_t hou_view;
     uint8_t left_view;
     uint8_t right_view;
+    u8 leftAccessible;
+    u8 rightAccessible;
+    u8 qianAccessible;
+    u8 houAccessible;
     uint8_t node_num;       // 分路数量
     uint8_t no;             // 编号
     struct map *next_qian;  // 下一个前方的点
@@ -149,63 +153,45 @@ void task1(void)
         NODE_DETECT_FLAG = 0; // 清除收节点标志
         // blue_node_num++;
         set_corner_dir(direct + 2); // 此时路口为通
-        if (STOP_FLAG == 1)
-        {
+        if (STOP_FLAG == 1){
             find_exit2 = 1;
             // INTERRUPT_FLAG = 1;
             STATE++;
             Clear_NODEflag(); // 清除左右方向
-        }
-        if (TURN_BACK_FLAG == 1)
-        { // 掉头
+        }else{
+             if (TURN_BACK_FLAG == 1){ // 掉头
             TURN_BACK_FLAG = 0;
-            // set_corner_dir(direct + 2);
-            // printf("back\r\n");
+            }
+            if (BOTH_FLAG == 1){ // 双
+                BOTH_FLAG = 0;
+                buzzerTurnOnDelay(10);
+                set_corner_dir(direct + 1);
+                set_corner_dir(direct - 1);
+            }
+            if (TURN_LEFT_FLAG == 1){ // 左
+                TURN_LEFT_FLAG = 0;
+                set_corner_dir(direct - 1); // 设置当前左边的绝对方向可行
+            }
+            if (TURN_UP_FLAG == 1){
+                TURN_UP_FLAG = 0;
+                set_corner_dir(direct);
+            }
+            if (TURN_RIGHT_FLAG == 1){ // 右
+                TURN_RIGHT_FLAG = 0;
+                set_corner_dir(direct + 1); // 设置当前右边的绝对方向可行
+            }
+            Clear_NODEflag();
+            last_junction_dirs = 0;
+            if(ab_x) last_junction_dirs |= (1<<0);  // 前方可行
+            if(ab_fy) last_junction_dirs |= (1<<1);  // 左方可行
+            if(ab_y) last_junction_dirs |= (1<<2); // 右方可行
+            if(ab_fx) last_junction_dirs |= (1<<3); // 后方可行
         }
-        if (BOTH_FLAG == 1)
-        { // 双
-            BOTH_FLAG = 0;
-            buzzerTurnOnDelay(10);
-            set_corner_dir(direct + 1);
-            set_corner_dir(direct - 1);
-            // printf("both\r\n");
-            //  break;
-        }
-        if (TURN_LEFT_FLAG == 1)
-        { // 左
-            TURN_LEFT_FLAG = 0;
-            set_corner_dir(direct - 1); // 设置当前左边的绝对方向可行
-            // printf("left\r\n");
-            //  break;
-        }
-        if (TURN_UP_FLAG == 1)
-        {
-            TURN_UP_FLAG = 0;
-            set_corner_dir(direct);
-            // printf("up\r\n");
-            //  break;
-        }
-        if (TURN_RIGHT_FLAG == 1)
-        { // 右
-            TURN_RIGHT_FLAG = 0;
-            set_corner_dir(direct + 1); // 设置当前右边的绝对方向可行
-            // printf("right\r\n");
-            //  break;
-        }
-        Clear_NODEflag();
-        last_junction_dirs = 0;
-        if(ab_x) last_junction_dirs |= (1<<0);  // 前方可行
-        if(ab_fy) last_junction_dirs |= (1<<1);  // 左方可行
-        if(ab_y) last_junction_dirs |= (1<<2); // 右方可行
-        if(ab_fx) last_junction_dirs |= (1<<3); // 后方可行
-        if (END_FLAG == 0)
-        {                                                                         // 如果没有到终点
+        if (END_FLAG == 0){                                                                         // 如果没有到终点
             ab_direction = add_point(RE_LocY, RE_LocX, ab_fy, ab_x, ab_y, ab_fx); // 记录节点，并返回行驶方向（返回的是绝对方向
         }
-        else
-        {                                                                      // 到达终点
+        else{                                                                      // 到达终点
             ab_direction = gogogo(RE_LocY, RE_LocX, ab_fy, ab_x, ab_y, ab_fx); // 回溯路径
-            // printf("g_t:%d", g_t);
         }
         clear_corner_dir();
         // 绝对方向转换为当前转向（绝对方向
@@ -241,29 +227,30 @@ void task1(void)
         else{
             switch (get_dir(ab_direction)){
                 case turnLeft:{ // 向左 1
-                    // printf("l\r\n");
+                    lastJunctionType = JUNCTION_LEFT;
+                    stop_move(0);
                     cflag_left = 1;
                     break;
                 }
                 case turnRight:{ // 向右  3
-                    // printf("r\r\n");
+                    lastJunctionType = JUNCTION_RIGHT;
+                    stop_move(0);
                     cflag_right = 1;
                     break;
                 }
                 case turnBack:{ // 后退
+                    lastJunctionType = JUNCTION_BACK;
+                    stop_move(3000);
                     cflag_tn180 = 1;
-                    // printf("b\r\n");
                     break;
                 }
                 case turnUp:{
-                    // printf("u\r\n");
+                    lastJunctionType = JUNCTION_FRONT;
                     cflag_up = 1;
                     break;
                 }
-                default:
-                    break;
+                default:break;
                 }
-            clear_corner_dir();
         }
         /****************第二阶段：根据记录的路口，计算一个行驶方向并执行转弯***************/
         // 执行转动作
@@ -319,7 +306,6 @@ void task1(void)
         cflag_turn = 1; // 停止巡黑边
         // INTERRUPT_FLAG = 1;
         lock_Loc();
-        stop_move(-1500);
         // Set_Pwm(0, 0);
         // find_exit2 = 1;
         END_FLAG = 1; // 设为终点标志
@@ -331,13 +317,9 @@ void task1(void)
     }
 
     case 6:{ // 到达终点等待启动状态
-        if (START_FLAG == 1)
+        if (start_flag == 1)
         {
-            START_FLAG = 0;
-            STATE++;
-        }
-        if (k1.is_pull)
-        {
+            start_flag = 0;
             STATE++;
         }
         break;
@@ -350,10 +332,12 @@ void task1(void)
         // judge_dir();
         //  NODE_DETECT_FLAG=1;//重置终点标志
         lock_Loc(); // 这里和turn函数back中也都有用，所以在此调用
-        Turn_back();
         // Set_Pwm(0, 0);
         stop_move(-3000);
         Clear_levels();
+        Turn_back();
+        gray_dir_allow = 1;
+        gray_allow = 1;
         // INTERRUPT_FLAG = 0;
         // PID_init();
         cflag_turn = 0;
@@ -385,6 +369,13 @@ void Turn_right(void){ // 右转
     }; // 等待转弯完成
     buzzerTurnAndClose();
     lock_Loc();
+    start_move(40);
+    gray_allow = 1;  //允许灰度读误差但不读路口
+    gray_dir_allow = 0;
+    delay_count_10ms = 0;
+    while(delay_count_10ms<100){
+        delay_ms(1);
+    };
     cflag_turn = 0;
     // start_move(40);
     // gray_allow = 1;  //允许灰度读误差但不读路口
@@ -404,6 +395,13 @@ void Turn_left(void){ // 左转
     buzzerTurnAndClose();
     lock_Loc();
     // Set_Pwm(0, 0);
+    start_move(40);
+    gray_allow = 1;  //允许灰度读误差但不读路口
+    gray_dir_allow = 0;
+    delay_count_10ms = 0;
+    while(delay_count_10ms<100){
+        delay_ms(1);
+    };
     cflag_turn = 0;
     // start_move(40);
     // gray_allow = 1;  //允许灰度读误差但不读路口
@@ -427,7 +425,7 @@ void Turn_back(void){
     gray_allow = 1;  //允许灰度读误差但不读路口
     gray_dir_allow = 0;
     delay_count_10ms = 0;
-    while(delay_count_10ms<200){
+    while(delay_count_10ms<170){
         delay_ms(1);
     };
     cflag_turn = 0;
@@ -452,6 +450,10 @@ void start_point(void){
     point[0].hou_view = 0;
     point[0].left_view = 0;
     point[0].right_view = 0;
+    point[0].leftAccessible = 0;
+    point[0].rightAccessible = 0;
+    point[0].qianAccessible = 0;
+    point[0].houAccessible = 0;
     point[0].no = 0;
     point[0].next_qian = &save;
     point[0].next_hou = &save;
@@ -461,6 +463,7 @@ void start_point(void){
     save = point[0];
     save.qian = 0;
     point[0].qian_view = 1;
+    point[0].qianAccessible = 1;
     all_point = 1;            // 此时所有的点数量 就只有1个 也就是第一个点
     direction_t = 2;          // 方向为2，朝前，初始的绝对方向为向前
     find_exit2 = 0;           // 找到终点的标志位为0
@@ -513,8 +516,7 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                         now->y = get_y;
                         go = last; // 掉头，go即目标点变成下一个点
                         printf("dir:%d", direction_t);
-                        switch (direction_t % 4)
-                        { // 判断上一次的转向方向，根据上次的转向方向记录当前点（重复点）和上一个点的连接关系
+                        switch (direction_t % 4){ // 判断上一次的转向方向，根据上次的转向方向记录当前点（重复点）和上一个点的连接关系
                         case 1:
                             last->next_left = now;
                             now->next_right = last;
@@ -544,9 +546,8 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                             distance_t += ABS_int(now->y - go->y);
                             break;
                         }
-                        int t = get_min_node_view();
-                        switch (direct % 4)
-                        {
+                        int t = get_min_node_view();  //获取一个值最小的方向
+                        switch (direct % 4){
                         case 0:
                         {
                             if (t == 0)
@@ -724,6 +725,10 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         now->hou = get_hou;      // 记录当前节点是否可以向后走
         now->left = get_left;
         now->right = get_right;
+        now->qianAccessible = get_qian;
+        now->houAccessible = get_hou;
+        now->leftAccessible = get_left;
+        now->rightAccessible = get_right;
         calc_node_num();
 
         p_t++;         // 当前节点编号加1
@@ -731,8 +736,7 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         printf("new_point:%d", p_t);
         // 根据当前方向更新路径信息
         // judge_dir();
-        switch (direction_t % 4)
-        {                                            // 根据上一次移动的方向更新路径信息
+        switch (direction_t % 4){                                            // 根据上一次移动的方向更新路径信息
         case 1:                                      // 如果上次转向方向为左
             last->next_left = now;                   // 上一个点的左方的下一个点为当前点
             now->next_right = last;                  // 当前点的右方的下一个点为上一个点
@@ -834,12 +838,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         }
     }
     // 以下是go记录过，即go！=save初始值的情况
-    else
-    { // 还没到达终点
-        if (p_t < go->no - 1)
-        {
-            if (all_point == 100)
-            {
+    else{ // 还没到达终点
+        if (p_t < go->no - 1){
+            if (all_point == 100){
                 return 99;
             }
             new_point = all_point;
@@ -854,10 +855,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
             calc_node_num();
             p_t++;
             now->no = p_t;
-            printf("go_point:%d\r\n", p_t);
+            // printf("go_point:%d\r\n", p_t);
             // 根据当前方向更新路径信息
-            switch (direction_t % 4)
-            {
+            switch (direction_t % 4){
             case 1:
                 last->next_left = now;
                 now->next_right = last;
@@ -951,11 +951,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
     // return 777; // 报错
     // direct=judge_dir();
 
-    if (judge_node(now) == 1)
-    {
+    if (judge_node(now) == 1){
         // 是特殊节点
-        switch (direct % 4)
-        {
+        switch (direct % 4){
         case 0:
             go = now->next_hou;
             now->hou_view = max_node_view();
@@ -984,14 +982,12 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         return direction_t;
     }
 
-    switch (direct % 4)
-    {
-    case 0:
-    { // 当前方向向后
-        if (now->right == 1)
-        {
-            if ((now->next_right == &save) || (p_t < now->next_right->no - 2))
-            {
+    
+    switch (direct % 4){ //删除两边死胡同
+    case 0:{ // 当前方向向后
+        if (now->right == 1){
+            if ((now->next_right == &save) || (p_t < now->next_right->no - 2)){
+                now->rightAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_right;
                 now->right_view = max_node_view();
@@ -999,10 +995,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->hou == 1)
-        {
-            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2))
-            {
+        if (now->hou == 1){
+            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2)){
+                now->houAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1010,10 +1005,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->left == 1)
-        {
-            if ((now->next_left == &save) || (p_t < now->next_left->no - 2))
-            {
+        if (now->left == 1){
+            if ((now->next_left == &save) || (p_t < now->next_left->no - 2)){
+                now->leftAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1021,10 +1015,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->qian == 1)
-        {
-            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2))
-            {
+        if (now->qian == 1){
+            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2)){
+                now->qianAccessible = 0;
                 direction_t = 0; // 相对掉头
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1035,12 +1028,10 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         break;
     }
 
-    case 1:
-    { // 当前方向向左
-        if (now->hou == 1)
-        {
-            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2))
-            {
+    case 1:{ // 当前方向向左
+        if (now->hou == 1){
+            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2)){
+                now->houAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1048,10 +1039,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->left == 1)
-        {
-            if ((now->next_left == &save) || (p_t < now->next_left->no - 2))
-            {
+        if (now->left == 1){
+            if ((now->next_left == &save) || (p_t < now->next_left->no - 2)){
+                now->leftAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1059,10 +1049,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->qian == 1)
-        {
-            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2))
-            {
+        if (now->qian == 1){
+            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2)){
+                now->qianAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1070,10 +1059,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->right == 1)
-        {
-            if ((now->next_right == &save) || (p_t < now->next_right->no - 2))
-            {
+        if (now->right == 1){
+            if ((now->next_right == &save) || (p_t < now->next_right->no - 2)){
+                now->rightAccessible = 0;
                 direction_t = 0; // 相对掉头
                 go = now->next_right;
                 now->right_view = max_node_view();
@@ -1083,12 +1071,10 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         }
         break;
     }
-    case 2:
-    { // 当前方向向qian
-        if (now->left == 1)
-        {
-            if ((now->next_left == &save) || (p_t < now->next_left->no - 2))
-            {
+    case 2:{ // 当前方向向qian
+        if (now->left == 1){
+            if ((now->next_left == &save) || (p_t < now->next_left->no - 2)){
+                now->leftAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1096,10 +1082,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->qian == 1)
-        {
-            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2))
-            {
+        if (now->qian == 1){
+            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2)){
+                now->qianAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1107,10 +1092,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->right == 1)
-        {
-            if ((now->next_right == &save) || (p_t < now->next_right->no - 2))
-            {
+        if (now->right == 1){
+            if ((now->next_right == &save) || (p_t < now->next_right->no - 2)){
+                now->rightAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_right;
                 now->right_view = max_node_view();
@@ -1118,10 +1102,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->hou == 1)
-        {
-            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2))
-            {
+        if (now->hou == 1){
+            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2)){
+                now->houAccessible = 0;
                 direction_t = 0; // 相对掉头
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1131,12 +1114,10 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         }
         break;
     }
-    case 3:
-    { // 当前方向向右
-        if (now->qian == 1)
-        {
-            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2))
-            {
+    case 3:{ // 当前方向向右
+        if (now->qian == 1){
+            if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2)){
+                now->qianAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1144,10 +1125,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->right == 1)
-        {
-            if ((now->next_right == &save) || (p_t < now->next_right->no - 2))
-            {
+        if (now->right == 1){
+            if ((now->next_right == &save) || (p_t < now->next_right->no - 2)){
+                now->rightAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_right;
                 now->right_view = max_node_view();
@@ -1155,10 +1135,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->hou == 1)
-        {
-            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2))
-            {
+        if (now->hou == 1){
+            if ((now->next_hou == &save) || (p_t < now->next_hou->no - 2)){
+                now->houAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1166,10 +1145,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->left == 1)
-        {
-            if ((now->next_left == &save) || (p_t < now->next_left->no - 2))
-            {
+        if (now->left == 1){
+            if ((now->next_left == &save) || (p_t < now->next_left->no - 2)){
+                now->leftAccessible = 0;
                 direction_t = 0; // 相对掉头
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1184,25 +1162,22 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         break;
     }
     now2 = now;
-    switch (direct % 4)
-    {
-    case 0:
-    { // 当前方向向后
-        if (now->right == 1)
-        {
-            if (now->no - 1 == now2->next_right->no)
-            {
+    switch (direct % 4){  //删除单边死胡同
+    case 0:{ // 当前方向向后
+        if (now->right == 1){
+            if (now->no - 1 == now2->next_right->no){
+                now->rightAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_right;
                 now->right_view = max_node_view();
+                now->rightAccessible = 0;
                 last = now;
                 return direction_t;
             }
         }
-        if (now->hou == 1)
-        {
-            if (now->no - 1 == now2->next_hou->no)
-            {
+        if (now->hou == 1){
+            if (now->no - 1 == now2->next_hou->no){
+                now->houAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1210,10 +1185,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->left == 1)
-        {
-            if (now->no - 1 == now2->next_left->no)
-            {
+        if (now->left == 1){
+            if (now->no - 1 == now2->next_left->no){
+                now->leftAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1221,10 +1195,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->qian == 1)
-        {
-            if (now->no - 1 == now2->next_qian->no)
-            {
+        if (now->qian == 1){
+            if (now->no - 1 == now2->next_qian->no){
+                now->qianAccessible = 0;
                 direction_t = 0; // 相对掉头
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1235,12 +1208,10 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         break;
     }
 
-    case 1:
-    { // 当前方向向左
-        if (now->hou == 1)
-        {
-            if (now->no - 1 == now2->next_hou->no)
-            {
+    case 1:{ // 当前方向向左
+        if (now->hou == 1){
+            if (now->no - 1 == now2->next_hou->no){
+                now->houAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1248,10 +1219,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->left == 1)
-        {
-            if (now->no - 1 == now2->next_left->no)
-            {
+        if (now->left == 1){
+            if (now->no - 1 == now2->next_left->no){
+                now->leftAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1259,10 +1229,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->qian == 1)
-        {
-            if (now->no - 1 == now2->next_qian->no)
-            {
+        if (now->qian == 1){
+            if (now->no - 1 == now2->next_qian->no){
+                now->qianAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1270,10 +1239,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->right == 1)
-        {
-            if (now->no - 1 == now2->next_right->no)
-            {
+        if (now->right == 1){
+            if (now->no - 1 == now2->next_right->no){
+                now->rightAccessible = 0;
                 direction_t = 0; // 相对右转
                 go = now->next_right;
                 now->right_view = max_node_view();
@@ -1283,12 +1251,10 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         }
         break;
     }
-    case 2:
-    { // 当前方向向qian
-        if (now->left == 1)
-        {
-            if (now->no - 1 == now2->next_left->no)
-            {
+    case 2:{ // 当前方向向qian
+        if (now->left == 1){
+            if (now->no - 1 == now2->next_left->no){
+                now->leftAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1296,10 +1262,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->qian == 1)
-        {
-            if (now->no - 1 == now2->next_qian->no)
-            {
+        if (now->qian == 1){
+            if (now->no - 1 == now2->next_qian->no){
+                now->qianAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1307,10 +1272,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->right == 1)
-        {
-            if (now->no - 1 == now2->next_right->no)
-            {
+        if (now->right == 1){
+            if (now->no - 1 == now2->next_right->no){
+                now->rightAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_right;
                 now->right_view = max_node_view();
@@ -1318,10 +1282,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->hou == 1)
-        {
-            if ((now->no - 1 == now2->next_hou->no))
-            {
+        if (now->hou == 1){
+            if ((now->no - 1 == now2->next_hou->no)){
+                now->houAccessible = 0;
                 direction_t = 0; // 相对掉转
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1331,12 +1294,10 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         }
         break;
     }
-    case 3:
-    { // 当前方向向右
-        if (now->qian == 1)
-        {
-            if ((now->no - 1 == now2->next_qian->no))
-            {
+    case 3:{ // 当前方向向右
+        if (now->qian == 1){
+            if ((now->no - 1 == now2->next_qian->no)){
+                now->qianAccessible = 0;
                 direction_t = 1; // 相对左转
                 go = now->next_qian;
                 now->qian_view = max_node_view();
@@ -1344,10 +1305,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->right == 1)
-        {
-            if ((now->no - 1 == now2->next_right->no))
-            {
+        if (now->right == 1){
+            if ((now->no - 1 == now2->next_right->no)){
+                now->rightAccessible = 0;
                 direction_t = 2; // 相对直转
                 go = now->next_right;
                 now->right_view = max_node_view();
@@ -1355,10 +1315,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->hou == 1)
-        {
-            if (now->no - 1 == now2->next_hou->no)
-            {
+        if (now->hou == 1){
+            if (now->no - 1 == now2->next_hou->no){
+                now->houAccessible = 0;
                 direction_t = 3; // 相对右转
                 go = now->next_hou;
                 now->hou_view = max_node_view();
@@ -1366,10 +1325,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
                 return direction_t;
             }
         }
-        if (now->left == 1)
-        {
-            if (now->no - 1 == now2->next_left->no)
-            {
+        if (now->left == 1){
+            if (now->no - 1 == now2->next_left->no){
+                now->leftAccessible = 0;
                 direction_t = 0; // 相对右转
                 go = now->next_left;
                 now->left_view = max_node_view();
@@ -1384,12 +1342,9 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         break;
     }
 
-    switch (direct % 4)
-    {
-    case 0:
-    { // 当前方向向后
-        if (now->right == 1)
-        {
+    switch (direct % 4){
+    case 0:{ // 当前方向向后
+        if (now->right == 1){
             direction_t = 1; // 相对左转
             go = now->next_right;
             now->right_view = max_node_view();
@@ -1426,7 +1381,7 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
         break;
     }
 
-    case 1:
+    // case 1:
     { // 当前方向向左
         if (now->hou == 1)
         {
@@ -1558,7 +1513,7 @@ int add_point(float get_y, float get_x, int get_left, int get_qian, int get_righ
     //			last = now;
     //			return direction_t;
     //		}
-    //	}
+    //	
     //	if (now->qian == 1) {
     //		if ((now->next_qian == &save) || (p_t < now->next_qian->no - 2)) {
     //			direction_t = 2;
@@ -1654,8 +1609,7 @@ void Clear_FLAG(void)
     cflag_tn180 = 0;
 }
 
-void calc_node_num(void)
-{
+void calc_node_num(void){
     int num = 0;
     if (now->qian)
     {
@@ -1700,11 +1654,11 @@ int max_node_view(void)
     return temp;
 }
 
-// 返回方向的最小节点
+// 返回方向的最小节点,且该方向不是死胡同
 int get_min_node_view(void)
 {
     int temp = 100, record = 1;
-    if (now->left)
+    if (now->left && now->leftAccessible)
     {
         if (temp > now->left_view)
         {
@@ -1712,7 +1666,7 @@ int get_min_node_view(void)
             temp = now->left_view;
         }
     }
-    if (now->qian)
+    if (now->qian && now->qianAccessible)
     {
         if (temp > now->qian_view)
         {
@@ -1720,7 +1674,7 @@ int get_min_node_view(void)
             temp = now->qian_view;
         }
     }
-    if (now->right)
+    if (now->right && now->rightAccessible)
     {
         if (temp > now->right_view)
         {
@@ -1728,7 +1682,7 @@ int get_min_node_view(void)
             temp = now->right_view;
         }
     }
-    if (now->hou)
+    if (now->hou && now->houAccessible)
     {
         if (temp > now->hou_view)
         {

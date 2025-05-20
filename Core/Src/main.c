@@ -178,6 +178,8 @@ int main(void)
       printf("state:%d\r\n",STATE);
       OLED_ShowString(1,1,"ST:",OLED_8X16);
       OLED_ShowNum(17,1,STATE,1,OLED_8X16);
+      OLED_ShowString(33,1,"Dir:",OLED_8X16);
+      OLED_ShowNum(65,1,direct%4,1,OLED_8X16);
       OLED_ShowString(1, 17, "JCT:", OLED_8X16);
       OLED_ShowString(33, 17, (uint8_t*)junctionNames[lastJunctionType], OLED_8X16);
       OLED_ShowString(1, 33, "DIR:", OLED_8X16);

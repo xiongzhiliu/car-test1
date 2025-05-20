@@ -21,6 +21,10 @@ typedef struct{ 													//地图结构体
 	uint8_t hou_view;
 	uint8_t left_view;
 	uint8_t right_view;
+	u8 qianAccessible;
+	u8 houAccessible;
+	u8 leftAccessible;
+	u8 rightAccessible;
 	uint8_t node_num;									//岔路数量
 	uint8_t no;												//编号
 	struct map *next_qian;						//下一个前方的点

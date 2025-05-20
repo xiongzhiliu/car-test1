@@ -71,13 +71,14 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
     case 0b11111:
       if(judge_flag==1 && last_level == 0b11111){
         wbf_counter++;
-        if (wbf_counter > 40 ){  //10次全黑判断为终点，待测试
+        if (wbf_counter > 30 ){  //20次全黑判断为终点，待测试
             //buzzer_turn_on_delay(50);
             error = 0;
             STOP_FLAG = 1; 
-            nodeJudgePending = 1; //终点节点		
-            set_corner_dir(direct+2);} //来时路设置为通
-          }
+            NODE_DETECT_FLAG = 1;
+            // nodeJudgePending = 1; //终点节点		
+        } //来时路设置为通
+      }
       else{
           wbf_counter =0;
       }				 	
@@ -150,9 +151,10 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
         BOTH_FLAG = 1;
       }
       else{
-        NODE_DETECT_FLAG = 1;
+        // NODE_DETECT_FLAG = 1;
+        nodeJudgePending = 1;
         BOTH_FLAG = 1;
-        TURN_UP_FLAG = 1;
+        // TURN_UP_FLAG = 1;
       }
     }
   }
@@ -160,7 +162,6 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
   if(judge_flag== 1 && nodeJudgePending == 1 && last_level != gray_value){  //识别到路口状态挂起且这次灰度不等于上一次，就说明是路口后的变化
     if(gray_value == 0b00000){
       NODE_DETECT_FLAG = 1;
-      TURN_UP_FLAG = 0;
       nodeJudgePending = 0;
     }else if ((gray_value & 0b01110)&&!(gray_value & 0b10001)) //左右两边没有检测到线，说明是直道
     {
