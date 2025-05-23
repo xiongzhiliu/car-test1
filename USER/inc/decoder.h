@@ -2,7 +2,7 @@
 #define __decoder_h
 
 #define KEY_DEBOUNCE_COUNT 3      // 消抖计数阈值
-#define KEY_LONG_PRESS_COUNT 50   // 长按计数阈值
+#define KEY_LONG_PRESS_COUNT 100   // 长按计数阈值
 #define KEY_SHORT_PRESS 1         // 短按标志
 #define KEY_LONG_PRESS 2          // 长按标志
 #include "headfiles.h"

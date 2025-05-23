@@ -67,6 +67,10 @@ volatile u8 rx1_pointer=0;
 char temp_rx[30]={0};
 u8 rxdat;
 volatile u8 rx2_pointer=0;
+uint8_t maxi_down=0;
+#define BLERX_LEN_MAX 200
+u8 BLERX_LEN_maxi = 0;
+unsigned char BLERX_BUFF_maix[BLERX_LEN_MAX];
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   if(huart->Instance == USART2)
@@ -77,7 +81,28 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	
   if(huart->Instance == USART1)
   {
+    // temp_rx_1[rx1_pointer++] = rxdat_1;
+    if (BLERX_LEN_maxi < BLERX_LEN_MAX - 1) // 保留一个字符的空间用于'\0'
+    {
+      if(rxdat_1 == 0xff) // 检查是否是结束标志
+      {
+        maxi_down = 1;
+        BLERX_BUFF_maix[BLERX_LEN_maxi] = '\0'; //确保字符串正确结束
+        //process_receive();
+        BLERX_LEN_maxi = 0; // 重置接收长度
+      }else if(rxdat_1 >= 0 && rxdat_1 <= 3){ //检查是否是路口方向
+        BLERX_BUFF_maix[BLERX_LEN_maxi++] = rxdat_1;
+      }
+    }
     HAL_UART_Receive_IT(&huart1,&rxdat_1,1);
-    temp_rx_1[rx1_pointer++] = rxdat_1;
+  }
+  if(maxi_down == 1){
+    for(int i=0; BLERX_BUFF_maix[i] != '\0';i++){
+        //printf("%c",BLERX_BUFF[i]);
+        node2_list[i] = BLERX_BUFF_maix[i]; 
+        buzzerTurnOnDelay(10);
+        //printf("%d",node2_list[i]);
+        // printf("%d",BLERX_BUFF_maix[i]);
+    }
   }
 }

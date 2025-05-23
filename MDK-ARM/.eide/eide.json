@@ -198,6 +198,9 @@
           },
           {
             "path": "../BSP/OLED/OLED.h"
+          },
+          {
+            "path": "../BSP/ano/ano.c"
           }
         ],
         "folders": []
@@ -220,7 +223,8 @@
       "excludeList": [
         "<virtual_root>/USER/MYI2C.c",
         "<virtual_root>/USER/oled.c",
-        "<virtual_root>/USER/oled1.c"
+        "<virtual_root>/USER/oled1.c",
+        "<virtual_root>/BSP/ano.c"
       ],
       "toolchain": "AC6",
       "compileConfig": {

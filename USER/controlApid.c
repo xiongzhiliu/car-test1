@@ -7,10 +7,10 @@ float Movement=0;
 int encoder_speed;
 u8 Qina_flag=0,Hou_flag=0;
 int Integral=0; //全局变量速度PI控制的积分值,积分值可以用于控制速度
-int xiuzheng=1;  //电机位置和灰度位置的差值
-int LocX=0,LocY=0,last_locx=0,last_locy=0,RE_LocX=0,RE_LocY=0;      //绝对坐标 起始方向为绝对坐标x正向；暂存的绝对坐标
+int xiuzheng=0;  //电机位置和灰度位置的差值
+float LocX=0,LocY=0,last_locx=0,last_locy=0,RE_LocX=0,RE_LocY=0;      //绝对坐标 起始方向为绝对坐标x正向；暂存的绝对坐标
 u8 ab_x=0,ab_fx=0,ab_y=0,ab_fy=0;				//绝对方向 起始方向为绝对方向x正向
-u8 direct=130; 									//全局绝对默认方向为2（模4运算）
+int direct=130; 									//全局绝对默认方向为2（模4运算）
 int Encoder_Left,Encoder_Right;                 //左右编码器的脉冲计数（会一直清零） 在PID里面调用计算得出
 int Encoder_Sum=0,Encoder_Sum2=0;              	//左右编码器的累计  在Decoder里面累加
 u8 turn_in_progress = 0; //正在转向标志
@@ -506,11 +506,10 @@ void Locationhold(void){
 
 void set_corner_dir(int dir){
 
-	if (dir <= 0){
-		dir +=4;} //保证dir是正数 
+	dir+= 4;
 	switch(dir%4)
 	{
-		case 0:ab_fx=1;  //绝对x方向可行
+		case 0:ab_fx=1;  //
       		break;		
 		case 1:	ab_fy=1;
 			break;
@@ -523,8 +522,8 @@ void set_corner_dir(int dir){
 }
 
 void Location(void){     //PID中断调用，计算当前坐标
-	static int last_distance=0;
-	int tempdis;
+	static float last_distance=0;
+	float tempdis;
 	tempdis=(left.sum_pul+right.sum_pul)/144;
 	//judge_dir();
 	switch(direct%4){  //根据形式方向来计算坐标

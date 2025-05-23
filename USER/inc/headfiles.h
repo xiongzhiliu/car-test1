@@ -78,6 +78,6 @@ extern int I0ntegral;  // Integral value for speed control,use to clear the inte
 extern float Movement,setAngleForward; // speed value for speed control ，angle when car turn forward used in balance
 
 extern int ab_direction;
-
+extern u8 taskType;
 #endif 
 

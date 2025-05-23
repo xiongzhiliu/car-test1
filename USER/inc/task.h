@@ -4,13 +4,14 @@
 #include "headfiles.h"
 #include "decoder.h"
 
+
 #define turnLeft 1
 #define turnRight 3
 #define turnBack 0
 #define turnUp 2
 #define stop 5
 #define wrong 6
-typedef struct{ 													//地图结构体
+struct map { 													//地图结构体
 	int x;														//x坐标
 	int y;														//y坐标
 	uint8_t qian;											//前方是否有路
@@ -33,7 +34,7 @@ typedef struct{ 													//地图结构体
 	struct map *next_right;						//下一个右方的点
 	struct map *next;									//下一个点
 //	struct map *pervious;
-} map;
+};
 
 typedef enum {
     JUNCTION_NONE,      // 无路口
@@ -58,14 +59,17 @@ void  Clear_FLAG(void);
 
 void calc_node_num(void);
 int max_node_view(void);
-int get_min_node_view(void);
+int get_min_node_view(int direct);
 int judge_node(struct map *node);
-
+void setPointer0AccessibleZero(void);
 
 void task1(void);
+void task2(void);
 extern uint8_t STATE, STATE2; // task函数state状态，初始状态为0
 extern char* junctionNames[];
 extern JunctionType lastJunctionType;
 extern uint8_t last_junction_dirs;
 extern int last_turn_dir;
+extern struct map *now;
+extern int node2_list[];
 #endif

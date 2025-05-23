@@ -57,11 +57,12 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
     /**************以下为路口状态*******************/
     case 0b00000:
       if(judge_flag==1 && last_level == 0b00000) {
+        wbf_counter =0;
         white_counter++;
         if (white_counter > 10) {  // 10次全白判断为路口，待测试
             //buzzer_turn_on_delay(50);
             NODE_DETECT_FLAG = 1;
-            TURN_BACK_FLAG = 1;
+            nodeJudgePending = 0;
         }
       }else{
         white_counter = 0;	
@@ -70,16 +71,22 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
 
     case 0b11111:
       if(judge_flag==1 && last_level == 0b11111){
+        white_counter=0;
         wbf_counter++;
         if (wbf_counter > 30 ){  //20次全黑判断为终点，待测试
             //buzzer_turn_on_delay(50);
             error = 0;
             STOP_FLAG = 1; 
             NODE_DETECT_FLAG = 1;
+            BOTH_FLAG = 0;
+            nodeJudgePending = 0;
             // nodeJudgePending = 1; //终点节点		
         } //来时路设置为通
-      }
-      else{
+        else if(wbf_counter >= filter_times){    //连续读到三次相同level便认为有路口
+          nodeJudgePending = 1;
+          BOTH_FLAG = 1;
+        }
+      }else{
           wbf_counter =0;
       }				 	
       break;
@@ -87,6 +94,8 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
     case 0b11100:
       if(judge_flag==1 && last_level == 0b11100)
       {
+        white_counter=0;
+        wbf_counter =0;
         l_counter ++;          
         if(l_counter >= filter_times)       //连续读到三次相同level便认为有路口
         {
@@ -101,6 +110,8 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
     case 0b11110:
       if(judge_flag==1 && last_level == 0b11110)
       {
+        white_counter=0;
+        wbf_counter =0;
         l_counter ++;
         if(l_counter >= filter_times)       //连续读到三次相同level便认为有路口
         {
@@ -115,6 +126,8 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
     case 0b00111:
       if(judge_flag==1 && last_level == 0b00111)
       {
+        white_counter=0;
+        wbf_counter =0;
         r_counter ++;
         if(r_counter >= filter_times)       //连续读到三次相同level便认为有路口
         {
@@ -129,6 +142,8 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
     case 0b01111:
       if(judge_flag==1 && last_level == 0b01111)
       {
+        white_counter=0;
+        wbf_counter =0;
         r_counter ++;
         if(r_counter >= filter_times)       //连续读到三次相同level便认为有路口
         {
@@ -144,20 +159,20 @@ int gray_calc_error(bool judge_flag)  //1：允许 0：不允许
 		default: error = 0; break;
 	}
 
-  if(judge_flag==1 && gray_value != 0b11111){
-    if(last_level == 0b11111){
-      if(gray_value == 0b00000){
-        nodeJudgePending = 1;
-        BOTH_FLAG = 1;
-      }
-      else{
-        // NODE_DETECT_FLAG = 1;
-        nodeJudgePending = 1;
-        BOTH_FLAG = 1;
-        // TURN_UP_FLAG = 1;
-      }
-    }
-  }
+  // if(judge_flag==1 && gray_value != 0b11111){
+  //   if(last_level == 0b11111){
+  //     if(gray_value == 0b00000){
+  //       nodeJudgePending = 1;
+  //       BOTH_FLAG = 1;
+  //     }
+  //     else{
+  //       // NODE_DETECT_FLAG = 1;
+  //       nodeJudgePending = 1;
+  //       BOTH_FLAG = 1;
+  //       // TURN_UP_FLAG = 1;
+  //     }
+  //   }
+  // }
  
   if(judge_flag== 1 && nodeJudgePending == 1 && last_level != gray_value){  //识别到路口状态挂起且这次灰度不等于上一次，就说明是路口后的变化
     if(gray_value == 0b00000){

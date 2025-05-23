@@ -66,6 +66,7 @@ float velo_kp=130,velo_ki=0.7,velo_kd=0;
 // float bal_kp=800,bal_ki=0,bal_kd=1.6;
 // float velo_kp=100,velo_ki=0.35,velo_kd=0;
 float turn_kp=160,turn_ki=0,turn_kd=0.4;
+u8 taskType = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -111,10 +112,10 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
-  MX_USART1_UART_Init();
   MX_TIM4_Init();
   MX_USART2_UART_Init();
   MX_ADC1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	
   // __HAL_RCC_AFIO_CLK_ENABLE();  // 使能 AFIO 外设时钟
@@ -173,6 +174,21 @@ int main(void)
   {
     if (oledUpdateFlag == 1)
     {
+      // 相对方向名，顺序为：前、左、右、后
+      const char* rel_dir_names[] = {"F", "L", "R", "B"};
+      // 绝对方向到相对方向的映射表
+      // [上次行驶方向][绝对方向] = 相对方向
+      // const uint8_t abs2rel[4][4] = {
+      //     // 上次方向为0（后）
+      //     {0, 1, 3, 2}, // 绝对0后->F, 1左->L, 2前->R, 3右->B
+      //     // 上次方向为1（左）
+      //     {3, 0, 1, 2}, // 绝对0后->B, 1左->F, 2前->L, 3右->R
+      //     // 上次方向为2（前）
+      //     {2, 3, 0, 1}, // 绝对0后->R, 1左->B, 2前->F, 3右->L
+      //     // 上次方向为3（右）
+      //     {1, 2, 3, 0}  // 绝对0后->L, 1左->R, 2前->B, 3右->F
+      // };
+      // const char* relativeDir[4]={"F","L","R","B"};
       OLED_Clear();
       oledUpdateFlag = 0;
       printf("state:%d\r\n",STATE);
@@ -180,29 +196,67 @@ int main(void)
       OLED_ShowNum(17,1,STATE,1,OLED_8X16);
       OLED_ShowString(33,1,"Dir:",OLED_8X16);
       OLED_ShowNum(65,1,direct%4,1,OLED_8X16);
-      OLED_ShowString(1, 17, "JCT:", OLED_8X16);
-      OLED_ShowString(33, 17, (uint8_t*)junctionNames[lastJunctionType], OLED_8X16);
-      OLED_ShowString(1, 33, "DIR:", OLED_8X16);
-      const char* dir_names[] = {"F", "L", "R", "B"};
-      if(last_turn_dir >= 0 && last_turn_dir <= 3)
-          OLED_ShowString(33, 33, (uint8_t*)dir_names[last_turn_dir], OLED_8X16);
-      
-      // 显示上一个路口可转向方向
+
+      if(taskType == 0){
+      	OLED_ShowString(105,1,"T0",OLED_8X16);
+      }else if (taskType == 1) {
+      	OLED_ShowString(105,1,"T1",OLED_8X16);
+      }
+      // 显示当前点编号
+      OLED_ShowString(1, 17, "NO:", OLED_8X16);
+      OLED_ShowNum(33, 17, now ? now->no : 0, 3, OLED_8X16);
+
+      // 显示当前点X坐标（带正负号）
+      OLED_ShowString(1, 33, "X:", OLED_8X16);
+      if(now) {
+          if(now->x >= 0) {
+              OLED_ShowString(17, 33, "+", OLED_8X16);
+              OLED_ShowNum(25, 33, now->x, 4, OLED_8X16);
+          } else {
+              OLED_ShowString(17, 33, "-", OLED_8X16);
+              OLED_ShowNum(25, 33, -now->x, 4, OLED_8X16);
+          }
+      }
+
+      // 显示当前点Y坐标（带正负号）
+      OLED_ShowString(65, 33, "Y:", OLED_8X16);
+      if(now) {
+          if(now->y >= 0) {
+              OLED_ShowString(81, 33, "+", OLED_8X16);
+              OLED_ShowNum(89, 33, now->y, 4, OLED_8X16);
+          } else {
+              OLED_ShowString(81, 33, "-", OLED_8X16);
+              OLED_ShowNum(89, 33, -now->y, 4, OLED_8X16);
+          }
+      }
+
       OLED_ShowString(1, 49, "WAY:", OLED_8X16);
-      uint8_t x = 33;
+      u8 x = 33;
+
+      // 当小车到达节点时（STATE == 4），显示相对于当前方向的可行方向
+      
+          // 使用当前的显示方式（显示上个路口的可行方向）
+      // uint8_t rel_dir = last_turn_dir; // 上一次实际行驶方向（0后1左2前3右）
       for(int i=0; i<4; i++) {
           if(last_junction_dirs & (1<<i)) {
-              OLED_ShowString(x, 49, (uint8_t*)dir_names[i], OLED_8X16);
+              // i为绝对方向，映射到相对方向
+              // uint8_t rel = abs2rel[rel_dir][i];
+              OLED_ShowString(x, 49, (char *)rel_dir_names[i], OLED_8X16);
               x += 10;
           }
       }
+      // 显示当前点的绝对方向
       OLED_Update();
     }
     
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  task1();
+    if(! taskType){
+      task1();
+    }else{
+      task2();
+    }
     rx_proc();
     key_proc();
     // show_gray_value();

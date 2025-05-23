@@ -65,7 +65,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                         {
                             k1.is_pull = 1;      // 触发按键事件
                             k1.press_type = KEY_SHORT_PRESS; // 标记为短按
-                            printf("Key short press detected\r\n");
+                            // printf("Key short press detected\r\n");
                         }
                         key_pressed = 0;    // 清除按下标志
                     }

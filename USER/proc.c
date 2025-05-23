@@ -105,7 +105,6 @@ void key_proc(void)
         if(k1.press_type == KEY_SHORT_PRESS)
         {
             // 处理短按操作
-//            printf("处理短按\r\n");
             // 短按触发平衡或移动
             if(!interrupt_allow_flag && !start_flag)
             {
@@ -119,11 +118,15 @@ void key_proc(void)
         }
         else if(k1.press_type == KEY_LONG_PRESS)
         {
-            // 处理长按操作
-//            printf("处理长按\r\n");
-            // 长按触发停止
-            // interrupt_allow_flag = 0;
-            // start_flag = 0;
+            if(taskType == 0){
+              taskType = 1; // 切换到任务1
+              STATE = 0;  // 重置状态机
+              STATE2 = 0;
+            }else if( taskType == 1){
+              taskType = 0; // 切换到任务2
+              STATE = 0;  // 重置状态机
+              STATE2 = 0;
+            }
         }
     }
 }

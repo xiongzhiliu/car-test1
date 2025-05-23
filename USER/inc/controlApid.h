@@ -53,8 +53,8 @@ int get_dir(int ab_dir);
 void clear_corner_dir(void);
 int get_corner_dir(int dir);
 
-extern int LocX,LocY,last_locx,last_locy,RE_LocX,RE_LocY;    //绝对坐标 起始方向为绝对坐标x正向；暂存的绝对坐标
+extern float LocX,LocY,last_locx,last_locy,RE_LocX,RE_LocY;    //绝对坐标 起始方向为绝对坐标x正向；暂存的绝对坐标
 extern u8 ab_x,ab_fx,ab_y,ab_fy; //当前节点的绝对方向	
-extern u8 direct;
+extern int direct;
 extern u8 turn_in_progress; //正在转向标志;// junctionNames数组定义
 #endif 
